@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GERENCIA DE SISTEMAS DE INFORMACIÓN</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header + Nav (autocontenido para evitar problemas) -->
+  <header class="site-header" role="banner" style="position: sticky; top: 0; background: var(--primary, #0057b8); color: #fff; z-index: 1200; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);">
+  <div class="header-inner container" style="display: flex; gap: 1rem; align-items: center; justify-content: space-between; padding: 0.6rem 1rem; max-width: 1200px; margin: 0 auto;">
+
+    <!-- Branding -->
+    <div class="branding" style="display: flex; gap: 0.75rem; align-items: center;">
+      <a href="#hero" class="logo-link" aria-label="Ir al inicio del sitio">
+        <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'" style="height: 44px; width: auto; border-radius: 6px;">
+      </a>
+      <div class="title-wrap">
+        <h1 class="site-title" style="font-size: 1rem; margin: 0; font-weight: 700; letter-spacing: 0.2px;">Gerencia de Sistemas de Información</h1>
+        <p class="subtitle" style="font-size: 0.8rem; margin: 0; color: rgba(255, 255, 255, 0.9);">Estudios de Especialidad</p>
+      </div>
+    </div>
+
+    <!-- Botón de menú móvil -->
+    <button class="nav-toggle" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menú principal" 
+      style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+    </button>
+
+    <!-- Navegación principal -->
+    <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
+      <ul class="menu" role="menubar" style="list-style: none; margin: 0; padding: 0; display: flex; gap: 0.5rem;">
+
+        <!-- Enlace directo -->
+        <li class="menu-item" role="none" style="list-style: none;">
+          <a href="#hero" role="menuitem" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px; transition: background-color 0.3s ease;">Inicio</a>
+        </li>
+
+        <!-- Unidad 1 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 1 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 1" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="semana01.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 01</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="semana02.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 02</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="semana03.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 03</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 04</a></li>
+          </ul>
+        </li>
+
+        <!-- Unidad 2 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 2 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 2" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 05</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 06</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 07</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 08</a></li>
+          </ul>
+        </li>
+
+        <!-- Unidad 3 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 3 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 3" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 09</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 10</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 11</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 12</a></li>
+          </ul>
+        </li>
+
+        <!-- Unidad 4 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 4 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 4" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 13</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 14</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 15</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 16</a></li>
+          </ul>
+        </li>
+
+        <!-- Contacto -->
+        <li class="menu-item" role="none" style="list-style: none;">
+          <a href="#contacto" role="menuitem" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Contacto</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <!-- Hero -->
+  <section id="hero" class="hero" aria-labelledby="hero-title">
+    <div class="hero-overlay">
+      <h2 id="hero-title">GERENCIA DE SISTEMAS DE INFORMACIÓN</h2>
+      <p class="lead" style="
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-size: 1.3rem; 
+        font-weight: 700; 
+        color: #ffffff; 
+        text-shadow: 1px 1px 3px rgb(0, 0, 0);
+        margin: 1.2rem 0;
+        letter-spacing: 0.05em;
+        font-style: italic;
+      ">
+        Mosquera Zevallos Valerio
+      </p>
+
+      <a href="#unidades" class="btn-primary" id="explore-btn">Ver Unidades ▾</a>
+    </div>
+  </section>
+
+  <!-- Contenido principal - Unidades -->
+  <main id="unidades" class="main-content" role="main">
+    <section aria-labelledby="unidades-title" class="units-section">
+      <h2 id="unidades-title">Unidades y Semanas</h2>
+
+      <div class="grid-units">
+        <!-- Cada unidad como tarjeta; cuando quieras que cada 'Semana' sea tarjeta independiente lo hacemos en la siguiente fase -->
+        <article class="unit-card">
+          <h3>Unidad 1 — Fundamentos</h3>
+          <p class="unit-desc">Introducción y conceptos básicos de gerencia de TI.</p>
+          <button class="show-weeks" aria-expanded="false">Ver Semanas ▾</button>
+          <div class="weeks-list" hidden>
+            <a class="week-card" href="semana01.html">Semana 01</a>
+            <a class="week-card" href="semana02.html">Semana 02</a>
+            <a class="week-card" href="semana03.html">Semana 03</a>
+            <a class="week-card" href="#">Semana 04</a>
+          </div>
+        </article>
+
+        <article class="unit-card">
+          <h3>Unidad 2 — Gobierno y Gestión</h3>
+          <p class="unit-desc">Políticas, procesos y modelos de gobernanza.</p>
+          <button class="show-weeks" aria-expanded="false">Ver Semanas ▾</button>
+          <div class="weeks-list" hidden>
+            <a class="week-card" href="#">Semana 05</a>
+            <a class="week-card" href="#">Semana 06</a>
+            <a class="week-card" href="#">Semana 07</a>
+            <a class="week-card" href="#">Semana 08</a>
+          </div>
+        </article>
+
+        <article class="unit-card">
+          <h3>Unidad 3 — Arquitectura Empresarial</h3>
+          <p class="unit-desc">Modelos, integraciones y plataformas.</p>
+          <button class="show-weeks" aria-expanded="false">Ver Semanas ▾</button>
+          <div class="weeks-list" hidden>
+            <a class="week-card" href="#">Semana 09</a>
+            <a class="week-card" href="#">Semana 10</a>
+            <a class="week-card" href="#">Semana 11</a>
+            <a class="week-card" href="#">Semana 12</a>
+          </div>
+        </article>
+
+        <article class="unit-card">
+          <h3>Unidad 4 — Gestión de Proyectos</h3>
+          <p class="unit-desc">Metodologías, evaluación y cierre.</p>
+          <button class="show-weeks" aria-expanded="false">Ver Semanas ▾</button>
+          <div class="weeks-list" hidden>
+            <a class="week-card" href="#">Semana 13</a>
+            <a class="week-card" href="#">Semana 14</a>
+            <a class="week-card" href="#">Semana 15</a>
+            <a class="week-card" href="#">Semana 16</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Competencias (resumen) -->
+    <section class="competences" aria-labelledby="competences-title">
+      <h2 id="competences-title">Competencias y Capacidades</h2>
+      <div class="comp-grid">
+        <div class="comp-box">
+          <i class="fa fa-bullseye" aria-hidden="true"></i>
+          <h4>Competencia general</h4>
+          <p>Gerenciar el marco para el gobierno y gestión de TI.</p>
+        </div>
+        <div class="comp-box">
+          <i class="fa fa-check-circle" aria-hidden="true"></i>
+          <h4>Competencias específicas</h4>
+          <p>Diseñar políticas, administrar recursos, evaluar riesgos.</p>
+        </div>
+        <div class="comp-box">
+          <i class="fa fa-cogs" aria-hidden="true"></i>
+          <h4>Capacidades (5.1–5.4)</h4>
+          <p>Análisis, diseño, implementación y evaluación.</p>
+        </div>
+        <div class="comp-box">
+          <i class="fa fa-leaf" aria-hidden="true"></i>
+          <h4>Ejes transversales</h4>
+          <p>Investigación · Ética · Sostenibilidad</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contacto" class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <p>© 2025 — Mosquera Zevallos Valerio</p>
+    <p>
+      <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a> · 
+      <a href="tel:+51978417316" class="footer-link">+51 978 417 316</a>
+    </p>
+  </div>
+</footer>
+
+  <noscript>
+    <div class="noscript-warning">Esta página funciona mejor con JavaScript habilitado.</div>
+  </noscript>
+
+  <script src="script.js"></script>
+</body>
+</html>

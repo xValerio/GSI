@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GERENCIA DE SISTEMAS DE INFORMACIÓN</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header + Nav (autocontenido para evitar problemas) -->
+  <header class="site-header" role="banner" style="position: sticky; top: 0; background: var(--primary, #0057b8); color: #fff; z-index: 1200; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);">
+  <div class="header-inner container" style="display: flex; gap: 1rem; align-items: center; justify-content: space-between; padding: 0.6rem 1rem; max-width: 1200px; margin: 0 auto;">
+
+    <!-- Branding -->
+    <div class="branding" style="display: flex; gap: 0.75rem; align-items: center;">
+      <a href="#hero" class="logo-link" aria-label="Ir al inicio del sitio">
+        <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'" style="height: 44px; width: auto; border-radius: 6px;">
+      </a>
+      <div class="title-wrap">
+        <h1 class="site-title" style="font-size: 1rem; margin: 0; font-weight: 700; letter-spacing: 0.2px;">Gerencia de Sistemas de Información</h1>
+        <p class="subtitle" style="font-size: 0.8rem; margin: 0; color: rgba(255, 255, 255, 0.9);">Estudios de Especialidad</p>
+      </div>
+    </div>
+
+    <!-- Botón de menú móvil -->
+    <button class="nav-toggle" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menú principal" 
+      style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+    </button>
+
+    <!-- Navegación principal -->
+    <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
+      <ul class="menu" role="menubar" style="list-style: none; margin: 0; padding: 0; display: flex; gap: 0.5rem;">
+
+        <!-- Enlace directo -->
+        <li class="menu-item" role="none" style="list-style: none;">
+          <a href="#hero" role="menuitem" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px; transition: background-color 0.3s ease;">Inicio</a>
+        </li>
+
+        <!-- Unidad 1 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 1 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 1" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="semana01.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 01</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="semana02.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 02</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="semana03.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 03</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 04</a></li>
+          </ul>
+        </li>
+
+        <!-- Unidad 2 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 2 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 2" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 05</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 06</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 07</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 08</a></li>
+          </ul>
+        </li>
+
+        <!-- Unidad 3 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 3 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 3" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 09</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 10</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 11</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 12</a></li>
+          </ul>
+        </li>
+
+        <!-- Unidad 4 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 4 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 4" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 13</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 14</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 15</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 16</a></li>
+          </ul>
+        </li>
+
+        <!-- Contacto -->
+        <li class="menu-item" role="none" style="list-style: none;">
+          <a href="#contacto" role="menuitem" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Contacto</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <main id="unidades" class="main-content" role="main">
+  
+    <section aria-labelledby="info-title" class="units-section">
+      <h2 id="info-title">Información y Clase - Semana 01</h2>
+      <p>En esta semana exploraremos los conceptos fundamentales relacionados con la información en la empresa y los
+        sistemas de información que permiten su gestión efectiva.</p>
+    </section>
+  
+    <section aria-labelledby="contenido-title" class="units-section">
+      <h2 id="contenido-title">Temas de la Semana 01</h2>
+  
+      <article>
+        <h3>La Información en la Empresa</h3>
+        <p>La información es un recurso fundamental para cualquier empresa. Permite tomar decisiones acertadas,
+          planificar, organizar y controlar las actividades empresariales. Sin información adecuada, una empresa no puede
+          competir ni adaptarse al entorno cambiante.</p>
+        <h4>Importancia de la información:</h4>
+        <ul>
+          <li>Mejora la toma de decisiones.</li>
+          <li>Facilita la coordinación entre departamentos.</li>
+          <li>Permite conocer el mercado y la competencia.</li>
+          <li>Ayuda a identificar oportunidades y riesgos.</li>
+        </ul>
+        <h4>Características de la información útil en la empresa:</h4>
+        <ul>
+          <li><strong>Relevante:</strong> debe tener relación directa con la toma de decisiones.</li>
+          <li><strong>Oportuna:</strong> disponible en el momento adecuado.</li>
+          <li><strong>Precisa:</strong> confiable y libre de errores.</li>
+          <li><strong>Completa:</strong> debe tener suficiente detalle para ser útil.</li>
+          <li><strong>Accesible:</strong> fácil de obtener cuando se necesita.</li>
+        </ul>
+      </article>
+  
+      <article>
+        <h3>Sistemas de Información</h3>
+        <p>Un Sistema de Información (SI) es un conjunto organizado de recursos (personas, datos, procesos, hardware,
+          software) que recopilan, procesan, almacenan y distribuyen información para apoyar la toma de decisiones y el
+          control en una organización.</p>
+        <h4>Objetivos principales:</h4>
+        <ul>
+          <li>Mejorar la eficiencia operativa.</li>
+          <li>Apoyar la toma de decisiones gerenciales.</li>
+          <li>Facilitar la comunicación interna y externa.</li>
+          <li>Proveer ventaja competitiva mediante mejor manejo de información.</li>
+        </ul>
+        <p><em>Ejemplo:</em> un sistema de ventas que registra pedidos, controla inventarios y genera reportes para la
+          gerencia.</p>
+      </article>
+  
+      <article>
+        <h3>Tipos de Sistemas de Información</h3>
+        <p>Los sistemas de información pueden clasificarse según el nivel organizacional que atienden o su función
+          específica:</p>
+        <h4>Sistemas de procesamiento de transacciones (TPS):</h4>
+        <p>Manejan operaciones diarias y rutinarias (ventas, pagos, registros).</p>
+        <p><em>Ejemplo:</em> sistema de punto de venta (POS).</p>
+  
+        <h4>Sistemas de información gerencial (MIS):</h4>
+        <p>Procesan datos de TPS para generar informes que apoyan decisiones tácticas y de control.</p>
+        <p><em>Ejemplo:</em> reporte de ventas mensual para supervisores.</p>
+  
+        <h4>Sistemas de soporte a decisiones (DSS):</h4>
+        <p>Ayudan en decisiones no estructuradas, usando modelos y análisis interactivos.</p>
+        <p><em>Ejemplo:</em> análisis de escenarios para lanzamiento de un producto.</p>
+  
+        <h4>Sistemas de información ejecutiva (EIS):</h4>
+        <p>Diseñados para altos ejecutivos, con información resumida y visual.</p>
+        <p><em>Ejemplo:</em> tablero de control con indicadores clave (KPI).</p>
+  
+        <h4>Sistemas expertos y de inteligencia artificial:</h4>
+        <p>Simulan el juicio y comportamiento humano para resolver problemas complejos.</p>
+        <p><em>Ejemplo:</em> sistema de diagnóstico médico.</p>
+  
+        <h4>Sistemas de colaboración y comunicación:</h4>
+        <p>Facilitan la interacción y trabajo en equipo.</p>
+        <p><em>Ejemplo:</em> plataformas de videoconferencia y gestión de proyectos.</p>
+      </article>
+  
+      <article>
+        <h3>Componentes de los Sistemas de Información</h3>
+        <p>Todo sistema de información está compuesto por cinco elementos básicos que interactúan:</p>
+        <ul>
+          <li><strong>Hardware:</strong> Equipos físicos: computadoras, servidores, dispositivos de red, terminales, etc.
+          </li>
+          <li><strong>Software:</strong> Programas y aplicaciones que procesan los datos (software operativo, aplicaciones
+            específicas).</li>
+          <li><strong>Datos:</strong> Información que se procesa y almacena (bases de datos, archivos, registros).</li>
+          <li><strong>Personas:</strong> Usuarios que operan, gestionan y toman decisiones con el sistema: empleados,
+            gerentes, técnicos.</li>
+          <li><strong>Procesos:</strong> Conjunto de actividades y reglas que transforman los datos en información útil.
+          </li>
+        </ul>
+      </article>
+      <h2 id="resumen-title">Resumen Visual de la Semana 01</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tema</th>
+            <th>Definición / Función</th>
+            <th>Ejemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Información en la empresa</td>
+            <td>Recurso clave para tomar decisiones y planificar</td>
+            <td>Reportes financieros, datos de ventas</td>
+          </tr>
+          <tr>
+            <td>Sistema de Información (SI)</td>
+            <td>Conjunto organizado para gestionar información</td>
+            <td>Sistema de gestión de inventarios</td>
+          </tr>
+          <tr>
+            <td>Tipos de SI</td>
+            <td>TPS, MIS, DSS, EIS, Expertos, Colaboración</td>
+            <td>Punto de venta, tablero de mando</td>
+          </tr>
+          <tr>
+            <td>Componentes SI</td>
+            <td>Hardware, Software, Datos, Personas, Procesos</td>
+            <td>PC, software, base de datos, usuarios, reglas</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <footer id="contacto" class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <p>© 2025 — Mosquera Zevallos Valerio</p>
+    <p>
+      <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a> · 
+      <a href="tel:+51978417316" class="footer-link">+51 978 417 316</a>
+    </p>
+  </div>
+</footer>
+
+  <noscript>
+    <div class="noscript-warning">Esta página funciona mejor con JavaScript habilitado.</div>
+  </noscript>
+
+  <script src="script.js"></script>
+</body>
+</html>

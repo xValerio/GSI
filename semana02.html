@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GERENCIA DE SISTEMAS DE INFORMACIÓN</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header + Nav (autocontenido para evitar problemas) -->
+  <header class="site-header" role="banner" style="position: sticky; top: 0; background: var(--primary, #0057b8); color: #fff; z-index: 1200; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);">
+  <div class="header-inner container" style="display: flex; gap: 1rem; align-items: center; justify-content: space-between; padding: 0.6rem 1rem; max-width: 1200px; margin: 0 auto;">
+
+    <!-- Branding -->
+    <div class="branding" style="display: flex; gap: 0.75rem; align-items: center;">
+      <a href="#hero" class="logo-link" aria-label="Ir al inicio del sitio">
+        <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'" style="height: 44px; width: auto; border-radius: 6px;">
+      </a>
+      <div class="title-wrap">
+        <h1 class="site-title" style="font-size: 1rem; margin: 0; font-weight: 700; letter-spacing: 0.2px;">Gerencia de Sistemas de Información</h1>
+        <p class="subtitle" style="font-size: 0.8rem; margin: 0; color: rgba(255, 255, 255, 0.9);">Estudios de Especialidad</p>
+      </div>
+    </div>
+
+    <!-- Botón de menú móvil -->
+    <button class="nav-toggle" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menú principal" 
+      style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+    </button>
+
+    <!-- Navegación principal -->
+    <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
+      <ul class="menu" role="menubar" style="list-style: none; margin: 0; padding: 0; display: flex; gap: 0.5rem;">
+
+        <!-- Enlace directo -->
+        <li class="menu-item" role="none" style="list-style: none;">
+          <a href="#hero" role="menuitem" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px; transition: background-color 0.3s ease;">Inicio</a>
+        </li>
+
+        <!-- Unidad 1 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 1 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 1" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="semana01.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 01</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="semana02.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 02</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="semana03.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 03</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 04</a></li>
+          </ul>
+        </li>
+
+        <!-- Unidad 2 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 2 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 2" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 05</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 06</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 07</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 08</a></li>
+          </ul>
+        </li>
+
+        <!-- Unidad 3 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 3 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 3" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 09</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 10</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 11</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 12</a></li>
+          </ul>
+        </li>
+
+        <!-- Unidad 4 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 4 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 4" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 13</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 14</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 15</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 16</a></li>
+          </ul>
+        </li>
+
+        <!-- Contacto -->
+        <li class="menu-item" role="none" style="list-style: none;">
+          <a href="#contacto" role="menuitem" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Contacto</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <main id="unidades" class="main-content" role="main">
+  
+    <section aria-labelledby="cloud-title" class="units-section">
+  <h2 id="cloud-title">Semana 02 – Computación en la Nube</h2>
+
+  <article>
+    <h3>¿Qué es la Computación en la Nube?</h3>
+    <p>
+      La computación en la nube es un modelo tecnológico que permite acceder a recursos informáticos 
+      (servidores, almacenamiento, bases de datos, software, etc.) a través de internet, sin necesidad 
+      de tener infraestructura física propia.
+    </p>
+  </article>
+
+  <article>
+    <h3>Conceptos clave</h3>
+    <ul>
+      <li><strong>Acceso remoto:</strong> uso desde cualquier lugar con conexión a internet.</li>
+      <li><strong>Escalabilidad:</strong> recursos ajustables según demanda.</li>
+      <li><strong>Flexibilidad:</strong> acceso a tecnología avanzada sin gran inversión inicial.</li>
+      <li><strong>Mantenimiento externo:</strong> gestionado por el proveedor.</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Ventajas de la Computación en la Nube</h3>
+    <ul>
+      <li>Reducción de costos</li>
+      <li>Agilidad y rapidez en la implementación</li>
+      <li>Escalabilidad dinámica</li>
+      <li>Alta disponibilidad (24/7)</li>
+      <li>Colaboración en tiempo real</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Desafíos</h3>
+    <ul>
+      <li>Seguridad y privacidad de datos</li>
+      <li>Dependencia del proveedor</li>
+      <li>Cumplimiento legal y normativas (ej. GDPR)</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Modelos de Despliegue de la Nube</h3>
+
+    <h4>1. Nube Pública (Public Cloud)</h4>
+    <p>
+      Infraestructura propiedad de un proveedor externo, accesible al público general. Ofrece alta escalabilidad, costos bajos y es mantenida por el proveedor.
+    </p>
+    <p><strong>Ejemplos:</strong> AWS, Azure, Google Cloud</p>
+
+    <h4>2. Nube Privada (Private Cloud)</h4>
+    <p>
+      Infraestructura exclusiva para una organización, con mayor control y personalización. Puede estar alojada internamente o en un data center externo.
+    </p>
+
+    <h4>3. Nube Híbrida (Hybrid Cloud)</h4>
+    <p>
+      Combina nubes públicas y privadas, permitiendo mover datos o cargas según necesidad. Equilibra seguridad y costo, pero implica una gestión más compleja.
+    </p>
+
+    <h4>4. Nube Comunitaria (Community Cloud)</h4>
+    <p>
+      Infraestructura compartida entre organizaciones con necesidades comunes, como regulaciones o seguridad. Usada por gobiernos, consorcios o instituciones.
+    </p>
+  </article>
+</section>
+
+  </main>
+
+  <footer id="contacto" class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <p>© 2025 — Mosquera Zevallos Valerio</p>
+    <p>
+      <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a> · 
+      <a href="tel:+51978417316" class="footer-link">+51 978 417 316</a>
+    </p>
+  </div>
+</footer>
+
+  <noscript>
+    <div class="noscript-warning">Esta página funciona mejor con JavaScript habilitado.</div>
+  </noscript>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GERENCIA DE SISTEMAS DE INFORMACIÓN</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header + Nav (autocontenido para evitar problemas) -->
+  <header class="site-header" role="banner" style="position: sticky; top: 0; background: var(--primary, #0057b8); color: #fff; z-index: 1200; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);">
+  <div class="header-inner container" style="display: flex; gap: 1rem; align-items: center; justify-content: space-between; padding: 0.6rem 1rem; max-width: 1200px; margin: 0 auto;">
+
+    <!-- Branding -->
+    <div class="branding" style="display: flex; gap: 0.75rem; align-items: center;">
+      <a href="#hero" class="logo-link" aria-label="Ir al inicio del sitio">
+        <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'" style="height: 44px; width: auto; border-radius: 6px;">
+      </a>
+      <div class="title-wrap">
+        <h1 class="site-title" style="font-size: 1rem; margin: 0; font-weight: 700; letter-spacing: 0.2px;">Gerencia de Sistemas de Información</h1>
+        <p class="subtitle" style="font-size: 0.8rem; margin: 0; color: rgba(255, 255, 255, 0.9);">Estudios de Especialidad</p>
+      </div>
+    </div>
+
+    <!-- Botón de menú móvil -->
+    <button class="nav-toggle" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menú principal" 
+      style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+    </button>
+
+    <!-- Navegación principal -->
+    <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
+      <ul class="menu" role="menubar" style="list-style: none; margin: 0; padding: 0; display: flex; gap: 0.5rem;">
+
+        <!-- Enlace directo -->
+        <li class="menu-item" role="none" style="list-style: none;">
+          <a href="#hero" role="menuitem" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px; transition: background-color 0.3s ease;">Inicio</a>
+        </li>
+
+        <!-- Unidad 1 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 1 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 1" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="semana01.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 01</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="semana02.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 02</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="semana03.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 03</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 04</a></li>
+          </ul>
+        </li>
+
+        <!-- Unidad 2 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 2 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 2" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 05</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 06</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 07</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 08</a></li>
+          </ul>
+        </li>
+
+        <!-- Unidad 3 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 3 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 3" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 09</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 10</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 11</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 12</a></li>
+          </ul>
+        </li>
+
+        <!-- Unidad 4 -->
+        <li class="menu-item has-submenu" role="none" style="list-style: none;">
+          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
+            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
+            Unidad 4 <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 4" style="list-style: none; margin: 0; padding-left: 1rem;">
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 13</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 14</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 15</a></li>
+            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 16</a></li>
+          </ul>
+        </li>
+
+        <!-- Contacto -->
+        <li class="menu-item" role="none" style="list-style: none;">
+          <a href="#contacto" role="menuitem" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Contacto</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <main id="unidades" class="main-content" role="main">
+  
+    <section aria-labelledby="admin-nube-title" class="units-section">
+  <h2 id="admin-nube-title">Semana 03 – Administración en la Nube</h2>
+
+  <article>
+    <h3>¿Qué es la Administración en la Nube?</h3>
+    <p>
+      La administración en la nube se refiere al conjunto de actividades, procesos, herramientas y políticas que permiten gestionar, controlar y optimizar los recursos y servicios en entornos de computación en la nube (pública, privada o híbrida).
+    </p>
+  </article>
+
+  <article>
+    <h3>Funciones de la Administración en la Nube</h3>
+    <ul>
+      <li><strong>Gestión de recursos:</strong> asignación, escalado y eliminación de recursos como almacenamiento, cómputo y redes.</li>
+      <li><strong>Supervisión y monitoreo:</strong> vigilancia del rendimiento del sistema y detección de problemas o ataques.</li>
+      <li><strong>Gestión de costos:</strong> control del gasto y análisis del consumo por departamentos o servicios.</li>
+      <li><strong>Seguridad y cumplimiento:</strong> implementación de políticas de acceso, cifrado y cumplimiento de normativas.</li>
+      <li><strong>Automatización y orquestación:</strong> uso de herramientas para ejecutar tareas repetitivas y flujos de trabajo.</li>
+      <li><strong>Backup y recuperación:</strong> creación de copias de seguridad y restauración ante pérdidas o fallos.</li>
+      <li><strong>Gestión de proveedores:</strong> administración de múltiples nubes y selección eficiente de servicios.</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Tecnología para la Administración en la Nube</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Área</th>
+          <th>Tecnologías / Herramientas</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monitoreo y Alertas</td>
+          <td>Prometheus, CloudWatch, Datadog</td>
+          <td>Recogen métricas del sistema y generan alertas.</td>
+        </tr>
+        <tr>
+          <td>Automatización</td>
+          <td>Terraform, Ansible, Chef, Puppet</td>
+          <td>Automatizan la infraestructura como código (IaC).</td>
+        </tr>
+        <tr>
+          <td>Gestión de Costos</td>
+          <td>AWS Cost Explorer, Azure Cost Management</td>
+          <td>Control y análisis detallado del consumo de servicios.</td>
+        </tr>
+        <tr>
+          <td>Seguridad</td>
+          <td>IAM, AWS Shield, Azure Security Center</td>
+          <td>Gestión de identidades y protección contra amenazas.</td>
+        </tr>
+        <tr>
+          <td>Orquestación de Contenedores</td>
+          <td>Kubernetes, Docker Swarm</td>
+          <td>Gestión de contenedores y servicios distribuidos.</td>
+        </tr>
+        <tr>
+          <td>Gestión Multi-Nube</td>
+          <td>VMware vRealize, CloudBolt, Morpheus</td>
+          <td>Administración unificada de diferentes proveedores de nube.</td>
+        </tr>
+        <tr>
+          <td>Almacenamiento y Backup</td>
+          <td>Amazon S3, Azure Blob, Google Cloud Storage, Veeam</td>
+          <td>Almacenamiento de datos y soluciones de respaldo.</td>
+        </tr>
+        <tr>
+          <td>Infraestructura como Código</td>
+          <td>Terraform, CloudFormation</td>
+          <td>Configuración y despliegue automatizado de recursos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+
+  <article>
+    <h3>Tendencias Actuales</h3>
+    <ul>
+      <li>Multi-cloud e híbrida: uso de múltiples proveedores para aprovechar fortalezas específicas.</li>
+      <li>Zero Trust Security: enfoque de seguridad que no asume confianza por defecto.</li>
+      <li>Observabilidad avanzada: análisis profundo del comportamiento de los sistemas, más allá del monitoreo básico.</li>
+      <li>Inteligencia Artificial (AIOps): automatización basada en algoritmos para prevenir errores y optimizar recursos.</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Resumen General</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Elemento</th>
+          <th>Descripción Breve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>¿Qué es?</td>
+          <td>Gestión de servicios y recursos en entornos de nube.</td>
+        </tr>
+        <tr>
+          <td>Funciones clave</td>
+          <td>Gestión de recursos, monitoreo, seguridad, automatización, costos.</td>
+        </tr>
+        <tr>
+          <td>Tecnologías clave</td>
+          <td>Terraform, Kubernetes, Prometheus, IAM, backup, orquestación.</td>
+        </tr>
+        <tr>
+          <td>Objetivo principal</td>
+          <td>Garantizar rendimiento, seguridad y eficiencia en la nube.</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+</section>
+
+
+  </main>
+
+  <footer id="contacto" class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <p>© 2025 — Mosquera Zevallos Valerio</p>
+    <p>
+      <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a> · 
+      <a href="tel:+51978417316" class="footer-link">+51 978 417 316</a>
+    </p>
+  </div>
+</footer>
+
+  <noscript>
+    <div class="noscript-warning">Esta página funciona mejor con JavaScript habilitado.</div>
+  </noscript>
+
+  <script src="script.js"></script>
+</body>
+</html>

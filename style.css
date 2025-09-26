@@ -1,0 +1,471 @@
+/* =========================================================
+   VARIABLES (colores, fondos, tipografía)
+========================================================= */
+:root {
+  --primary: #003366;
+  --accent: #005c86;
+  --bg: #f3f3f3;
+  --card: #ffffff;
+  --text: #222;
+  --submenu-bg: rgba(0, 51, 102, 0.95); /* fondo oscuro para submenús */
+}
+
+/* =========================================================
+   RESET Y BASE GENERAL
+========================================================= */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* =========================================================
+   HEADER (sitio + branding + navegación)
+   HTML: <header class="site-header"> ... </header>
+========================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  background-color: var(--primary);
+  color: #fff;
+  z-index: 1200;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.3s ease;
+}
+
+/* Contenedor interno con flexbox */
+.header-inner {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  max-width: 75rem; /* 1200px en rem */
+  margin: 0 auto;
+  flex-wrap: wrap; /* Para mejor responsividad */
+}
+
+/* Branding: logo + títulos */
+.branding {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  cursor: default;
+  user-select: none;
+}
+
+/* Logo */
+.logo {
+  height: 2.75rem; /* 44px */
+  width: auto;
+  border-radius: 0.375rem; /* 6px */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+}
+
+/* Efecto hover accesible (solo en dispositivos pointer) */
+@media (hover: hover) and (pointer: fine) {
+  .logo:hover,
+  .logo:focus {
+    transform: scale(1.05);
+    box-shadow: 0 0 8px rgba(255 255 255 / 0.6);
+    outline: none;
+  }
+}
+
+/* Título principal */
+.site-title {
+  font-size: 1rem; /* 16px */
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  line-height: 1.2;
+  user-select: text;
+  white-space: nowrap;
+}
+
+/* Subtítulo */
+.subtitle {
+  font-size: 0.8rem; /* 13px */
+  margin: 0;
+  color: rgba(255 255 255 / 0.9);
+  user-select: text;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Responsive: Ajuste en pantallas pequeñas */
+@media (max-width: 480px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .branding {
+    gap: 0.5rem;
+  }
+  .site-title {
+    font-size: 0.9rem;
+  }
+  .subtitle {
+    font-size: 0.7rem;
+  }
+  .logo {
+    height: 2.25rem;
+  }
+}
+
+/* =========================================================
+   NAVEGACIÓN PRINCIPAL
+   HTML: <nav id="main-menu" class="main-nav"> ... </nav>
+========================================================= */
+
+/* Contenedor principal del contenido de la página.*/
+.main-content {
+  max-width: 1200px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+/* Botón hamburguesa */
+.nav-toggle {
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-size: 1.25rem;
+  padding: .25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  cursor: pointer;
+}
+.nav-toggle:focus {
+  outline: 2px solid rgba(255, 255, 255, .2);
+  outline-offset: 2px;
+}
+
+/* Menú principal */
+.main-nav {
+  position: relative;
+}
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+.menu a,
+.submenu-toggle {
+  display: block;
+  padding: .5rem .75rem;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 6px;
+}
+.menu .menu-item {
+  background: transparent;
+  border-radius: 6px;
+}
+.menu .menu-item a:hover,
+.menu .menu-item button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Submenús */
+.submenu {
+  list-style: none;
+  margin: 0;
+  padding: .25rem 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .28s ease;
+}
+.menu-item.open > .submenu {
+  max-height: 360px;
+}
+.submenu a {
+  padding: .5rem 1rem;
+  display: block;
+  border-radius: 6px;
+}
+
+/* =========================================================
+   SECCIÓN HERO
+   HTML: <section class="hero"> ... </section>
+========================================================= */
+.hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.32)), url("archivos/imagenfondo.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 3.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  max-width: 980px;
+}
+.hero h2 {
+  font-size: 1.6rem;
+  margin: 0 0 .5rem;
+}
+.lead {
+  margin: 0 0 1rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  padding: .6rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Ocultar texto para screen readers */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Grid units */
+.grid-units {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.unit-card {
+  background: var(--card, #fff);
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.25s ease;
+}
+.unit-card:hover,
+.unit-card:focus-within {
+  transform: translateY(-6px);
+}
+
+.unit-card h3 {
+  margin: 0 0 0.5rem 0;
+}
+
+.unit-desc {
+  margin: 0 0 1rem 0;
+  color: var(--desc-color, #666);
+}
+
+.show-weeks {
+  background: transparent;
+  border: 1.5px solid var(--btn-border, #ccc);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text-color, #333);
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+.show-weeks:hover,
+.show-weeks:focus {
+  background-color: var(--btn-hover-bg, #f0f0f0);
+  outline: none;
+}
+
+/* Flecha giratoria */
+.arrow {
+  display: inline-block;
+  margin-left: 0.3rem;
+  transition: transform 0.3s ease;
+  font-size: 1.2em;
+}
+.show-weeks[aria-expanded="true"] .arrow {
+  transform: rotate(180deg);
+}
+
+/* Animación de expansión semanas */
+.weeks-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+.weeks-list[aria-hidden="false"],
+.weeks-list:not([hidden]) {
+  max-height: 500px; /* suficiente para mostrar contenido */
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Estilo semanas */
+.week-card {
+  background: var(--week-bg, #fafafa);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-color, #333);
+  box-shadow: inset 0 0 0 1px var(--week-border, #ddd);
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+.week-card:hover,
+.week-card:focus {
+  background-color: #e2e8f0;
+  outline: none;
+}
+
+/* =========================================================
+   COMPETENCIAS
+   HTML: <section class="competences"> ... </section>
+========================================================= */
+.competences {
+  margin: 2rem 0;
+}
+.comp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .75rem;
+}
+.comp-box {
+  background: #fff;
+  padding: .8rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.comp-box i {
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+/* =========================================================
+   FOOTER
+   HTML: <footer class="site-footer"> ... </footer>
+========================================================= */
+.site-footer {
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.site-footer p {
+  margin: .25rem 0;
+  font-size: .9rem;
+}
+.footer-link {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: underline;
+}
+
+/* =========================================================
+   ACCESIBILIDAD / UTILITARIOS
+========================================================= */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* =========================================================
+   MEDIA QUERIES
+========================================================= */
+
+/* Tablet / Menús más horizontales */
+@media (min-width: 600px) {
+  .grid-units {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .comp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .menu {
+    flex-direction: row;
+    align-items: center;
+  }
+  .nav-toggle {
+    display: none;
+  }
+
+  /* Submenú en hover (desktop) */
+  .menu li.has-submenu {
+    position: relative;
+  }
+
+  .submenu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: var(--submenu-bg);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: .5rem 0;
+    max-height: 0;
+    width: 220px;
+    overflow: hidden;
+    transition: max-height 0.28s ease;
+    z-index: 999;
+  }
+
+  /* Abrir submenú si tiene la clase "open" */
+  .menu-item.open > .submenu {
+    max-height: 600px;
+  }
+
+  .submenu a {
+    color: #fff;
+  }
+}
+
+/* Pantallas grandes: layout más amplio y hero más alto */
+@media (min-width: 992px) {
+  .grid-units {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .comp-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .hero {
+    padding: 6rem 1rem;
+  }
+  .hero h2 {
+    font-size: 2.2rem;
+  }
+}

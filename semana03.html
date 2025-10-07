@@ -3,253 +3,329 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GERENCIA DE SISTEMAS DE INFORMACIÓN</title>
+  <title>Semana 01 — Gerencia de Sistemas de Información</title>
 
   <!-- Tipografía -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome (CDN) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="semanas.css">
 </head>
 <body>
-  <!-- Header + Nav (autocontenido para evitar problemas) -->
-  <header class="site-header" role="banner" style="position: sticky; top: 0; background: var(--primary, #0057b8); color: #fff; z-index: 1200; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);">
-  <div class="header-inner container" style="display: flex; gap: 1rem; align-items: center; justify-content: space-between; padding: 0.6rem 1rem; max-width: 1200px; margin: 0 auto;">
 
-    <!-- Branding -->
-    <div class="branding" style="display: flex; gap: 0.75rem; align-items: center;">
-      <a href="index.html" class="logo-link" aria-label="Ir al inicio del sitio">
-        <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'" style="height: 44px; width: auto; border-radius: 6px;">
-      </a>
-      <div class="title-wrap">
-        <h1 class="site-title" style="font-size: 1rem; margin: 0; font-weight: 700; letter-spacing: 0.2px;">Gerencia de Sistemas de Información</h1>
-        <p class="subtitle" style="font-size: 0.8rem; margin: 0; color: rgba(255, 255, 255, 0.9);">Estudios de Especialidad</p>
+  <!-- Header (igual al index) -->
+  <header class="site-header" role="banner">
+    <div class="header-inner container">
+      <div class="branding">
+        <a href="index.html#hero" class="logo-link" aria-label="Ir al inicio del sitio">
+          <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'">
+        </a>
+        <div class="title-wrap">
+          <h1 class="site-title">Gerencia de Sistemas de Información</h1>
+          <p class="subtitle">Estudios de Especialidad</p>
+        </div>
+      </div>
+
+      <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-menu">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+
+      <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
+        <ul class="menu">
+          <li class="menu-item"><a href="index.html#hero">Inicio</a></li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad I <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana01.html">Semana 01</a></li>
+              <li><a href="semana02.html">Semana 02</a></li>
+              <li><a href="semana03.html">Semana 03</a></li>
+              <li><a href="semana04.html">Semana 04</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad II <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana05.html">Semana 05</a></li>
+              <li><a href="semana06.html">Semana 06</a></li>
+              <li><a href="semana07.html">Semana 07</a></li>
+              <li><a href="semana08.html">Semana 08</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad III <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana09.html">Semana 09</a></li>
+              <li><a href="semana10.html">Semana 10</a></li>
+              <li><a href="semana11.html">Semana 11</a></li>
+              <li><a href="semana12.html">Semana 12</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad IV <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana13.html">Semana 13</a></li>
+              <li><a href="semana14.html">Semana 14</a></li>
+              <li><a href="semana15.html">Semana 15</a></li>
+              <li><a href="semana16.html">Semana 16</a></li>
+            </ul>
+          </li>
+          <li class="menu-item"><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<!-- ==========================
+     SEMANA 03 - ADMINISTRACIÓN EN LA NUBE
+     ========================== -->
+<main class="semana-main" role="main" aria-labelledby="semana03-title">
+
+  <!-- Intro -->
+  <section class="semana-intro">
+    <h1 id="semana03-title">Semana 03: Administración en la Nube</h1>
+    <p>
+      La administración en la nube engloba las políticas, procesos, herramientas y prácticas necesarias para gestionar, controlar y optimizar recursos y servicios en entornos cloud (públicos, privados o híbridos). En esta semana veremos funciones operativas, tecnologías clave, tendencias actuales y buenas prácticas para una administración efectiva.
+    </p>
+  </section>
+
+  <!-- Objetivos -->
+  <section class="semana-objetivos">
+    <h2>🎯 Objetivos de Aprendizaje</h2>
+    <ul>
+      <li>Entender las funciones principales de la administración en la nube.</li>
+      <li>Conocer las herramientas y tecnologías más usadas para monitoreo, automatización y orquestación.</li>
+      <li>Aplicar buenas prácticas de seguridad, backup y gestión de costos.</li>
+      <li>Evaluar tendencias emergentes (multi-cloud, Zero Trust, AIOps) y su impacto operativo.</li>
+    </ul>
+  </section>
+
+  <!-- Contenido -->
+  <section class="semana-contenido">
+    <h2>📘 Contenido</h2>
+
+    <!-- Definición -->
+    <article class="tema">
+      <h3>1. ¿Qué es la Administración en la Nube?</h3>
+      <p>
+        La administración en la nube se refiere al conjunto de actividades, procesos, herramientas y políticas que permiten gestionar, controlar y optimizar los recursos y servicios desplegados en entornos cloud. Su objetivo es asegurar rendimiento, seguridad, disponibilidad y eficiencia del gasto en entornos distribuidos.
+      </p>
+      <img src="img/semana03/admin-nube-overview.jpg" alt="Visión general de administración en la nube">
+    </article>
+
+    <!-- Funciones -->
+    <article class="tema">
+      <h3>2. Funciones clave de la Administración en la Nube</h3>
+      <ul>
+        <li><strong>Gestión de recursos:</strong> aprovisionamiento, escalado (manual/automático) y desprovisión de cómputo, almacenamiento y red.</li>
+        <li><strong>Supervisión y monitoreo:</strong> vigilancia continua del rendimiento, SLAs y detección temprana de fallos o anomalías.</li>
+        <li><strong>Gestión de costos:</strong> análisis de consumo, asignación por centros de costo, optimización (right-sizing, reservas).</li>
+        <li><strong>Seguridad y cumplimiento:</strong> políticas IAM, cifrado, gestión de parches, auditorías y cumplimiento normativo.</li>
+        <li><strong>Automatización y orquestación:</strong> IaC, pipelines CI/CD, playbooks para tareas repetitivas.</li>
+        <li><strong>Backup y recuperación:</strong> políticas de copia, retención, snapshots y planes DR (disaster recovery).</li>
+        <li><strong>Gestión de proveedores:</strong> estrategia multi-cloud o híbrida, gobernanza y integración de servicios.</li>
+      </ul>
+    </article>
+
+    <!-- Tecnología -->
+    <article class="tema">
+      <h3>3. Tecnología para la Administración en la Nube</h3>
+
+      <p>Tabla con áreas, herramientas y una breve descripción:</p>
+
+      <table class="resumen-table" style="width:100%; border-collapse:collapse; margin-top:0.5rem;">
+        <thead>
+          <tr>
+            <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Área</th>
+            <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Tecnologías / Herramientas</th>
+            <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Función principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Monitoreo y alertas</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Prometheus, Grafana, CloudWatch, Datadog</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Recolección de métricas, visualización y notificaciones</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Automatización / IaC</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Terraform, CloudFormation, Ansible, Pulumi</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Definir infraestructura como código y automatizar despliegues</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Gestión de costos</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">AWS Cost Explorer, Azure Cost Management, GCP Billing</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Monitoreo del gasto y optimización financiera</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Seguridad</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">IAM, AWS Shield, Azure Security Center, Vault</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Control de accesos, protección contra ataques y gestión de secretos</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Orquestación</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Kubernetes, Docker Swarm, Helm</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Despliegue y escalado de contenedores</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem;">Almacenamiento / Backup</td>
+            <td style="padding:0.5rem;">S3, Azure Blob, GCS, Veeam</td>
+            <td style="padding:0.5rem;">Almacenamiento duradero y soluciones de respaldo</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <!-- Tendencias -->
+    <article class="tema">
+      <h3>4. Tendencias actuales</h3>
+      <ul>
+        <li><strong>Multi-cloud e híbrida:</strong> adoptar lo mejor de varios proveedores para resiliencia y requisitos regulatorios.</li>
+        <li><strong>Zero Trust Security:</strong> asumir que ninguna entidad es de confianza por defecto; control estricto de accesos y microsegmentación.</li>
+        <li><strong>Observabilidad avanzada:</strong> traces distribuidos, logs estructurados y correlación de eventos para diagnóstico proactivo.</li>
+        <li><strong>AIOps:</strong> aplicar ML/IA para detectar anomalías, automatizar respuestas y predecir fallos.</li>
+        <li><strong>Infrastructure as Code y GitOps:</strong> gestionar infraestructura desde repositorios y pipelines para mayor trazabilidad y reproducibilidad.</li>
+      </ul>
+    </article>
+
+    <!-- Buenas prácticas -->
+    <article class="tema">
+      <h3>5. Buenas prácticas operativas</h3>
+      <ul>
+        <li>Aplicar principio de privilegios mínimos en IAM y revisar permisos periódicamente.</li>
+        <li>Etiquetar recursos (tagging) para facturación, seguridad y gobernanza.</li>
+        <li>Automatizar pruebas y despliegues (CI/CD) y versionar la infraestructura.</li>
+        <li>Implementar políticas de backup y pruebas de recuperación (DR drills).</li>
+        <li>Monitoreo con SLIs/SLOs y alertas accionables (evitar ruido).</li>
+        <li>Adoptar contratos y SLAs claros con proveedores y definir RTO/RPO.</li>
+      </ul>
+    </article>
+
+    <!-- Caso práctico -->
+    <article class="tema">
+      <h3>6. Caso práctico</h3>
+      <p>
+        Una empresa educativa quiere reducir costos y mejorar disponibilidad de su plataforma de e-learning. Propuesta operativa:
+      </p>
+      <ol>
+        <li>Evaluar cargas: identificar picos, dependencias y datos sensibles.</li>
+        <li>Mover componente estático a CDN + S3 (o equivalente) para bajar costos de red.</li>
+        <li>Contenerizar la app y desplegar en un cluster Kubernetes gestionado.</li>
+        <li>Configurar auto-scaling y políticas de escalado basadas en métricas reales.</li>
+        <li>Implementar backup por snapshot y plan de DR con replicación entre regiones.</li>
+      </ol>
+    </article>
+
+    <!-- Actividades -->
+    <article class="tema">
+      <h3>7. Actividades prácticas y evaluación</h3>
+      <h4>Actividades propuestas</h4>
+      <ol>
+        <li>Instalar y configurar una pila de monitorización simple (Prometheus + Grafana) para una aplicación de prueba.</li>
+        <li>Crear un módulo Terraform que cree una instancia y un bucket de almacenamiento (documentar variables y outputs).</li>
+        <li>Realizar un análisis de coste: simular cargas y estimar gasto mensual; proponer 3 medidas de optimización.</li>
+      </ol>
+
+      <h4>Cuestionario (autoevaluación)</h4>
+      <ol>
+        <li>Enumera 4 funciones principales de la administración en la nube.</li>
+        <li>¿Qué herramienta usarías para IaC y por qué?</li>
+        <li>¿Qué es Zero Trust y cómo se aplica en la nube?</li>
+        <li>Menciona 3 buenas prácticas para la gestión de costos en la nube.</li>
+      </ol>
+      <!-- Respuestas sugeridas (docente): 
+           1: gestión de recursos, monitoreo, seguridad, automatización/backup
+           2: Terraform (portabilidad, multi-cloud) o CloudFormation (si es AWS-only)
+           3: modelo de seguridad que no asume confianza; aplicar IAM, MFA, segmentación
+           4: tagging, right-sizing, reservas/compromisos, apagar recursos no usados, monitorización de gasto
+      -->
+    </article>
+
+  </section>
+
+  <!-- Materiales -->
+  <section class="semana-materiales">
+    <h2>📚 Materiales de Estudio</h2>
+    <div class="materiales-grid">
+      <article class="material-card pdf">
+        <h3>📄 Guía de Administración en la Nube</h3>
+        <p>Documento con procedimientos, checklists y comandos útiles para operaciones en la nube.</p>
+        <a href="docs/semana03-admin-nube.pdf" target="_blank" class="btn-material">Abrir PDF</a>
+      </article>
+
+      <article class="material-card lab">
+        <h3>🧪 Laboratorio: Prometheus + Grafana</h3>
+        <p>Instrucciones paso a paso para desplegar una monitorización básica y crear dashboards.</p>
+        <a href="docs/semana03-lab-monitoring.pdf" target="_blank" class="btn-material">Abrir guía del laboratorio</a>
+      </article>
+
+      <article class="material-card checklist">
+        <h3>✅ Checklist Operativo</h3>
+        <p>Lista para revisiones diarias/semanales: backups, alertas, parches, costes.</p>
+        <a href="docs/semana03-checklist.xlsx" download class="btn-material">Descargar Checklist</a>
+      </article>
+    </div>
+  </section>
+  <!-- Resumen -->
+  <section class="semana-resumen">
+    <h2>📌 Resumen</h2>
+    <p>
+      La administración en la nube combina herramientas, procesos y gobernanza para garantizar que los servicios sean seguros, disponibles y coste-eficientes. Adoptar IaC, monitoreo robusto, políticas de seguridad (Zero Trust) y prácticas de optimización de costes es clave para operaciones maduras en la nube.
+    </p>
+  </section>
+
+  <!-- Recursos complementarios -->
+  <section class="semana-recursos">
+    <h2>🔗 Recursos Complementarios</h2>
+    <ul>
+      <li><a href="https://prometheus.io/" target="_blank">Prometheus - Monitorización</a></li>
+      <li><a href="https://www.terraform.io/" target="_blank">Terraform - Infrastructure as Code</a></li>
+      <li><a href="https://kubernetes.io/" target="_blank">Kubernetes - Orquestación de contenedores</a></li>
+      <li><a href="docs/semana03-referencias.pdf" target="_blank">Lecturas recomendadas y referencias (PDF)</a></li>
+    </ul>
+  </section>
+
+</main>
+
+  <!-- Footer -->
+  <footer id="contacto" class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-column">
+        <h3>Sobre mí</h3>
+        <p>Mosquera Zevallos Valerio</p>
+        <p>Estudiante de la Universidad Peruana Los Andes</p>
+        <p>ORCID: 0009-0007-2301-5191</p>
+        <p>Correo institucional: 
+          <a href="mailto:r03398d@ms.upla.edu.pe" class="footer-link">r03398d@ms.upla.edu.pe</a>
+        </p>
+        <p>Correo personal: 
+          <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a>
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Derechos</h3>
+        <p>© 2024 Mosquera Zevallos Valerio</p>
+        <p>Todos los derechos reservados</p>
+        <p>Elaboración propia</p>
+      </div>
+
+      <div class="footer-column redes-column">
+      <h3>Redes</h3>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/valerio-mosquera-4b7884329/" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/Vaalerio" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://wa.me/51978417316" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
       </div>
     </div>
-
-    <!-- Botón de menú móvil -->
-    <button class="nav-toggle" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menú principal" 
-      style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
-      <span class="bar" aria-hidden="true"></span>
-      <span class="bar" aria-hidden="true"></span>
-      <span class="bar" aria-hidden="true"></span>
-    </button>
-
-    <!-- Navegación principal -->
-    <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
-      <ul class="menu" role="menubar" style="list-style: none; margin: 0; padding: 0; display: flex; gap: 0.5rem;">
-
-        <!-- Enlace directo -->
-        <li class="menu-item" role="none" style="list-style: none;">
-          <a href="index.html" role="menuitem" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px; transition: background-color 0.3s ease;">Inicio</a>
-        </li>
-
-        <!-- Unidad 1 -->
-        <li class="menu-item has-submenu" role="none" style="list-style: none;">
-          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
-            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
-            Unidad 1 <i class="fa fa-caret-down" aria-hidden="true"></i>
-          </button>
-          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 1" style="list-style: none; margin: 0; padding-left: 1rem;">
-            <li role="none" style="list-style: none;"><a role="menuitem" href="semana01.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 01</a></li>
-            <li role="none" style="list-style: none;"><a role="menuitem" href="semana02.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 02</a></li>
-            <li role="none" style="list-style: none;"><a role="menuitem" href="semana03.html" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 03</a></li>
-            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 04</a></li>
-          </ul>
-        </li>
-
-        <!-- Unidad 2 -->
-        <li class="menu-item has-submenu" role="none" style="list-style: none;">
-          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
-            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
-            Unidad 2 <i class="fa fa-caret-down" aria-hidden="true"></i>
-          </button>
-          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 2" style="list-style: none; margin: 0; padding-left: 1rem;">
-            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 05</a></li>
-            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 06</a></li>
-            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 07</a></li>
-            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 08</a></li>
-          </ul>
-        </li>
-
-        <!-- Unidad 3 -->
-        <li class="menu-item has-submenu" role="none" style="list-style: none;">
-          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
-            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
-            Unidad 3 <i class="fa fa-caret-down" aria-hidden="true"></i>
-          </button>
-          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 3" style="list-style: none; margin: 0; padding-left: 1rem;">
-            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 09</a></li>
-            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 10</a></li>
-            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 11</a></li>
-            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 12</a></li>
-          </ul>
-        </li>
-
-        <!-- Unidad 4 -->
-        <li class="menu-item has-submenu" role="none" style="list-style: none;">
-          <button class="submenu-toggle" aria-expanded="false" aria-haspopup="true" 
-            style="background-color: #fff; color: var(--primary, #0057b8); border: 2px solid var(--primary, #0057b8); padding: 0.45rem 0.6rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease;">
-            Unidad 4 <i class="fa fa-caret-down" aria-hidden="true"></i>
-          </button>
-          <ul class="submenu" role="menu" aria-label="Semanas de la Unidad 4" style="list-style: none; margin: 0; padding-left: 1rem;">
-            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 13</a></li>
-            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 14</a></li>
-            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 15</a></li>
-            <li role="none" style="list-style: none;"><a role="menuitem" href="#" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Semana 16</a></li>
-          </ul>
-        </li>
-
-        <!-- Contacto -->
-        <li class="menu-item" role="none" style="list-style: none;">
-          <a href="#contacto" role="menuitem" style="color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; display: inline-block; border-radius: 6px;">Contacto</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-  <main id="unidades" class="main-content" role="main">
-  
-    <section aria-labelledby="admin-nube-title" class="units-section">
-  <h2 id="admin-nube-title">Semana 03 – Administración en la Nube</h2>
-
-  <article>
-    <h3>¿Qué es la Administración en la Nube?</h3>
-    <p>
-      La administración en la nube se refiere al conjunto de actividades, procesos, herramientas y políticas que permiten gestionar, controlar y optimizar los recursos y servicios en entornos de computación en la nube (pública, privada o híbrida).
-    </p>
-  </article>
-
-  <article>
-    <h3>Funciones de la Administración en la Nube</h3>
-    <ul>
-      <li><strong>Gestión de recursos:</strong> asignación, escalado y eliminación de recursos como almacenamiento, cómputo y redes.</li>
-      <li><strong>Supervisión y monitoreo:</strong> vigilancia del rendimiento del sistema y detección de problemas o ataques.</li>
-      <li><strong>Gestión de costos:</strong> control del gasto y análisis del consumo por departamentos o servicios.</li>
-      <li><strong>Seguridad y cumplimiento:</strong> implementación de políticas de acceso, cifrado y cumplimiento de normativas.</li>
-      <li><strong>Automatización y orquestación:</strong> uso de herramientas para ejecutar tareas repetitivas y flujos de trabajo.</li>
-      <li><strong>Backup y recuperación:</strong> creación de copias de seguridad y restauración ante pérdidas o fallos.</li>
-      <li><strong>Gestión de proveedores:</strong> administración de múltiples nubes y selección eficiente de servicios.</li>
-    </ul>
-  </article>
-
-  <article>
-    <h3>Tecnología para la Administración en la Nube</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Área</th>
-          <th>Tecnologías / Herramientas</th>
-          <th>Descripción</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Monitoreo y Alertas</td>
-          <td>Prometheus, CloudWatch, Datadog</td>
-          <td>Recogen métricas del sistema y generan alertas.</td>
-        </tr>
-        <tr>
-          <td>Automatización</td>
-          <td>Terraform, Ansible, Chef, Puppet</td>
-          <td>Automatizan la infraestructura como código (IaC).</td>
-        </tr>
-        <tr>
-          <td>Gestión de Costos</td>
-          <td>AWS Cost Explorer, Azure Cost Management</td>
-          <td>Control y análisis detallado del consumo de servicios.</td>
-        </tr>
-        <tr>
-          <td>Seguridad</td>
-          <td>IAM, AWS Shield, Azure Security Center</td>
-          <td>Gestión de identidades y protección contra amenazas.</td>
-        </tr>
-        <tr>
-          <td>Orquestación de Contenedores</td>
-          <td>Kubernetes, Docker Swarm</td>
-          <td>Gestión de contenedores y servicios distribuidos.</td>
-        </tr>
-        <tr>
-          <td>Gestión Multi-Nube</td>
-          <td>VMware vRealize, CloudBolt, Morpheus</td>
-          <td>Administración unificada de diferentes proveedores de nube.</td>
-        </tr>
-        <tr>
-          <td>Almacenamiento y Backup</td>
-          <td>Amazon S3, Azure Blob, Google Cloud Storage, Veeam</td>
-          <td>Almacenamiento de datos y soluciones de respaldo.</td>
-        </tr>
-        <tr>
-          <td>Infraestructura como Código</td>
-          <td>Terraform, CloudFormation</td>
-          <td>Configuración y despliegue automatizado de recursos.</td>
-        </tr>
-      </tbody>
-    </table>
-  </article>
-
-  <article>
-    <h3>Tendencias Actuales</h3>
-    <ul>
-      <li>Multi-cloud e híbrida: uso de múltiples proveedores para aprovechar fortalezas específicas.</li>
-      <li>Zero Trust Security: enfoque de seguridad que no asume confianza por defecto.</li>
-      <li>Observabilidad avanzada: análisis profundo del comportamiento de los sistemas, más allá del monitoreo básico.</li>
-      <li>Inteligencia Artificial (AIOps): automatización basada en algoritmos para prevenir errores y optimizar recursos.</li>
-    </ul>
-  </article>
-
-  <article>
-    <h3>Resumen General</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Elemento</th>
-          <th>Descripción Breve</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>¿Qué es?</td>
-          <td>Gestión de servicios y recursos en entornos de nube.</td>
-        </tr>
-        <tr>
-          <td>Funciones clave</td>
-          <td>Gestión de recursos, monitoreo, seguridad, automatización, costos.</td>
-        </tr>
-        <tr>
-          <td>Tecnologías clave</td>
-          <td>Terraform, Kubernetes, Prometheus, IAM, backup, orquestación.</td>
-        </tr>
-        <tr>
-          <td>Objetivo principal</td>
-          <td>Garantizar rendimiento, seguridad y eficiencia en la nube.</td>
-        </tr>
-      </tbody>
-    </table>
-  </article>
-</section>
-
-
-  </main>
-
-  <footer id="contacto" class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <p>© 2025 — Mosquera Zevallos Valerio</p>
-    <p>
-      <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a> · 
-      <a href="tel:+51978417316" class="footer-link">+51 978 417 316</a>
-    </p>
-  </div>
-</footer>
-
-  <noscript>
-    <div class="noscript-warning">Esta página funciona mejor con JavaScript habilitado.</div>
-  </noscript>
+  </footer>
 
   <script src="script.js"></script>
 </body>
-
 </html>

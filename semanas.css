@@ -250,171 +250,229 @@ html, body {
 }
 
 /* =========================================================
-   SECCIÓN HERO
-========================================================= */
-.hero {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.32)), url("archivos/imagenfondo.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 3.5rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-overlay {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 1.5rem;
-  border-radius: 10px;
-  color: #fff;
-  text-align: center;
-  max-width: 980px;
-}
-.hero h2 {
-  font-size: 1.6rem;
-  margin: 0 0 .5rem;
-}
-.lead {
-  margin: 0 0 1rem;
-  color: rgba(255, 255, 255, 0.95);
-}
-.btn-primary {
-  background: #1f578f;
-  color: #fff;
-  padding: .6rem 1rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
+   ESTILO PRINCIPAL - ACADÉMICO MINIMAL
+   Autor: Mosquera Zevallos Valerio
+   ========================================================= */
+
+/* ----------- VARIABLES DE COLOR Y FUENTE ----------- */
+:root {
+  --color-primario: #003366;
+  --color-secundario: #0059b3;
+  --color-texto: #1c1c1c;
+  --color-fondo: #f8f9fb;
+  --color-borde: #dcdcdc;
+  --color-acento: #004a99;
+  --color-enlace: #0066cc;
+  --radius: 10px;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  --fuente-principal: 'Roboto', 'Open Sans', sans-serif;
 }
 
-/* =========================================================
-   MAIN (CONTENIDO PRINCIPAL)
-========================================================= */
-.main-content {
+/* ----------- RESET SUAVE ----------- */
+.semana-main * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.semana-main {
+  font-family: var(--fuente-principal);
+  color: var(--color-texto);
   max-width: 1200px;
-  margin: 1.5rem auto;
-  padding: 0 1rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  line-height: 1.6;
 }
 
-/* ---------- Unidades y tarjetas ---------- */
-.grid-units {
+/* ----------- TITULOS GENERALES ----------- */
+.semana-main h1,
+.semana-main h2,
+.semana-main h3 {
+  font-weight: 600;
+  color: var(--color-primario);
+  letter-spacing: 0.5px;
+}
+
+.semana-main h1 {
+  font-size: 2rem;
+  border-left: 5px solid var(--color-acento);
+  padding-left: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.semana-main h2 {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+  border-bottom: 2px solid var(--color-borde);
+  padding-bottom: 0.4rem;
+}
+
+.semana-main h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ----------- SECCIONES ----------- */
+.semana-main section {
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.semana-main section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* ----------- LISTAS ----------- */
+.semana-main ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.semana-main ul li {
+  position: relative;
+  margin-bottom: 0.5rem;
+  padding-left: 1.2rem;
+}
+
+.semana-main ul li::before {
+  content: "•";
+  color: var(--color-secundario);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* ----------- INTRO ----------- */
+.semana-intro p {
+  font-size: 1.05rem;
+  margin-top: 0.5rem;
+  color: #444;
+}
+
+/* ----------- TEMAS ----------- */
+.tema {
+  margin-bottom: 1.5rem;
+}
+
+.tema img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: var(--radius);
+  margin-top: 0.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+}
+
+.tema img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ----------- MATERIALES ----------- */
+.materiales-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
-}
-.unit-card {
-  background: var(--card, #fff);
-  padding: 1.25rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  transition: transform 0.25s ease;
-}
-.unit-card:hover,
-.unit-card:focus-within {
-  transform: translateY(-6px);
-}
-.unit-card h3 {
-  margin: 0 0 0.5rem 0;
-}
-.unit-desc {
-  margin: 0 0 1rem 0;
-  color: var(--desc-color, #666);
-}
-
-/* Botón desplegar semanas */
-.show-weeks {
-  background: transparent;
-  border: 1.5px solid var(--btn-border, #ccc);
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  color: var(--text-color, #333);
-  display: inline-flex;
-  align-items: center;
-  user-select: none;
-  transition: background-color 0.3s ease;
-}
-.show-weeks:hover,
-.show-weeks:focus {
-  background-color: var(--btn-hover-bg, #f0f0f0);
-  outline: none;
-}
-
-/* Flecha giratoria */
-.arrow {
-  display: inline-block;
-  margin-left: 0.3rem;
-  transition: transform 0.3s ease;
-  font-size: 1.2em;
-}
-.show-weeks[aria-expanded="true"] .arrow {
-  transform: rotate(180deg);
-}
-
-/* Lista de semanas */
-.weeks-list {
   margin-top: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  pointer-events: none;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
 }
-.weeks-list[aria-hidden="false"],
-.weeks-list:not([hidden]) {
-  max-height: 500px;
-  opacity: 1;
-  pointer-events: auto;
+
+.material-card {
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radius);
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
 }
-.week-card {
-  background: var(--week-bg, #fafafa);
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
-  text-decoration: none;
-  color: var(--text-color, #333);
-  box-shadow: inset 0 0 0 1px var(--week-border, #ddd);
+
+.material-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.material-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.btn-material {
+  display: inline-block;
+  margin-top: 0.75rem;
+  background: var(--color-primario);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
   font-weight: 500;
-  transition: background-color 0.2s ease;
-}
-.week-card:hover,
-.week-card:focus {
-  background-color: #e2e8f0;
-  outline: none;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/* ---------- Competencias ---------- */
-.competences {
-  margin: 2rem 0;
-}
-.comp-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: .75rem;
-}
-.comp-box {
-  background: #fff;
-  padding: .8rem;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-}
-.comp-box i {
-  font-size: 1.4rem;
-  color: #0063c7;
-  animation: changeColor 5s infinite alternate;
+.btn-material:hover {
+  background: var(--color-secundario);
+  transform: translateY(-2px);
 }
 
-@keyframes changeColor {
-  0% { color: #0063c7; }
-  40% { color: #005c99; }
-  50% { color: #000000; }
-  55% { color: #006a6a; }
-  100% { color: #00a8a8; }
+/* ----------- RESUMEN ----------- */
+.semana-resumen p {
+  font-style: italic;
+  color: #333;
 }
+
+/* ----------- RECURSOS ----------- */
+.semana-recursos ul li a {
+  color: var(--color-enlace);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-enlace);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.semana-recursos ul li a:hover {
+  color: var(--color-secundario);
+  border-color: var(--color-secundario);
+}
+
+/* ----------- ANIMACIONES DE ENTRADA ----------- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.semana-main section {
+  animation: fadeUp 0.8s ease both;
+}
+
+/* ----------- RESPONSIVIDAD ----------- */
+@media (max-width: 768px) {
+  .semana-main {
+    padding: 1rem;
+  }
+
+  .semana-main h1 {
+    font-size: 1.6rem;
+  }
+
+  .semana-main h2 {
+    font-size: 1.3rem;
+  }
+
+  .btn-material {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
 
 /* =========================================================
    FOOTER

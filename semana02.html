@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Semana 02 — Gerencia de Sistemas de Información</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="semanas.css">
+</head>
+<body>
+
+  <!-- Header (igual al index) -->
+  <header class="site-header" role="banner">
+    <div class="header-inner container">
+      <div class="branding">
+        <a href="index.html#hero" class="logo-link" aria-label="Ir al inicio del sitio">
+          <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'">
+        </a>
+        <div class="title-wrap">
+          <h1 class="site-title">Gerencia de Sistemas de Información</h1>
+          <p class="subtitle">Estudios de Especialidad</p>
+        </div>
+      </div>
+
+      <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-menu">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+
+      <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
+        <ul class="menu">
+          <li class="menu-item"><a href="index.html#hero">Inicio</a></li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad I <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana01.html">Semana 01</a></li>
+              <li><a href="semana02.html">Semana 02</a></li>
+              <li><a href="semana03.html">Semana 03</a></li>
+              <li><a href="semana04.html">Semana 04</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad II <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana05.html">Semana 05</a></li>
+              <li><a href="semana06.html">Semana 06</a></li>
+              <li><a href="semana07.html">Semana 07</a></li>
+              <li><a href="semana08.html">Semana 08</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad III <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana09.html">Semana 09</a></li>
+              <li><a href="semana10.html">Semana 10</a></li>
+              <li><a href="semana11.html">Semana 11</a></li>
+              <li><a href="semana12.html">Semana 12</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad IV <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana13.html">Semana 13</a></li>
+              <li><a href="semana14.html">Semana 14</a></li>
+              <li><a href="semana15.html">Semana 15</a></li>
+              <li><a href="semana16.html">Semana 16</a></li>
+            </ul>
+          </li>
+          <li class="menu-item"><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<!-- ==========================
+     SEMANA 02 - COMPUTACIÓN EN LA NUBE
+     ========================== -->
+<main class="semana-main" role="main" aria-labelledby="semana02-title">
+
+  <!-- Intro -->
+  <section class="semana-intro">
+    <h1 id="semana02-title">Semana 02: Computación en la Nube</h1>
+    <p>
+      La computación en la nube (cloud computing) es un modelo que permite acceder a recursos informáticos (servidores, almacenamiento, bases de datos, software, etc.) por Internet, sin tener que desplegar toda la infraestructura física localmente. En esta semana veremos conceptos, modelos, beneficios, riesgos y prácticas para diseñar y migrar servicios a la nube.
+    </p>
+  </section>
+
+  <!-- Objetivos -->
+  <section class="semana-objetivos">
+    <h2>Objetivos de Aprendizaje</h2>
+    <ul>
+      <li>Comprender los conceptos y modelos básicos de la computación en la nube.</li>
+      <li>Distinguir modelos de servicio (IaaS, PaaS, SaaS) y modelos de despliegue.</li>
+      <li>Evaluar riesgos de seguridad y buenas prácticas para mitigarlos.</li>
+      <li>Practicar una migración simple y evaluar criterios de costo y disponibilidad.</li>
+    </ul>
+  </section>
+
+  <!-- Contenido -->
+  <section class="semana-contenido">
+    <h2>Contenido</h2>
+
+    <!-- Definición y conceptos -->
+    <article class="tema">
+      <h3>1. ¿Qué es la Computación en la Nube?</h3>
+      <p>
+        La nube ofrece servicios informáticos bajo demanda: cómputo, almacenamiento, bases de datos, redes, análisis y aplicaciones. Los consumidores alquilan recursos y solo pagan por lo que usan. Esto permite a las organizaciones ser más ágiles, escalables y enfocarse en su core business.
+      </p>
+
+      <h4>Conceptos clave</h4>
+      <ul>
+        <li><strong>Acceso remoto:</strong> uso desde cualquier lugar con conexión a Internet.</li>
+        <li><strong>Escalabilidad:</strong> los recursos se ajustan según la demanda (auto-scaling).</li>
+        <li><strong>Flexibilidad:</strong> aprovisionamiento rápido sin inversión inicial grande.</li>
+        <li><strong>Mantenimiento:</strong> gestionado por el proveedor (actualizaciones, parches).</li>
+      </ul>
+    </article>
+
+    <!-- Ventajas y desafíos -->
+    <article class="tema">
+      <h3>2. Ventajas y Desafíos</h3>
+
+      <h4>Ventajas</h4>
+      <ul>
+        <li>Reducción de costos operativos y CapEx.</li>
+        <li>Rápida implementación de servicios y despliegues.</li>
+        <li>Escalabilidad dinámica y alta disponibilidad.</li>
+        <li>Colaboración y acceso desde múltiples ubicaciones.</li>
+      </ul>
+
+      <h4>Desafíos y riesgos</h4>
+      <ul>
+        <li>Seguridad y privacidad de datos (cifrado, control de accesos).</li>
+        <li>Dependencia del proveedor y riesgo de vendor lock-in.</li>
+        <li>Requerimientos regulatorios y cumplimiento legal (p. ej. protección de datos).</li>
+        <li>Gestión de costes si no se lleva un control (gasto invisible por uso).</li>
+      </ul>
+    </article>
+
+    <!-- Modelos de Servicio -->
+    <article class="tema">
+      <h3>3. Modelos de Servicio principales</h3>
+      <ul>
+        <li>
+          <strong>IaaS (Infrastructure as a Service):</strong> el proveedor ofrece máquinas virtuales, almacenamiento y redes; el cliente gestiona SO y aplicaciones.
+          <p><em>Ejemplos:</em> aprovisionar una VM, montar un servidor web.</p>
+        </li>
+        <li>
+          <strong>PaaS (Platform as a Service):</strong> entorno gestionado para desplegar aplicaciones (runtime, bases de datos gestionadas).
+          <p><em>Ejemplos:</em> desplegar una app en una plataforma que administra escalado y runtime.</p>
+        </li>
+        <li>
+          <strong>SaaS (Software as a Service):</strong> aplicaciones completas accesibles vía navegador (email, CRM, suites de oficina).
+          <p><em>Ejemplos:</em> correo en la nube, gestión de relaciones con clientes.</p>
+        </li>
+        <li>
+          <strong>Serverless / FaaS (Function as a Service):</strong> ejecución de funciones por evento sin gestionar servidores.
+          <p><em>Ejemplo:</em> procesar una imagen al subirla y pagar solo por el tiempo de ejecución.</p>
+        </li>
+      </ul>
+    </article>
+
+    <!-- Modelos de Despliegue -->
+    <article class="tema">
+      <h3>4. Modelos de Despliegue</h3>
+      <ul>
+        <li><strong>Nube Pública:</strong> infraestructura compartida y mantenida por un proveedor externo (alta escalabilidad).</li>
+        <li><strong>Nube Privada:</strong> infraestructura dedicada a una sola organización (mayor control y seguridad).</li>
+        <li><strong>Nube Híbrida:</strong> combinación de pública y privada para equilibrio entre costo y seguridad.</li>
+        <li><strong>Nube Comunitaria:</strong> compartida por organizaciones con requisitos comunes (p. ej. sector público).</li>
+      </ul>
+    </article>
+
+    <!-- Arquitecturas modernas -->
+    <article class="tema">
+      <h3>5. Arquitecturas y patrones comunes</h3>
+      <ul>
+        <li><strong>Contenedores (Docker) y orquestación (Kubernetes):</strong> despliegue consistente y escalable.</li>
+        <li><strong>Microservicios:</strong> servicios pequeños, independientes y desplegables por separado.</li>
+        <li><strong>Serverless:</strong> ideal para cargas event-driven y tareas intermitentes.</li>
+        <li><strong>Multi-tenant:</strong> varios clientes comparten recursos aislados lógicamente.</li>
+      </ul>
+    </article>
+
+    <!-- Seguridad y cumplimiento -->
+    <article class="tema">
+      <h3>6. Seguridad, cumplimiento y buenas prácticas</h3>
+      <ul>
+        <li><strong>Gestión de identidades y accesos (IAM):</strong> políticas de privilegios mínimos y autenticación multifactor.</li>
+        <li><strong>Cifrado:</strong> cifrado en tránsito (TLS) y en reposo; gestión de claves.</li>
+        <li><strong>Backups y recuperación:</strong> estrategias de backup, snapshots y planes de DR (disaster recovery).</li>
+        <li><strong>Monitoreo y observabilidad:</strong> logs centralizados, métricas y alertas (SIEM, APM).</li>
+        <li><strong>Evaluación de riesgos y cumplimiento:</strong> auditorías, certificaciones (ISO, SOC), consideraciones legales según jurisdicción.</li>
+      </ul>
+    </article>
+
+    <!-- Migración y optimización de costos -->
+    <article class="tema">
+      <h3>7. Estrategias de migración y optimización de costos</h3>
+      <ol>
+        <li><strong>Evaluación:</strong> inventario de aplicaciones, dependencias y requisitos (latencia, datos sensibles).</li>
+        <li><strong>Planificación:</strong> elegir modelo de servicio y despliegue adecuado.</li>
+        <li><strong>Pruebas piloto:</strong> migrar un servicio no crítico y evaluar comportamiento.</li>
+        <li><strong>Migración por fases:</strong> lift-and-shift, refactor, replatform o rebuild según caso.</li>
+        <li><strong>Cost Management:</strong> tagging, reservas, right-sizing, y automatización para apagar recursos no usados.</li>
+      </ol>
+    </article>
+
+    <!-- Caso práctico -->
+    <article class="tema">
+      <h3>8. Caso práctico (breve)</h3>
+      <p>
+        Una tienda de e-commerce sufre picos de tráfico. Solución: mover la web a la nube usando PaaS para la app, base de datos gestionada y CDN para contenido estático. Al usar auto-scaling y caché, la tienda soporta picos sin inversiones altas en servidores.
+      </p>
+    </article>
+
+    <!-- Resumen Visual (tabla) -->
+    <article class="tema">
+      <h3>9. Resumen Visual de la Semana 02</h3>
+      <table class="resumen-table" style="width:100%; border-collapse:collapse; margin-top:0.75rem;">
+        <thead>
+          <tr>
+            <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Tema</th>
+            <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Definición / Función</th>
+            <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Ejemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Computación en la Nube</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Acceso a recursos TI por Internet</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Servicios como AWS, Azure, Google Cloud</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">IaaS / PaaS / SaaS</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Niveles de responsabilidad entre proveedor y cliente</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">VM (IaaS), App Engine (PaaS), Gmail (SaaS)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem;">Seguridad</td>
+            <td style="padding:0.5rem;">Controles de IAM, cifrado, backups</td>
+            <td style="padding:0.5rem;">Autenticación multifactor, snapshots</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+  </section>
+
+  <!-- Materiales -->
+  <section class="semana-materiales">
+    <h2>Materiales de Estudio</h2>
+    <div class="materiales-grid">
+      <article class="material-card pdf">
+        <h3>Lectura Principal</h3>
+        <p>Resumen teórico de modelos de servicio, despliegue y seguridad en la nube.</p>
+        <a href="docs/semana02-lectura.pdf" target="_blank" class="btn-material">Abrir PDF</a>
+      </article>
+
+      <article class="material-card lab">
+        <h3>Laboratorio Guiado</h3>
+        <p>Guía paso a paso: desplegar una aplicación simple en PaaS (crear cuenta gratuita, desplegar app, revisar logs).</p>
+        <a href="docs/semana02-lab.pdf" target="_blank" class="btn-material">Abrir guía del laboratorio</a>
+      </article>
+
+      <article class="material-card checklist">
+        <h3>Checklist de Migración</h3>
+        <p>Lista de verificación para evaluar qué migrar, prioridad y riesgos.</p>
+        <a href="docs/semana02-checklist.xlsx" download class="btn-material">Descargar Checklist</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Resumen -->
+  <section class="semana-resumen">
+    <h2>Resumen</h2>
+    <p>
+      La nube transforma cómo se consumen recursos TI: ofrece flexibilidad, escalabilidad y agilidad, pero requiere disciplina en seguridad, gobernanza y gestión de costos. Seleccionar el modelo de servicio y despliegue correcto depende de requisitos técnicos, regulatorios y de negocio.
+    </p>
+  </section>
+
+  <!-- Recursos complementarios -->
+  <section class="semana-recursos">
+    <h2>Recursos Complementarios</h2>
+    <ul>
+      <li><a href="https://aws.amazon.com/" target="_blank">AWS - Amazon Web Services</a></li>
+      <li><a href="https://azure.microsoft.com/" target="_blank">Microsoft Azure</a></li>
+      <li><a href="https://cloud.google.com/" target="_blank">Google Cloud Platform</a></li>
+      <li><a href="docs/semana02-referencias.pdf" target="_blank">Bibliografía y lecturas sugeridas (PDF)</a></li>
+    </ul>
+  </section>
+
+</main>
+
+  <!-- Footer -->
+  <footer id="contacto" class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-column">
+        <h3>Sobre mí</h3>
+        <p>Mosquera Zevallos Valerio</p>
+        <p>Estudiante de la Universidad Peruana Los Andes</p>
+        <p>ORCID: 0009-0007-2301-5191</p>
+        <p>Correo institucional: 
+          <a href="mailto:r03398d@ms.upla.edu.pe" class="footer-link">r03398d@ms.upla.edu.pe</a>
+        </p>
+        <p>Correo personal: 
+          <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a>
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Derechos</h3>
+        <p>© 2024 Mosquera Zevallos Valerio</p>
+        <p>Todos los derechos reservados</p>
+        <p>Elaboración propia</p>
+      </div>
+
+      <div class="footer-column redes-column">
+      <h3>Redes</h3>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/valerio-mosquera-4b7884329/" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/Vaalerio" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://wa.me/51978417316" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Semana 06 — Gerencia de Sistemas de Información</title>
+
+    <!-- Tipografía -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="semanas.css">
+  </head>
+  <body>
+    <!-- Header (igual al index) -->
+    <header class="site-header" role="banner">
+      <div class="header-inner container">
+        <div class="branding">
+          <a href="index.html#hero" class="logo-link" aria-label="Ir al inicio del sitio">
+            <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'">
+          </a>
+          <div class="title-wrap">
+            <h1 class="site-title">Gerencia de Sistemas de Información</h1>
+            <p class="subtitle">Estudios de Especialidad</p>
+          </div>
+        </div>
+        <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+        <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
+          <ul class="menu">
+            <li class="menu-item"><a href="index.html#hero">Inicio</a></li>
+            <li class="menu-item has-submenu">
+              <button class="submenu-toggle" aria-expanded="false">Unidad I <i class="fa fa-caret-down"></i></button>
+              <ul class="submenu" aria-hidden="true">
+                <li><a href="semana01.html">Semana 01</a></li>
+                <li><a href="semana02.html">Semana 02</a></li>
+                <li><a href="semana03.html">Semana 03</a></li>
+                <li><a href="semana04.html">Semana 04</a></li>
+              </ul>
+            </li>
+            <li class="menu-item has-submenu">
+              <button class="submenu-toggle" aria-expanded="false">Unidad II <i class="fa fa-caret-down"></i></button>
+              <ul class="submenu" aria-hidden="true">
+                <li><a href="semana05.html">Semana 05</a></li>
+                <li><a href="semana06.html">Semana 06</a></li>
+                <li><a href="semana07.html">Semana 07</a></li>
+                <li><a href="semana08.html">Semana 08</a></li>
+              </ul>
+            </li>
+            <li class="menu-item has-submenu">
+              <button class="submenu-toggle" aria-expanded="false">Unidad III <i class="fa fa-caret-down"></i></button>
+              <ul class="submenu" aria-hidden="true">
+                <li><a href="semana09.html">Semana 09</a></li>
+                <li><a href="semana10.html">Semana 10</a></li>
+                <li><a href="semana11.html">Semana 11</a></li>
+                <li><a href="semana12.html">Semana 12</a></li>
+              </ul>
+            </li>
+            <li class="menu-item has-submenu">
+              <button class="submenu-toggle" aria-expanded="false">Unidad IV <i class="fa fa-caret-down"></i></button>
+              <ul class="submenu" aria-hidden="true">
+                <li><a href="semana13.html">Semana 13</a></li>
+                <li><a href="semana14.html">Semana 14</a></li>
+                <li><a href="semana15.html">Semana 15</a></li>
+                <li><a href="semana16.html">Semana 16</a></li>
+              </ul>
+            </li>
+            <li class="menu-item"><a href="index.html#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- ==========================
+         SEMANA 06 - DISEÑO DE LA ESTRUCTURA INFORMÁTICA INTEGRAL (EPS)
+         ========================== -->
+    <main class="semana-main" role="main" aria-labelledby="semana06-title">
+      <!-- Intro -->
+      <section class="semana-intro">
+        <h1 id="semana06-title">Semana 06: Diseño de la Estructura Informática Integral de los Sistemas de Información Gerencial (Tres Planos: EPS)</h1>
+        <p>
+          Esta semana se centra en el diseño de una estructura informática integral para los Sistemas de Información Gerencial (SIG) usando el enfoque <strong>EPS</strong>: <em>Plano Estratégico – Plano de Procesos – Plano de Soporte</em>. Aprenderás a alinear estrategia, datos, procesos y soporte técnico para convertir información en decisiones gerenciales confiables.
+        </p>
+      </section>
+      <!-- Objetivos -->
+      <section class="semana-objetivos">
+        <h2>Objetivos de aprendizaje</h2>
+        <ul>
+          <li>Comprender el enfoque EPS y cómo alinea TI con la estrategia organizacional.</li>
+          <li>Identificar componentes clave del Plano Estratégico, Plano de Procesos y Plano de Soporte.</li>
+          <li>Diseñar un esquema básico de arquitectura empresarial orientada a BI y toma de decisiones.</li>
+          <li>Proponer un roadmap de implementación (diagnóstico, piloto y despliegue) y prácticas de gobernanza de datos.</li>
+          <li>Aplicar buenas prácticas de seguridad, operación y medición del desempeño de los SIG.</li>
+        </ul>
+      </section>
+      <!-- Contenido -->
+      <section class="semana-contenido">
+        <h2>Contenido</h2>
+        <!-- Tema 1 -->
+        <article class="tema">
+          <h3>1. Introducción al enfoque EPS (Estratégico — Procesos — Soporte)</h3>
+          <p>
+            El enfoque EPS organiza la arquitectura de los Sistemas de Información Gerencial en tres planos complementarios: el <strong>Plano Estratégico</strong> que define visión y gobernanza; el <strong>Plano de Procesos</strong> que traduce la estrategia en flujos de información y automatizaciones; y el <strong>Plano de Soporte</strong> que garantiza la infraestructura, seguridad y operación continua.
+          </p>
+          <ul>
+            <li>Por qué separar responsabilidades en tres planos aumenta la claridad y la priorización.</li>
+            <li>Cómo EPS facilita la toma de decisiones sobre inversiones y roadmap tecnológico.</li>
+          </ul>
+          <img src="archivos/Esquema EPS.jpg" alt="Esquema EPS: Estratégico, Procesos, Soporte">
+        </article>
+        <!-- Tema 2 -->
+        <article class="tema">
+          <h3>2. Plano Estratégico</h3>
+          <p>
+            Define la visión tecnológica alineada con los objetivos del negocio y establece la gobernanza necesaria para que los SIG aporten valor a la gerencia.
+          </p>
+          <ul>
+            <li><strong>Propósito:</strong> Alinear infraestructura y aplicaciones con la estrategia y los KPIs organizacionales.</li>
+            <li><strong>Elementos clave:</strong> Arquitectura empresarial (EA), gobernanza TI, roadmap tecnológico, portafolio de sistemas, políticas de datos.</li>
+            <li><strong>Resultados esperados:</strong> priorización de inversiones, soporte a BI/analytics y reducción de riesgos estratégicos.</li>
+          </ul>
+        </article>
+        <!-- Tema 3 -->
+        <article class="tema">
+          <h3>3. Plano de Procesos</h3>
+          <p>
+            Traduce la estrategia en procesos, integraciones y orquestación de datos que entregan información útil y oportuna a la gerencia.
+          </p>
+          <ul>
+            <li><strong>Propósito:</strong> Modelar, optimizar y automatizar procesos que generan y consumen información gerencial.</li>
+            <li><strong>Elementos clave:</strong> mapeo de procesos, integración de aplicaciones (APIs/ESB), pipelines ETL/ELT, automatización (RPA/BPM), métricas de proceso.</li>
+            <li><strong>Resultados:</strong> mayor eficiencia operativa, datos más fiables para reportes y ciclos de retroalimentación más cortos.</li>
+          </ul>
+          <img src="archivos/Esquema EPS_02.jpg" alt="Integración de procesos y orquestación de datos">
+        </article>
+        <!-- Tema 4 -->
+        <article class="tema">
+          <h3>4. Plano de Soporte</h3>
+          <p>
+            Soporta técnica y operativamente los dos planos anteriores, garantizando disponibilidad, seguridad, rendimiento y continuidad.
+          </p>
+          <ul>
+            <li><strong>Propósito:</strong> Asegurar integridad, confidencialidad, disponibilidad y escalabilidad de los SIG.</li>
+            <li><strong>Elementos clave:</strong> infraestructura (cloud/híbrida/on-prem), plataformas de datos (data lake/warehouse), redes, seguridad (IAM, SIEM), backup & DR, operaciones (DevOps/SRE).</li>
+            <li><strong>Resultados:</strong> continuidad de servicio, cumplimiento normativo y optimización de costos operativos.</li>
+          </ul>
+        </article>
+        <!-- Tema 5 - Diagrama -->
+        <article class="tema">
+          <h3>5. Diagrama conceptual (texto)</h3>
+          <p>Representación simplificada de la relación entre los tres planos. Este diagrama ayuda a visualizar cómo las decisiones estratégicas priorizan procesos y cómo éstos se apoyan en servicios técnicos para su ejecución.</p>
+        </article>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:1rem; font-family:sans-serif;">
+          <div style="background:#1abc9c; color:white; padding:1rem 2rem; border-radius:6px 6px 0 0; width:60%; text-align:center;">
+            <strong>Plano Estratégico</strong><br>
+            Gobernanza • Roadmap • BI & Analítica • Portafolio TI
+          </div>
+          <div style="background:#3498db; color:white; padding:1rem 2rem; width:75%; text-align:center;">
+            <strong>Plano de Procesos</strong><br>
+            Modelos • Integración • Automatización • KPIs
+          </div>
+          <div style="background:#34495e; color:white; padding:1rem 2rem; border-radius:0 0 6px 6px; width:90%; text-align:center;">
+            <strong>Plano de Soporte</strong><br>
+            Infraestructura • Seguridad • Plataformas de datos • Ops
+          </div>
+          <br>
+        </div>
+        <!-- Tema 6 - Beneficios -->
+        <article class="tema">
+          <h3>6. Beneficios clave de una Estructura Informática Integral</h3>
+          <ul>
+            <li>Alineación clara entre TI y objetivos de negocio.</li>
+            <li>Información gerencial oportuna, fiable y accionable.</li>
+            <li>Reducción de tiempos y costos por procesos automatizados.</li>
+            <li>Mayor resiliencia operativa y cumplimiento regulatorio.</li>
+            <li>Escalabilidad y adaptabilidad ante cambios del mercado.</li>
+          </ul>
+        </article>
+        <!-- Tema 7 - Servicios / Oferta -->
+        <article class="tema">
+          <h3>7. Servicios y oferta (para proyectos reales)</h3>
+          <ul>
+            <li><strong>Evaluación EPS:</strong> diagnóstico integral de estrategia, procesos y soporte.</li>
+            <li><strong>Arquitectura empresarial:</strong> diseño del roadmap y catálogo de aplicaciones.</li>
+            <li><strong>Integración y datos:</strong> pipelines ETL/ELT, data warehouse / data lake, gobierno de datos.</li>
+            <li><strong>Automatización de procesos:</strong> RPA, BPM y orquestación.</li>
+            <li><strong>Seguridad y continuidad:</strong> políticas de seguridad, IAM y recuperación ante desastres.</li>
+            <li><strong>Operaciones gestionadas:</strong> DevOps, monitorización y soporte operacional.</li>
+          </ul>
+        </article>
+        <!-- Tema 8 - Roadmap -->
+        <article class="tema">
+          <h3>8. Roadmap resumido de implementación</h3>
+          <ol>
+            <li><strong>Diagnóstico & Alineamiento (4–6 semanas):</strong> levantamiento de objetivos, inventario y madurez tecnológica.</li>
+            <li><strong>Diseño & Piloto (8–12 semanas):</strong> arquitectura EPS, pruebas de integración y piloto en dominio crítico.</li>
+            <li><strong>Despliegue & Operación (continuo):</strong> migración por etapas, gobernanza, capacitación y mejora continua.</li>
+          </ol>
+        </article>
+        <!-- Tema 9 - Buenas prácticas -->
+        <article class="tema">
+          <h3>9. Buenas prácticas</h3>
+          <ul>
+            <li>Empezar por los datos: unificar definiciones y asegurar calidad.</li>
+            <li>Priorizar por valor: enfocar esfuerzos en lo que impacta KPIs.</li>
+            <li>Gobernanza ligera y efectiva: roles claros y reglas de propiedad de datos.</li>
+            <li>Seguridad desde el diseño: principios de Zero Trust y control de acceso.</li>
+            <li>Medir siempre: dashboards con SLA y métricas de proceso para seguimiento.</li>
+          </ul>
+        </article>
+        <!-- Tema 10 - Herramientas y tecnologías -->
+        <article class="tema">
+          <h3>10. Herramientas y tecnologías representativas</h3>
+          <table class="resumen-table" style="width:100%; border-collapse:collapse; margin-top:0.5rem;">
+            <thead>
+              <tr>
+                <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Área</th>
+                <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Tecnologías</th>
+                <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:0.5rem; border-bottom:1px solid #eee;">Bases de datos</td>
+                <td style="padding:0.5rem; border-bottom:1px solid #eee;">PostgreSQL, MySQL, SQL Server, MongoDB</td>
+                <td style="padding:0.5rem; border-bottom:1px solid #eee;">Almacenamiento transaccional y consultas</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem; border-bottom:1px solid #eee;">ETL/Integración</td>
+                <td style="padding:0.5rem; border-bottom:1px solid #eee;">Talend, Pentaho, Airflow, dbt</td>
+                <td style="padding:0.5rem; border-bottom:1px solid #eee;">Procesos de ingestión y transformación</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem; border-bottom:1px solid #eee;">Almacenamiento analítico</td>
+                <td style="padding:0.5rem; border-bottom:1px solid #eee;">Redshift, BigQuery, Snowflake</td>
+                <td style="padding:0.5rem; border-bottom:1px solid #eee;">Data warehouse y análisis a escala</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem;">Visualización</td>
+                <td style="padding:0.5rem;">Power BI, Tableau, Metabase</td>
+                <td style="padding:0.5rem;">Dashboards y reporting</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem;">Seguridad & Operaciones</td>
+                <td style="padding:0.5rem;">IAM, SIEM, Docker, Kubernetes, Prometheus</td>
+                <td style="padding:0.5rem;">Control de acceso, monitorización y operaciones</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+      <!-- Materiales -->
+      <section class="semana-materiales">
+        <h2>Materiales de estudio</h2>
+        <div class="materiales-grid">
+          <article class="material-card pdf">
+            <h3>Lectura: Diseño EPS para Sistemas de Información Gerencial</h3>
+            <p>Documento con la explicación del enfoque EPS, artefactos recomendados y checklist para diagnóstico.</p>
+            <a href="docs/semana06-eps-diseno.pdf" target="_blank" class="btn-material">Abrir PDF</a>
+          </article>
+          <article class="material-card lab">
+            <h3>Laboratorio: Diseño de un piloto EPS</h3>
+            <p>Guía paso a paso para definir alcance, mapear procesos y crear una integración ETL mínima para un piloto.</p>
+            <a href="docs/semana06-lab-piloto.pdf" target="_blank" class="btn-material">Abrir guía del laboratorio</a>
+          </article>
+          <article class="material-card template">
+            <h3>Plantillas: Catálogo de aplicaciones y matriz RACI</h3>
+            <p>Archivos editables (.xlsx / .drawio) para inventario de sistemas, RACI y backlog de migración.</p>
+            <a href="docs/semana06-plantillas.zip" download class="btn-material">Descargar plantillas</a>
+          </article>
+        </div>
+      </section>
+      <!-- Resumen -->
+      <section class="semana-resumen">
+        <h2>Resumen</h2>
+        <p>
+          En la Semana 06 abordamos el diseño de la Estructura Informática Integral mediante el enfoque EPS: Plano Estratégico, Plano de Procesos y Plano de Soporte. El objetivo es que puedas definir una arquitectura simple, priorizar iniciativas por impacto en KPIs y desarrollar un piloto mínimo que demuestre valor para la toma de decisiones gerenciales.
+        </p>
+        <p>
+          ¿Quieres apoyo para convertir tu diseño EPS en un piloto real?.
+        </p>
+      </section>
+      <!-- Recursos complementarios -->
+      <section class="semana-recursos">
+        <h2>Recursos complementarios</h2>
+        <ul>
+          <li><a href="https://www.postgresql.org/" target="_blank">PostgreSQL - Documentación</a></li>
+          <li><a href="https://docs.microsoft.com/es-es/power-bi/" target="_blank">Power BI - Introducción</a></li>
+          <li><a href="https://www.tutorialspoint.com/dwh/index.htm" target="_blank">Introducción a Data Warehouses</a></li>
+          <li><a href="docs/semana06-referencias.pdf" target="_blank">Lecturas recomendadas y referencias (PDF)</a></li>
+        </ul>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer id="contacto" class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <div class="footer-column">
+          <h3>Sobre mí</h3>
+          <p>Mosquera Zevallos Valerio</p>
+          <p>Estudiante de la Universidad Peruana Los Andes</p>
+          <p>ORCID: 0009-0007-2301-5191</p>
+          <p>Correo institucional:
+            <a href="mailto:r03398d@ms.upla.edu.pe" class="footer-link">r03398d@ms.upla.edu.pe</a>
+          </p>
+          <p>Correo personal:
+            <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a>
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Derechos</h3>
+          <p>© 2024 Mosquera Zevallos Valerio</p>
+          <p>Todos los derechos reservados</p>
+          <p>Elaboración propia</p>
+        </div>
+        <div class="footer-column redes-column">
+          <h3>Redes</h3>
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/valerio-mosquera-4b7884329/" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/Vaalerio" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://wa.me/51978417316" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

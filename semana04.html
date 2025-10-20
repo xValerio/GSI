@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Semana 04 — Gerencia de Sistemas de Información</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="semanas.css">
+</head>
+<body>
+
+  <!-- Header (igual al index) -->
+  <header class="site-header" role="banner">
+    <div class="header-inner container">
+      <div class="branding">
+        <a href="index.html#hero" class="logo-link" aria-label="Ir al inicio del sitio">
+          <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'">
+        </a>
+        <div class="title-wrap">
+          <h1 class="site-title">Gerencia de Sistemas de Información</h1>
+          <p class="subtitle">Estudios de Especialidad</p>
+        </div>
+      </div>
+
+      <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-menu">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+
+      <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
+        <ul class="menu">
+          <li class="menu-item"><a href="index.html#hero">Inicio</a></li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad I <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana01.html">Semana 01</a></li>
+              <li><a href="semana02.html">Semana 02</a></li>
+              <li><a href="semana03.html">Semana 03</a></li>
+              <li><a href="semana04.html">Semana 04</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad II <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana05.html">Semana 05</a></li>
+              <li><a href="semana06.html">Semana 06</a></li>
+              <li><a href="semana07.html">Semana 07</a></li>
+              <li><a href="semana08.html">Semana 08</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad III <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana09.html">Semana 09</a></li>
+              <li><a href="semana10.html">Semana 10</a></li>
+              <li><a href="semana11.html">Semana 11</a></li>
+              <li><a href="semana12.html">Semana 12</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad IV <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana13.html">Semana 13</a></li>
+              <li><a href="semana14.html">Semana 14</a></li>
+              <li><a href="semana15.html">Semana 15</a></li>
+              <li><a href="semana16.html">Semana 16</a></li>
+            </ul>
+          </li>
+          <li class="menu-item"><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<!-- ==========================
+     SEMANA 04 - INFRAESTRUCTURA DE TI
+     ========================== -->
+<main class="semana-main" role="main" aria-labelledby="semana04-title">
+
+  <!-- Intro -->
+  <section class="semana-intro">
+    <h1 id="semana04-title">Semana 04: Infraestructura de TI</h1>
+    <p>
+      En esta semana abordaremos los elementos esenciales de la infraestructura de Tecnologías de la Información: modelos de despliegue, componentes fundamentales, tipos de infraestructura y estrategias para garantizar rendimiento, disponibilidad y escalabilidad en entornos empresariales.
+    </p>
+  </section>
+
+  <!-- Objetivos -->
+  <section class="semana-objetivos">
+    <h2>Objetivos de Aprendizaje</h2>
+    <ul>
+      <li>Definir qué es la infraestructura de TI y por qué es crítica para las operaciones empresariales.</li>
+      <li>Identificar los componentes básicos (cómputo, almacenamiento, red, virtualización, seguridad) y su función.</li>
+      <li>Comparar tipos de infraestructura: on-premise, cloud, híbrida, convergente y edge.</li>
+      <li>Diseñar estrategias de despliegue y mantenimiento para optimizar rendimiento y costo.</li>
+      <li>Proponer evidencias prácticas (diagramas, reportes, despliegues) que demuestren aprendizaje.</li>
+    </ul>
+  </section>
+
+  <!-- Contenido -->
+  <section class="semana-contenido">
+    <h2>Contenido</h2>
+
+    <!-- Definición -->
+    <article class="tema">
+      <h3>1. ¿Qué es la Infraestructura de TI?</h3>
+      <p>
+        La infraestructura de TI es el conjunto de recursos físicos y lógicos necesarios para soportar las aplicaciones, servicios y procesos de una organización. Incluye servidores, almacenamiento, redes, sistemas de virtualización, plataformas de respaldo y herramientas de gestión.
+      </p>
+      <img src="img/semana04/infraestructura-overview.jpg" alt="Esquema general de infraestructura de TI">
+    </article>
+
+    <!-- Componentes -->
+    <article class="tema">
+      <h3>2. Componentes clave de la infraestructura</h3>
+      <ul>
+        <li><strong>Cómputo:</strong> servidores físicos y virtuales (bare metal, VMs, instancias cloud).</li>
+        <li><strong>Almacenamiento:</strong> SAN, NAS, object storage (S3), almacenamiento local y sistemas de backup.</li>
+        <li><strong>Redes:</strong> switches, routers, firewalls, balanceadores y conectividad (LAN/WAN/VPN).</li>
+        <li><strong>Virtualización y contenedores:</strong> hypervisors (VMware, Hyper-V), Docker, Kubernetes.</li>
+        <li><strong>Plataformas de gestión:</strong> herramientas de orquestación, monitorización y automatización (Ansible, Terraform, Prometheus).</li>
+        <li><strong>Seguridad:</strong> IAM, firewalls, IDS/IPS, gestión de parches y políticas de acceso.</li>
+        <li><strong>Energía y refrigeración:</strong> UPS, generadores y sistemas de climatización en data centers.</li>
+      </ul>
+    </article>
+
+    <!-- Tipos de infraestructura -->
+    <article class="tema">
+      <h3>3. Tipos de Infraestructura de TI</h3>
+      <ul>
+        <li><strong>On-Premise (local):</strong> recursos instalados y gestionados dentro de la organización. Mayor control, mayor CapEx.</li>
+        <li><strong>Cloud (pública):</strong> recursos provistos por terceros (AWS, Azure, GCP). Escalabilidad y pago por uso.</li>
+        <li><strong>Híbrida:</strong> mezcla de on-premise y cloud para balancear seguridad y flexibilidad.</li>
+        <li><strong>Convergente / Hiperconvergente:</strong> integración de cómputo, almacenamiento y redes en appliances gestionados para simplificar operaciones.</li>
+        <li><strong>Edge Computing:</strong> despliegue de recursos cerca del origen de datos (IoT, baja latencia).</li>
+      </ul>
+      <img src="img/semana04/tipos-infraestructura.jpg" alt="Comparativa de tipos de infraestructura: on-premise, cloud, híbrida, edge">
+    </article>
+
+    <!-- Modelos de despliegue -->
+    <article class="tema">
+      <h3>4. Modelos de despliegue y arquitectura</h3>
+      <p>
+        Los modelos de despliegue determinan dónde residen las cargas y cómo se interconectan:
+      </p>
+      <ul>
+        <li><strong>Despliegue monolítico:</strong> una sola aplicación/servicio en un entorno consolidado (más simple, menos flexible).</li>
+        <li><strong>Despliegue distribuido / microservicios:</strong> servicios independientes, orquestados y escalables.</li>
+        <li><strong>Despliegue con CDN y edge:</strong> distribución de contenido y puntos de presencia para mejorar latencia.</li>
+        <li><strong>Despliegue multi-zona / multi-región:</strong> para tolerancia a fallos y alta disponibilidad.</li>
+      </ul>
+    </article>
+
+    <!-- Rendimiento y métricas -->
+    <article class="tema">
+      <h3>5. Desempeños y métricas importantes</h3>
+      <p>
+        Para evaluar infraestructuras se usan métricas como: uso de CPU, IOPS y latencia de disco, ancho de banda y pérdida de paquetes en red, tiempo de respuesta de las aplicaciones, tasa de error, disponibilidad (uptime), RTO y RPO.
+      </p>
+      <ul>
+        <li><strong>Disponibilidad:</strong> porcentaje de tiempo operativo (SLAs).</li>
+        <li><strong>Rendimiento:</strong> latencia y throughput.</li>
+        <li><strong>Escalabilidad:</strong> capacidad de manejar picos sin degradación.</li>
+        <li><strong>Coste por unidad:</strong> coste por CPU-hour, por GB almacenado, etc.</li>
+      </ul>
+    </article>
+
+    <!-- Estrategias -->
+    <article class="tema">
+      <h3>6. Estrategias operativas y de diseño</h3>
+      <ul>
+        <li><strong>Segmentación y redundancia:</strong> zonas separadas, replicación y failover automático.</li>
+        <li><strong>Arquitectura por capas:</strong> separar presentación, lógica de negocio y datos.</li>
+        <li><strong>Autoscaling y balanceo de carga:</strong> para responder a variaciones en demanda.</li>
+        <li><strong>Políticas de backup y retención:</strong> backups regulares, snapshots y pruebas de restauración.</li>
+        <li><strong>Observabilidad:</strong> métricas, logs y tracing distribuidos para diagnóstico proactivo.</li>
+        <li><strong>Gestión de la capacidad:</strong> planificación del crecimiento y right-sizing periódico.</li>
+      </ul>
+    </article>
+
+    <!-- Didáctica -->
+    <article class="tema">
+      <h3>7. Estrategias didácticas para la clase</h3>
+      <ul>
+        <li><strong>Método de estudio de casos:</strong> analizar infraestructuras reales y decisiones de diseño.</li>
+        <li><strong>Laboratorios prácticos:</strong> montar VMs, configurar redes virtuales y buckets de almacenamiento (hands-on).</li>
+        <li><strong>Aprendizaje colaborativo:</strong> grupos diseñan arquitecturas y defienden sus elecciones.</li>
+        <li><strong>Flipped classroom:</strong> lecturas previas y discusión en clase sobre trade-offs.</li>
+        <li><strong>Simulaciones y role-play:</strong> responder a incidentes (incidentes de red, pérdida de datos).</li>
+      </ul>
+    </article>
+
+    <!-- Evidencias y productos -->
+    <article class="tema">
+      <h3>8. Evidencias y productos (entregables)</h3>
+      <p>Al final de la semana los estudiantes deben presentar evidencias que demuestren comprensión y habilidades prácticas:</p>
+      <ul>
+        <li><strong>Diagrama de la arquitectura:</strong> diagrama (Draw.io / Lucid / Visio) del diseño propuesto (mínimo 1 página).</li>
+        <li><strong>Reporte técnico breve (1–2 páginas):</strong> justificación de decisiones (tipo de infraestructura, almacenamiento, seguridad, RTO/RPO).</li>
+        <li><strong>Capturas y logs del laboratorio:</strong> evidencia de despliegue de VMs/contenedores, configuración de redes y pruebas de conectividad.</li>
+        <li><strong>Presentación corta (5 min):</strong> defensa del diseño ante la clase (slides o video).</li>
+      </ul>
+
+      <p><strong>Ponderación (Av. %):</strong> Esta semana corresponde al <strong>25%</strong> del avance/ponderación del módulo (según tabla del curso).</p>
+    </article>
+
+    <!-- Actividad práctica -->
+    <article class="tema">
+      <h3>9. Actividad práctica (propuesta)</h3>
+      <p>
+        En equipos de 3–4 estudiantes diseñen una propuesta de infraestructura para una aplicación web educativa con 10.000 usuarios mensuales, incluyendo:
+      </p>
+      <ol>
+        <li>Diagrama de arquitectura (componentes, zonas, redundancia).</li>
+        <li>Justificación de elección (on-prem vs cloud vs híbrida).</li>
+        <li>Plan de backup y RTO/RPO estimados.</li>
+        <li>Lista de métricas a monitorear y umbrales de alerta.</li>
+        <li>Entregables: diagrama (.png/.svg), reporte (.pdf) y presentación (.pdf/.pptx).</li>
+      </ol>
+    </article>
+
+  </section>
+
+  <!-- Materiales -->
+  <section class="semana-materiales">
+    <h2>Materiales de Estudio</h2>
+    <div class="materiales-grid">
+      <article class="material-card pdf">
+        <h3>📄 Lectura: Fundamentos de Infraestructura de TI</h3>
+        <p>Documento con conceptos, componentes y ejemplos prácticos.</p>
+        <a href="docs/semana04-fundamentos-infra.pdf" target="_blank" class="btn-material">Abrir PDF</a>
+      </article>
+
+      <article class="material-card lab">
+        <h3>Laboratorio guiado</h3>
+        <p>Guía para aprovisionar una VM, configurar red básica y montar almacenamiento.</p>
+        <a href="docs/semana04-lab-infra.pdf" target="_blank" class="btn-material">Abrir guía del laboratorio</a>
+      </article>
+
+      <article class="material-card template">
+        <h3>Plantilla: Diagrama de Arquitectura</h3>
+        <p>Archivo .drawio/.svg listo para editar y usar en la entrega.</p>
+        <a href="docs/semana04-template-diagrama.drawio" download class="btn-material">Descargar plantilla</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Resumen -->
+  <section class="semana-resumen">
+    <h2>Resumen</h2>
+    <p>
+      La infraestructura de TI es la base que sostiene servicios empresariales. Conocer sus componentes, tipos y estrategias permite diseñar soluciones resilientes, escalables y coste-eficientes. Las evidencias prácticas (diagramas, reportes y laboratorios) demostrarán la capacidad de diseñar y justificar arquitecturas reales.
+    </p>
+  </section>
+
+  <!-- Recursos complementarios -->
+  <section class="semana-recursos">
+    <h2>Recursos Complementarios</h2>
+    <ul>
+      <li><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">Guía: conceptos de red y protección (Cloudflare Learning)</a></li>
+      <li><a href="https://www.redhat.com/en/topics/virtualization/what-is-virtualization" target="_blank">Introducción a la virtualización (Red Hat)</a></li>
+      <li><a href="docs/semana04-referencias.pdf" target="_blank">Lecturas recomendadas y referencias (PDF)</a></li>
+    </ul>
+  </section>
+
+</main>
+
+  <!-- Footer -->
+  <footer id="contacto" class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-column">
+        <h3>Sobre mí</h3>
+        <p>Mosquera Zevallos Valerio</p>
+        <p>Estudiante de la Universidad Peruana Los Andes</p>
+        <p>ORCID: 0009-0007-2301-5191</p>
+        <p>Correo institucional: 
+          <a href="mailto:r03398d@ms.upla.edu.pe" class="footer-link">r03398d@ms.upla.edu.pe</a>
+        </p>
+        <p>Correo personal: 
+          <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a>
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Derechos</h3>
+        <p>© 2024 Mosquera Zevallos Valerio</p>
+        <p>Todos los derechos reservados</p>
+        <p>Elaboración propia</p>
+      </div>
+
+      <div class="footer-column redes-column">
+      <h3>Redes</h3>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/valerio-mosquera-4b7884329/" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/Vaalerio" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://wa.me/51978417316" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

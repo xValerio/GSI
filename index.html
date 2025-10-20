@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GERENCIA DE SISTEMAS DE INFORMACIÓN</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-TodoLoQueVieneAquí" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Header + Nav -->
+<header class="site-header" role="banner">
+  <div class="header-inner container">
+
+    <!-- Branding -->
+    <div class="branding">
+      <a href="#hero" class="logo-link" aria-label="Ir al inicio del sitio">
+        <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'">
+      </a>
+      <div class="title-wrap">
+        <h1 class="site-title">Gerencia de Sistemas de Información</h1>
+        <p class="subtitle">Estudios de Especialidad</p>
+      </div>
+    </div>
+
+    <!-- Botón de menú móvil -->
+    <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-menu">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+
+    <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
+        <ul class="menu">
+          <li class="menu-item"><a href="index.html#hero">Inicio</a></li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad I <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana01.html">Semana 01</a></li>
+              <li><a href="semana02.html">Semana 02</a></li>
+              <li><a href="semana03.html">Semana 03</a></li>
+              <li><a href="semana04.html">Semana 04</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad II <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana05.html">Semana 05</a></li>
+              <li><a href="semana06.html">Semana 06</a></li>
+              <li><a href="semana07.html">Semana 07</a></li>
+              <li><a href="semana08.html">Semana 08</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad III <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana09.html">Semana 09</a></li>
+              <li><a href="semana10.html">Semana 10</a></li>
+              <li><a href="semana11.html">Semana 11</a></li>
+              <li><a href="semana12.html">Semana 12</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad IV <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana13.html">Semana 13</a></li>
+              <li><a href="semana14.html">Semana 14</a></li>
+              <li><a href="semana15.html">Semana 15</a></li>
+              <li><a href="semana16.html">Semana 16</a></li>
+            </ul>
+          </li>
+          <li class="menu-item"><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+  </div>
+</header>
+
+  <!-- Hero -->
+  <section id="hero" class="hero" aria-labelledby="hero-title">
+    <div class="hero-overlay">
+      <h2 id="hero-title">GERENCIA DE SISTEMAS DE INFORMACIÓN</h2>
+      <p class="lead" style="
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-size: 1.3rem; 
+        font-weight: 700; 
+        color: #ffffff; 
+        text-shadow: 1px 1px 3px rgb(0, 0, 0);
+        margin: 1.2rem 0;
+        letter-spacing: 0.05em;
+        font-style: italic;
+      ">
+        Mosquera Zevallos Valerio
+      </p>
+
+      <a href="#unidades" class="btn-primary" id="explore-btn">Ver Unidades ▾</a>
+    </div>
+  </section>
+
+  <!-- Contenido principal - Unidades -->
+  <main id="unidades" class="main-content" role="main">
+    <section aria-labelledby="unidades-title" class="units-section">
+      <h2 id="unidades-title">Unidades y Semanas</h2>
+
+      <div class="grid-units">
+        <!-- Cada unidad como tarjeta; cuando quieras que cada 'Semana' sea tarjeta independiente lo hacemos en la siguiente fase -->
+        <article class="unit-card">
+          <h3>Unidad I — Fundamentos</h3>
+          <p class="unit-desc">Introducción y conceptos básicos de gerencia de TI.</p>
+          <button class="show-weeks" aria-expanded="false">Ver Semanas ▾</button>
+          <div class="weeks-list" hidden>
+            <a class="week-card" href="semana01.html">Semana 01</a>
+            <a class="week-card" href="semana02.html">Semana 02</a>
+            <a class="week-card" href="semana03.html">Semana 03</a>
+            <a class="week-card" href="#">Semana 04</a>
+          </div>
+        </article>
+
+        <article class="unit-card">
+          <h3>Unidad II — Gobierno y Gestión</h3>
+          <p class="unit-desc">Políticas, procesos y modelos de gobernanza.</p>
+          <button class="show-weeks" aria-expanded="false">Ver Semanas ▾</button>
+          <div class="weeks-list" hidden>
+            <a class="week-card" href="#">Semana 05</a>
+            <a class="week-card" href="#">Semana 06</a>
+            <a class="week-card" href="#">Semana 07</a>
+            <a class="week-card" href="#">Semana 08</a>
+          </div>
+        </article>
+
+        <article class="unit-card">
+          <h3>Unidad III — Arquitectura Empresarial</h3>
+          <p class="unit-desc">Modelos, integraciones y plataformas.</p>
+          <button class="show-weeks" aria-expanded="false">Ver Semanas ▾</button>
+          <div class="weeks-list" hidden>
+            <a class="week-card" href="#">Semana 09</a>
+            <a class="week-card" href="#">Semana 10</a>
+            <a class="week-card" href="#">Semana 11</a>
+            <a class="week-card" href="#">Semana 12</a>
+          </div>
+        </article>
+
+        <article class="unit-card">
+          <h3>Unidad IV — Gestión de Proyectos</h3>
+          <p class="unit-desc">Metodologías, evaluación y cierre.</p>
+          <button class="show-weeks" aria-expanded="false">Ver Semanas ▾</button>
+          <div class="weeks-list" hidden>
+            <a class="week-card" href="#">Semana 13</a>
+            <a class="week-card" href="#">Semana 14</a>
+            <a class="week-card" href="#">Semana 15</a>
+            <a class="week-card" href="#">Semana 16</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Competencias (resumen) -->
+    <section class="competences" aria-labelledby="competences-title">
+      <h2 id="competences-title">Competencias y Capacidades</h2>
+      <div class="comp-grid">
+        <div class="comp-box">
+          <i class="fa fa-bullseye" aria-hidden="true"></i>
+          <h4>Competencia general</h4>
+          <p>Gerenciar el marco para el gobierno y gestión de TI.</p>
+        </div>
+        <div class="comp-box">
+          <i class="fa fa-check-circle" aria-hidden="true"></i>
+          <h4>Competencias específicas</h4>
+          <p>Diseñar políticas, administrar recursos, evaluar riesgos.</p>
+        </div>
+        <div class="comp-box">
+          <i class="fa fa-cogs" aria-hidden="true"></i>
+          <h4>Capacidades (5.1–5.4)</h4>
+          <p>Análisis, diseño, implementación y evaluación.</p>
+        </div>
+        <div class="comp-box">
+          <i class="fa fa-leaf" aria-hidden="true"></i>
+          <h4>Ejes transversales</h4>
+          <p>Investigación · Ética · Sostenibilidad</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<!-- Footer -->
+<footer id="contacto" class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-column">
+      <h3>Sobre mí</h3>
+      <p>Mosquera Zevallos Valerio</p>
+      <p>Estudiante de la Universidad Peruana Los Andes</p>
+      <p>ORCID: 0009-0007-2301-5191</p>
+      <p>Correo institucional: 
+        <a href="mailto:r03398d@ms.upla.edu.pe" class="footer-link">r03398d@ms.upla.edu.pe</a>
+      </p>
+      <p>Correo personal: 
+        <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a>
+      </p>
+    </div>
+
+    <div class="footer-column">
+      <h3>Derechos</h3>
+      <p>© 2024 Mosquera Zevallos Valerio</p>
+      <p>Todos los derechos reservados</p>
+      <p>Elaboración propia</p>
+    </div>
+
+    <div class="footer-column redes-column">
+      <h3>Redes</h3>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/valerio-mosquera-4b7884329/" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/Vaalerio" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://wa.me/51978417316" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <noscript>
+    <div class="noscript-warning">Esta página funciona mejor con JavaScript habilitado.</div>
+  </noscript>
+
+  <script src="script.js"></script>
+</body>
+</html>

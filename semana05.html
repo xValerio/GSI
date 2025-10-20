@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Semana 05 — Gerencia de Sistemas de Información</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="semanas.css">
+</head>
+<body>
+
+  <!-- Header (igual al index) -->
+  <header class="site-header" role="banner">
+    <div class="header-inner container">
+      <div class="branding">
+        <a href="index.html#hero" class="logo-link" aria-label="Ir al inicio del sitio">
+          <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'">
+        </a>
+        <div class="title-wrap">
+          <h1 class="site-title">Gerencia de Sistemas de Información</h1>
+          <p class="subtitle">Estudios de Especialidad</p>
+        </div>
+      </div>
+
+      <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-menu">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+
+      <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
+        <ul class="menu">
+          <li class="menu-item"><a href="index.html#hero">Inicio</a></li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad I <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana01.html">Semana 01</a></li>
+              <li><a href="semana02.html">Semana 02</a></li>
+              <li><a href="semana03.html">Semana 03</a></li>
+              <li><a href="semana04.html">Semana 04</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad II <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana05.html">Semana 05</a></li>
+              <li><a href="semana06.html">Semana 06</a></li>
+              <li><a href="semana07.html">Semana 07</a></li>
+              <li><a href="semana08.html">Semana 08</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad III <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana09.html">Semana 09</a></li>
+              <li><a href="semana10.html">Semana 10</a></li>
+              <li><a href="semana11.html">Semana 11</a></li>
+              <li><a href="semana12.html">Semana 12</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad IV <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana13.html">Semana 13</a></li>
+              <li><a href="semana14.html">Semana 14</a></li>
+              <li><a href="semana15.html">Semana 15</a></li>
+              <li><a href="semana16.html">Semana 16</a></li>
+            </ul>
+          </li>
+          <li class="menu-item"><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<!-- ==========================
+     SEMANA 05 - SISTEMAS DE INFORMACIÓN EN LOS NEGOCIOS
+     ========================== -->
+<main class="semana-main" role="main" aria-labelledby="semana05-title">
+
+  <!-- Intro -->
+  <section class="semana-intro">
+    <h1 id="semana05-title">Semana 05: Los sistemas de información en los negocios</h1>
+    <p>
+      Esta semana se aborda el papel de los sistemas de información en las organizaciones y los fundamentos de la inteligencia de negocios, con especial énfasis en bases de datos y la administración de la información como recurso estratégico para la toma de decisiones.
+    </p>
+  </section>
+
+  <!-- Objetivos -->
+  <section class="semana-objetivos">
+    <h2>Objetivos de aprendizaje</h2>
+    <ul>
+      <li>Entender cómo los sistemas de información soportan procesos de negocio y generan valor.</li>
+      <li>Conocer los conceptos básicos de inteligencia de negocios (BI) y su relación con bases de datos y ETL.</li>
+      <li>Identificar buenas prácticas en la administración de la información y la calidad de datos.</li>
+      <li>Aplicar herramientas básicas para consultar y modelar datos relevantes para el negocio.</li>
+    </ul>
+  </section>
+
+  <!-- Contenido -->
+  <section class="semana-contenido">
+    <h2>Contenido</h2>
+
+    <!-- Tema 1 -->
+    <article class="tema">
+      <h3>1. Sistemas de información y su papel en los negocios</h3>
+      <p>
+        Los sistemas de información integran personas, procesos y tecnología para recopilar, procesar y distribuir información que soporta operaciones, gestión y toma de decisiones. Permiten automatizar procesos, mejorar eficiencia y generar inteligencia accionable.
+      </p>
+      <ul>
+        <li>Relación entre procesos de negocio y sistemas de información.</li>
+        <li>Valor que aportan: eficiencia, visibilidad operativa, soporte a decisiones.</li>
+        <li>Ejemplos: CRM para ventas, ERP para operaciones, BI para analítica.</li>
+      </ul>
+      <img src="img/semana05/si-negocios-overview.jpg" alt="Relación entre sistemas de información y procesos de negocio">
+    </article>
+
+    <!-- Tema 2 -->
+    <article class="tema">
+      <h3>2. Fundamentos de inteligencia de negocios (Business Intelligence)</h3>
+      <p>
+        La inteligencia de negocios es el conjunto de procesos, arquitecturas y tecnologías que transforman datos en información y conocimiento útil para la toma de decisiones. Incluye extracción, transformación y carga (ETL), modelado dimensional, cubos, dashboards y reporting.
+      </p>
+
+      <h4>Componentes clave de una solución BI</h4>
+      <ul>
+        <li>Fuentes de datos: transaccionales, logs, CSVs, APIs.</li>
+        <li>ETL/ELT: procesos para integrar, limpiar y transformar datos.</li>
+        <li>Almacenamiento analítico: data warehouse, data lake, data marts.</li>
+        <li>Modelado: esquemas estrella/snowflake, dimensiones y hechos.</li>
+        <li>Visualización y reporting: dashboards, KPIs y cuadros de mando.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 3 -->
+    <article class="tema">
+      <h3>3. Bases de datos y administración de la información</h3>
+      <p>
+        Las bases de datos son el fundamento del ecosistema de información. Es imprescindible gestionar su diseño, integridad, seguridad y rendimiento.
+      </p>
+      <ul>
+        <li>Diferencia entre bases de datos transaccionales (OLTP) y analíticas (OLAP).</li>
+        <li>Modelado relacional vs. no relacional (NoSQL): cuándo usar cada uno.</li>
+        <li>Prácticas de calidad de datos: validación, deduplicación y gobernanza.</li>
+        <li>Copias de seguridad, recuperación y políticas de retención de datos.</li>
+      </ul>
+      <img src="img/semana05/bases-datos-administracion.jpg" alt="Estructura básica de una base de datos y flujo ETL">
+    </article>
+
+    <!-- Tema 4 -->
+    <article class="tema">
+      <h3>4. Flujo típico: de datos transaccionales a insights</h3>
+      <ol>
+        <li>Captura de datos en sistemas transaccionales (ERP, CRM, e-commerce).</li>
+        <li>Integración mediante ETL/ELT hacia un data warehouse o data lake.</li>
+        <li>Procesamiento y modelado para análisis (agregaciones, métricas, KPIs).</li>
+        <li>Visualización en dashboards y generación de informes.</li>
+        <li>Retroalimentación: decisiones y acciones que generan nuevos datos.</li>
+      </ol>
+    </article>
+
+    <!-- Tema 5 -->
+    <article class="tema">
+      <h3>5. Casos de uso de BI en la empresa</h3>
+      <ul>
+        <li>Análisis de ventas y segmentación de clientes.</li>
+        <li>Detección de fraudes y análisis de riesgos.</li>
+        <li>Optimización de inventarios y cadena de suministro.</li>
+        <li>Dashboard de KPI para la dirección: ingresos, churn, coste por adquisición.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 6 -->
+    <article class="tema">
+      <h3>6. Herramientas y tecnologías representativas</h3>
+      <table class="resumen-table" style="width:100%; border-collapse:collapse; margin-top:0.5rem;">
+        <thead>
+          <tr>
+            <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Área</th>
+            <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Tecnologías</th>
+            <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Uso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Bases de datos</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">PostgreSQL, MySQL, SQL Server, MongoDB</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Almacenamiento transaccional y consultas</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">ETL/Integración</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Talend, Pentaho, Airflow, dbt</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Procesos de ingestión y transformación</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Almacenamiento analítico</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Redshift, BigQuery, Snowflake</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Data warehouse y análisis a escala</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem;">Visualización</td>
+            <td style="padding:0.5rem;">Power BI, Tableau, Metabase</td>
+            <td style="padding:0.5rem;">Dashboards y reporting</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+  </section>
+
+  <!-- Materiales -->
+  <section class="semana-materiales">
+    <h2>Materiales de estudio</h2>
+    <div class="materiales-grid">
+      <article class="material-card pdf">
+        <h3>Lectura: Introducción a Business Intelligence</h3>
+        <p>Documento con conceptos, flujo ETL y ejemplos de modelado dimensional.</p>
+        <a href="docs/semana05-bi-introduccion.pdf" target="_blank" class="btn-material">Abrir PDF</a>
+      </article>
+
+      <article class="material-card lab">
+        <h3>Laboratorio: Consultas SQL básicas para análisis</h3>
+        <p>Ejercicios prácticos para extraer indicadores clave desde una base de datos de ventas.</p>
+        <a href="docs/semana05-lab-sql.pdf" target="_blank" class="btn-material">Abrir guía del laboratorio</a>
+      </article>
+
+      <article class="material-card template">
+        <h3>Plantilla: Modelo dimensional (estrella)</h3>
+        <p>Archivo editable (.drawio/.png) con estructura de tablas de hechos y dimensiones.</p>
+        <a href="docs/semana05-template-dim.drawio" download class="btn-material">Descargar plantilla</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Actividades -->
+  <section class="semana-actividades">
+    <h2>Actividades prácticas y evaluación</h2>
+
+    <h3>Actividades propuestas</h3>
+    <ol>
+      <li>Estudio de caso: analizar un conjunto de ventas y proponer 3 KPIs relevantes para la gerencia. Entrega: informe de 1 página con consultas SQL.</li>
+      <li>Laboratorio: ejecutar consultas agregadas (SUM, AVG, COUNT, GROUP BY) y construir una vista que entregue los KPIs seleccionados.</li>
+      <li>Trabajo colaborativo: elaborar un trabajo sobre la estructura informática para una empresa y su uso en inteligencia de negocios (documento PDF de 2–3 páginas).</li>
+      <li>Actividad de clase: interacción y discusión sobre Gestión de Relaciones con el Cliente (CRM) y su integración con BI.</li>
+    </ol>
+
+    <h3>Cuestionario de autoevaluación</h3>
+    <ol>
+      <li>Defina brevemente la diferencia entre OLTP y OLAP.</li>
+      <li>¿Qué es ETL y por qué es importante en BI?</li>
+      <li>Mencione tres KPIs que podrían medir el desempeño de un área comercial.</li>
+      <li>Explique qué es un modelo dimensional (esquema estrella) en pocas líneas.</li>
+    </ol>
+    <!-- Respuestas sugeridas (docente):
+         1: OLTP = transaccional, optimizado para operaciones; OLAP = analítico, optimizado para consultas agregadas.
+         2: ETL = extracción, transformación y carga; permite integrar y limpiar datos para análisis.
+         3: Ejemplos: ventas por periodo, ticket promedio, tasa de conversión.
+         4: Modelo con tabla de hechos y tablas de dimensiones para facilitar consultas analíticas.
+    -->
+  </section>
+
+  <!-- Evidencias y productos -->
+  <section class="semana-materiales">
+    <h2>Evidencias y productos requeridos</h2>
+    <ul>
+      <li>Trabajo sobre estructura informática para una empresa (PDF, 2–3 páginas).</li>
+      <li>Informe de 1 página con 3 KPIs y las consultas SQL utilizadas.</li>
+      <li>Capturas o exportación de resultados del laboratorio (SQL queries y outputs).</li>
+      <li>Participación documentada en la actividad colaborativa sobre CRM (registro de aportes o breve video).</li>
+      <li>Ponderación (Av. %): 31.25% del avance del módulo.</li>
+    </ul>
+  </section>
+
+  <!-- Rúbrica sugerida -->
+  <section class="semana-materiales">
+    <h2>Evaluación y rúbrica (sugerida)</h2>
+    <ul>
+      <li><strong>Trabajo estructural (40%):</strong> claridad del diseño, justificación técnica y relación con BI.</li>
+      <li><strong>KPIs e informe SQL (30%):</strong> pertinencia de indicadores y precisión en consultas.</li>
+      <li><strong>Laboratorio (20%):</strong> ejecución correcta y evidencia de resultados.</li>
+      <li><strong>Participación colaborativa (10%):</strong> aportes en discusión CRM y trabajo en equipo.</li>
+    </ul>
+  </section>
+
+  <!-- Resumen -->
+  <section class="semana-resumen">
+    <h2>Resumen</h2>
+    <p>
+      Esta semana conecta los sistemas de información con la inteligencia de negocios: aprender a diseñar estructuras de datos, integrar fuentes mediante ETL y extraer KPIs relevantes transforma datos en un activo estratégico. Las evidencias incluyen trabajo práctico, consultas SQL y documentación del trabajo colaborativo sobre CRM.
+    </p>
+  </section>
+
+  <!-- Recursos complementarios -->
+  <section class="semana-recursos">
+    <h2>Recursos complementarios</h2>
+    <ul>
+      <li><a href="https://www.postgresql.org/" target="_blank">PostgreSQL - Documentación</a></li>
+      <li><a href="https://docs.microsoft.com/es-es/power-bi/" target="_blank">Power BI - Introducción</a></li>
+      <li><a href="https://www.tutorialspoint.com/dwh/index.htm" target="_blank">Introducción a Data Warehouses</a></li>
+      <li><a href="docs/semana05-referencias.pdf" target="_blank">Lecturas recomendadas y referencias (PDF)</a></li>
+    </ul>
+  </section>
+
+</main>
+
+  <!-- Footer -->
+  <footer id="contacto" class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-column">
+        <h3>Sobre mí</h3>
+        <p>Mosquera Zevallos Valerio</p>
+        <p>Estudiante de la Universidad Peruana Los Andes</p>
+        <p>ORCID: 0009-0007-2301-5191</p>
+        <p>Correo institucional: 
+          <a href="mailto:r03398d@ms.upla.edu.pe" class="footer-link">r03398d@ms.upla.edu.pe</a>
+        </p>
+        <p>Correo personal: 
+          <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a>
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Derechos</h3>
+        <p>© 2024 Mosquera Zevallos Valerio</p>
+        <p>Todos los derechos reservados</p>
+        <p>Elaboración propia</p>
+      </div>
+
+      <div class="footer-column redes-column">
+      <h3>Redes</h3>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/valerio-mosquera-4b7884329/" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/Vaalerio" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://wa.me/51978417316" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

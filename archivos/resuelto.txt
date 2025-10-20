@@ -1,0 +1,1417 @@
+¡Perfecto — vamos a ello! Abajo tienes la **Guía técnica completa del laboratorio** lista para poner en tu repositorio. Incluye:
+
+* Árbol de archivos sugerido
+* Código: `Dockerfile`, aplicación ejemplo (Node.js), manifest YAML Kubernetes (Deployment, Service, Ingress, ConfigMap, Secret, HPA), **Terraform** (usa provider `kubernetes`), y **pipeline CI/CD** (GitHub Actions) para construir, publicar y desplegar la imagen.
+* Scripts auxiliares, checklist de pruebas y recomendaciones de seguridad/observabilidad.
+
+Puedes copiar/pegar los archivos tal cual. Si quieres, después puedo transformar esto en un repo ZIP o generar variaciones (OpenShift / ArgoCD / Azure Arc).
+
+---
+
+# Resumen del laboratorio
+
+**Título:** Piloto híbrido: “Customer API” containerizada → Kubernetes (on-prem / OpenShift) + control plane cloud (GitOps opcional)
+**Objetivo:** Contenerizar una API simple, publicar la imagen, aprovisionar recursos Kubernetes (namespace, deployment, service, ingress), y automatizar con CI/CD. Incluir observabilidad básica y políticas de seguridad mínimas.
+**Entregables mínimos:** Dockerfile, manifiestos K8s, Terraform para recursos K8s, workflow GitHub Actions, README con pasos.
+
+---
+
+# Estructura sugerida del repositorio
+
+```
+semana08-piloto-hibrido/
+├─ app/
+│  ├─ package.json
+│  ├─ index.js
+│  └─ Dockerfile
+├─ k8s/
+│  ├─ namespace.yaml
+│  ├─ configmap.yaml
+│  ├─ secret.yaml.example
+│  ├─ deployment.yaml
+│  ├─ hpa.yaml
+│  ├─ service.yaml
+│  └─ ingress.yaml
+├─ terraform/
+│  ├─ main.tf
+│  ├─ variables.tf
+│  └─ outputs.tf
+├─ .github/
+│  └─ workflows/
+│     └─ ci-cd.yml
+├─ scripts/
+│  ├─ deploy.sh
+│  └─ build_and_push.sh
+├─ README.md
+└─ LICENSE
+```
+
+---
+
+# 1) Aplicación ejemplo (Node.js — Customer API)
+
+`app/package.json`
+
+```json
+{
+  "name": "customer-api",
+  "version": "1.0.0",
+  "description": "API de ejemplo para piloto híbrido",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "prom-client": "^14.0.1"
+  }
+}
+```
+
+`app/index.js`
+
+```js
+const express = require('express');
+const client = require('prom-client');
+
+const app = express();
+app.use(express.json());
+
+const register = new client.Registry();
+client.collectDefaultMetrics({ register });
+
+/* Simple in-memory "customers" */
+let customers = [
+  { id: 1, name: "Acme SA", email: "contact@acme.example" },
+  { id: 2, name: "Globex", email: "info@globex.example" }
+];
+
+app.get('/healthz', (req, res) => res.status(200).json({ status: 'ok' }));
+app.get('/metrics', async (req, res) => {
+  res.set('Content-Type', register.contentType);
+  res.end(await register.metrics());
+});
+
+app.get('/customers', (req, res) => res.json(customers));
+app.get('/customers/:id', (req, res) => {
+  const c = customers.find(x => x.id === parseInt(req.params.id));
+  if (!c) return res.status(404).json({ error: 'not found' });
+  res.json(c);
+});
+app.post('/customers', (req, res) => {
+  const id = customers.length ? customers[customers.length - 1].id + 1 : 1;
+  const { name, email } = req.body;
+  const c = { id, name, email };
+  customers.push(c);
+  res.status(201).json(c);
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Customer API listening on ${PORT}`));
+```
+
+---
+
+# 2) Dockerfile
+
+`app/Dockerfile`
+
+```dockerfile
+# build stage (if any build step needed later)
+FROM node:18-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --production
+COPY . .
+
+# runtime
+FROM node:18-alpine
+WORKDIR /app
+COPY --from=build /app /app
+ENV PORT=3000
+EXPOSE 3000
+CMD ["node", "index.js"]
+```
+
+---
+
+# 3) Manifiestos Kubernetes (k8s/)
+
+`k8s/namespace.yaml`
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: piloto-hibrido
+  labels:
+    environment: piloto
+```
+
+`k8s/configmap.yaml`
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: customer-api-config
+  namespace: piloto-hibrido
+data:
+  APP_ENV: "staging"
+  LOG_LEVEL: "info"
+```
+
+`k8s/secret.yaml.example`  *(no subas secretos en claro — usa kubectl create secret or sealed-secrets / Vault)*
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: customer-api-secret
+  namespace: piloto-hibrido
+type: Opaque
+stringData:
+  DB_CONNECTION: "postgres://user:pass@host:5432/dbname"
+  API_KEY: "reemplazar-con-valor"
+```
+
+`k8s/deployment.yaml`
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-api
+  namespace: piloto-hibrido
+  labels:
+    app: customer-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: customer-api
+  template:
+    metadata:
+      labels:
+        app: customer-api
+    spec:
+      containers:
+        - name: customer-api
+          image: ghcr.io/ORGANIZACION/customer-api:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: customer-api-config
+            - secretRef:
+                name: customer-api-secret
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+```
+
+`k8s/service.yaml`
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-api
+  namespace: piloto-hibrido
+spec:
+  selector:
+    app: customer-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: ClusterIP
+```
+
+`k8s/ingress.yaml`  *(ejemplo para ingress-nginx, modifica según controlador)*
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: customer-api-ingress
+  namespace: piloto-hibrido
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+spec:
+  rules:
+    - host: customer-api.piloto.example.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: customer-api
+                port:
+                  number: 80
+```
+
+`k8s/hpa.yaml`
+
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: customer-api-hpa
+  namespace: piloto-hibrido
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: customer-api
+  minReplicas: 2
+  maxReplicas: 6
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 60
+```
+
+---
+
+# 4) Terraform (deploy directo a Kubernetes via provider)
+
+> Este ejemplo utiliza el provider `kubernetes`. Requiere que `KUBECONFIG` apunte al cluster donde desplegarás. Terraform usará ese contexto para crear namespace y deploy.
+> Alternativa: usar provider cloud (gke/aks/eks) para crear cluster; eso requiere credenciales cloud.
+
+`terraform/variables.tf`
+
+```hcl
+variable "kubeconfig_path" {
+  type    = string
+  default = ""
+  description = "Path to kubeconfig file. If empty, TK will use env KUBECONFIG or default location."
+}
+
+variable "image" {
+  type    = string
+  default = "ghcr.io/ORGANIZACION/customer-api:latest"
+}
+```
+
+`terraform/main.tf`
+
+```hcl
+terraform {
+  required_providers {
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~> 2.16"
+    }
+  }
+}
+
+provider "kubernetes" {
+  config_path = var.kubeconfig_path != "" ? var.kubeconfig_path : null
+}
+
+resource "kubernetes_namespace" "piloto" {
+  metadata {
+    name = "piloto-hibrido"
+    labels = {
+      environment = "piloto"
+    }
+  }
+}
+
+resource "kubernetes_config_map" "app_cfg" {
+  metadata {
+    name      = "customer-api-config"
+    namespace = kubernetes_namespace.piloto.metadata[0].name
+  }
+  data = {
+    APP_ENV  = "staging"
+    LOG_LEVEL = "info"
+  }
+}
+
+resource "kubernetes_secret" "app_secret" {
+  metadata {
+    name      = "customer-api-secret"
+    namespace = kubernetes_namespace.piloto.metadata[0].name
+  }
+  string_data = {
+    API_KEY = "REEMPLAZAR_CON_VALOR_SEGURO"
+  }
+}
+
+resource "kubernetes_deployment" "customer_api" {
+  metadata {
+    name      = "customer-api"
+    namespace = kubernetes_namespace.piloto.metadata[0].name
+    labels = {
+      app = "customer-api"
+    }
+  }
+  spec {
+    replicas = 2
+    selector {
+      match_labels = {
+        app = "customer-api"
+      }
+    }
+    template {
+      metadata {
+        labels = {
+          app = "customer-api"
+        }
+      }
+      spec {
+        container {
+          name  = "customer-api"
+          image = var.image
+          port {
+            container_port = 3000
+          }
+          env_from {
+            config_map_ref {
+              name = kubernetes_config_map.app_cfg.metadata[0].name
+            }
+            secret_ref {
+              name = kubernetes_secret.app_secret.metadata[0].name
+            }
+          }
+          readiness_probe {
+            http_get {
+              path = "/healthz"
+              port = 3000
+            }
+            initial_delay_seconds = 5
+            period_seconds = 10
+          }
+          liveness_probe {
+            http_get {
+              path = "/healthz"
+              port = 3000
+            }
+            initial_delay_seconds = 15
+            period_seconds = 20
+          }
+          resources {
+            limits = {
+              cpu    = "500m"
+              memory = "512Mi"
+            }
+            requests = {
+              cpu    = "100m"
+              memory = "128Mi"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+resource "kubernetes_service" "customer_api" {
+  metadata {
+    name      = "customer-api"
+    namespace = kubernetes_namespace.piloto.metadata[0].name
+  }
+  spec {
+    selector = {
+      app = "customer-api"
+    }
+    port {
+      port        = 80
+      target_port = 3000
+    }
+    type = "ClusterIP"
+  }
+}
+```
+
+`terraform/outputs.tf`
+
+```hcl
+output "namespace" {
+  value = kubernetes_namespace.piloto.metadata[0].name
+}
+```
+
+**Uso Terraform (local):**
+
+```bash
+# desde carpeta terraform/
+export KUBECONFIG=/ruta/a/tu/kubeconfig
+terraform init
+terraform plan -var="kubeconfig_path=$KUBECONFIG" -var="image=ghcr.io/ORG/customer-api:TAG"
+terraform apply -var="kubeconfig_path=$KUBECONFIG" -var="image=ghcr.io/ORG/customer-api:TAG" -auto-approve
+```
+
+---
+
+# 5) CI/CD — GitHub Actions (build → push → deploy)
+
+`.github/workflows/ci-cd.yml`
+
+```yaml
+name: CI/CD - Build, Push & Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/customer-api
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    outputs:
+      image: ${{ steps.build.outputs.image }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Build and push image
+        id: build
+        uses: docker/build-push-action@v5
+        with:
+          context: ./app
+          push: true
+          tags: |
+            ${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ env.IMAGE_NAME }}:latest
+
+      - name: Set output image
+        run: echo "::set-output name=image::${{ env.IMAGE_NAME }}:${{ github.sha }}"
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.27.0' # ajustar según cluster
+
+      - name: Configure kubeconfig
+        run: |
+          echo "${{ secrets.KUBE_CONFIG }}" | base64 --decode > kubeconfig
+          export KUBECONFIG=$PWD/kubeconfig
+          kubectl version --client
+      - name: Update k8s Deployment image
+        run: |
+          IMAGE=${{ env.IMAGE_NAME }}:${{ github.sha }}
+          kubectl set image deployment/customer-api customer-api=${IMAGE} -n piloto-hibrido --record
+          kubectl rollout status deployment/customer-api -n piloto-hibrido --timeout=120s
+
+      - name: Verify health
+        run: |
+          export KUBECONFIG=$PWD/kubeconfig
+          kubectl get pods -n piloto-hibrido -o wide
+          kubectl get svc -n piloto-hibrido
+
+```
+
+**Secrets requeridos en GitHub repo:**
+
+* `GHCR_TOKEN` — token para publicar en GitHub Container Registry (o Docker Hub: `DOCKERHUB_USERNAME` + `DOCKERHUB_TOKEN` y cambiar la parte del login).
+* `KUBE_CONFIG` — contenido de kubeconfig codificado en base64 (varía por entorno). **No** subas kubeconfig en claro.
+
+Cómo codificar KUBECONFIG para secret:
+
+```bash
+cat ~/.kube/config | base64 | pbcopy
+# Pegar en GitHub Secret KUBE_CONFIG
+```
+
+---
+
+# 6) Scripts de ayuda
+
+`scripts/build_and_push.sh`
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+IMAGE="ghcr.io/ORGANIZACION/customer-api:latest"
+REGISTRY="ghcr.io"
+
+# Build
+docker build -t ${IMAGE} ./app
+
+# Login (asume docker login ya realizado en local)
+docker push ${IMAGE}
+
+echo "Imagen publicada: ${IMAGE}"
+```
+
+`scripts/deploy.sh`
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+KUBECONFIG=${KUBECONFIG:-~/.kube/config}
+export KUBECONFIG
+
+# Crear namespace y aplicar manifests
+kubectl apply -f k8s/namespace.yaml
+kubectl apply -f k8s/configmap.yaml
+kubectl apply -f k8s/secret.yaml  # Mantener fuera del repo; usar variantes seguras
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+kubectl apply -f k8s/ingress.yaml
+kubectl apply -f k8s/hpa.yaml
+
+kubectl rollout status deployment/customer-api -n piloto-hibrido
+kubectl get pods -n piloto-hibrido
+```
+
+---
+
+# 7) Observabilidad & Métricas (sugerencias)
+
+* La app expone `/metrics` via `prom-client`.
+* **Prometheus**: scrape `customer-api:3000/metrics`.
+* **Grafana**: crear panel con tasa de solicitudes, latencia y uso CPU mem por pod (via Prometheus).
+* **Tracing**: añadir posteriormente OpenTelemetry para tracing distribuido (recomendado para microservicios).
+
+---
+
+# 8) Seguridad y Secrets
+
+* No incluyas secrets en el repo. Usa `kubectl create secret`, SealedSecrets (Bitnami), o **HashiCorp Vault**.
+* Recomendado: usar vault + external-secrets operator para sincronizar secretos al cluster.
+* Habilitar políticas de RBAC mínimas: create Role/RoleBinding para el service account del deploy.
+
+Ejemplo mínimo de RoleBinding para ArgoCD / CI:
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: piloto-hibrido
+  name: deployer
+rules:
+- apiGroups: ["apps", ""]
+  resources: ["deployments","services","pods"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: piloto-hibrido
+  name: deployer-binding
+subjects:
+- kind: User
+  name: "ci-user" # o ServiceAccount
+roleRef:
+  kind: Role
+  name: deployer
+  apiGroup: rbac.authorization.k8s.io
+```
+
+---
+
+# 9) Checklist de validación / pruebas (entregables y criterios)
+
+**Antes de CI/CD**
+
+* [ ] `docker build` funciona localmente.
+* [ ] Imagen empujada a registry público/privado accesible desde cluster.
+* [ ] Kubeconfig con permisos de deploy listo.
+
+**Despliegue**
+
+* [ ] Namespace creado.
+* [ ] Deployment rollout exitoso (pods en estado `Running`).
+* [ ] Service accesible internamente.
+* [ ] Ingress resuelve host y responde (si aplica).
+* [ ] Readiness/liveness probes OK.
+* [ ] HPA escala según CPU (simular carga para probar).
+
+**Observabilidad**
+
+* [ ] Prometheus scrapear endpoint `/metrics`.
+* [ ] Grafana muestra panel básico de pods/CPU/mem/latencia.
+
+**Seguridad**
+
+* [ ] Secret no en repo (usar Vault/SealedSecrets).
+* [ ] RBAC mínimo probado.
+* [ ] Tráfico sensible cifrado (TLS en Ingress).
+
+**Entrega**
+
+* [ ] README con pasos reproducibles y variables necesarias.
+* [ ] Capturas de pantalla o comandos `kubectl get pods -n piloto-hibrido` que demuestren despliegue.
+
+---
+
+# 10) README.md (esqueleto)
+
+`README.md`
+
+````md
+# Piloto Híbrido - Customer API
+
+## Objetivo
+Contenerizar una API simple y desplegarla en Kubernetes como piloto de modernización híbrida.
+
+## Requisitos
+- Docker
+- kubectl
+- acceso a cluster Kubernetes (kubeconfig)
+- terraform (opcional, si se usa terraform)
+- GitHub Actions (opcional, para CI/CD)
+
+## Pasos rápidos (local)
+1. Construir y publicar imagen:
+   ```bash
+   ./scripts/build_and_push.sh
+````
+
+2. Asegurar kubeconfig y desplegar:
+
+   ```bash
+   export KUBECONFIG=~/.kube/config
+   ./scripts/deploy.sh
+   ```
+3. Verificar:
+
+   ```bash
+   kubectl get pods -n piloto-hibrido
+   kubectl get svc -n piloto-hibrido
+   ```
+
+## CI/CD
+
+* Configurar Secrets en GitHub: `GHCR_TOKEN`, `KUBE_CONFIG` (base64)
+* Push a `main` activa workflow `.github/workflows/ci-cd.yml`
+
+## Notas de seguridad
+
+* No guardar secrets en el repo.
+* Usar SealedSecrets / Vault para producción.
+
+## Contacto
+
+Equipo de Plataforma / DevOps
+
+```
+
+---
+
+# 11) Opciones avanzadas / Variantes (elige según entorno)
+- **ArgoCD**: en vez de `kubectl apply` en CI, registra repo en ArgoCD y deja que Argo gestione estado. Buen patrón GitOps para híbrido.  
+- **OpenShift**: manifiestos ligeramente distintos (Route en lugar de Ingress, SCC / SecurityContextConstraints).  
+- **Azure Arc / Anthos**: si el control plane está en cloud, puedes usar GitOps para sincronizar manifiestos a clusters conectados.  
+- **Vault + ExternalSecrets**: para secrets seguros y rotación.
+
+---
+
+# 12) Recomendaciones finales (mejores prácticas)
+1. **API-first y contenedores**: aplica para todas las apps que migres.  
+2. **GitOps**: separa pipelines (build/push) y despliegue (pull desde ArgoCD).  
+3. **Observabilidad desde inicio**: instrumenta métricas y tracing.  
+4. **Política de seguridad**: implementa RBAC, NetworkPolicies, escaneo de imágenes.  
+5. **CostOps/Tagging**: etiqueta recursos por proyecto/owner para monitorizar coste.  
+
+---
+
+Si quieres ahora:
+- **Genero los archivos reales listos en un ZIP** y te doy el link de descarga (puedo crear y mostrar artefacto aquí).  
+- **Adapto manifiestos para OpenShift** (Route, SCC) o para ArgoCD (App manifest).  
+- **Creo un pipeline GitLab CI** en lugar de GitHub Actions.  
+- **Escribo el Playbook paso a paso** con comandos exactos para un cluster OpenShift + Azure Arc.  
+
+Dime cuál de estas opciones prefieres y lo preparo ahora mismo.
+::contentReference[oaicite:0]{index=0}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Creating the repository structure and files for the "semana08-piloto-hibrido" lab,
+# zipping it and making it available for download.
+import os, json, textwrap, stat, zipfile, pathlib
+root = "/mnt/data/semana08-piloto-hibrido"
+os.makedirs(root, exist_ok=True)
+
+files = {
+    "app/package.json": json.dumps({
+      "name": "customer-api",
+      "version": "1.0.0",
+      "description": "API de ejemplo para piloto híbrido",
+      "main": "index.js",
+      "scripts": {"start": "node index.js"},
+      "dependencies": {"express": "^4.18.2", "prom-client": "^14.0.1"}
+    }, indent=2),
+    "app/index.js": textwrap.dedent("""\
+        const express = require('express');
+        const client = require('prom-client');
+
+        const app = express();
+        app.use(express.json());
+
+        const register = new client.Registry();
+        client.collectDefaultMetrics({ register });
+
+        /* Simple in-memory "customers" */
+        let customers = [
+          { id: 1, name: "Acme SA", email: "contact@acme.example" },
+          { id: 2, name: "Globex", email: "info@globex.example" }
+        ];
+
+        app.get('/healthz', (req, res) => res.status(200).json({ status: 'ok' }));
+        app.get('/metrics', async (req, res) => {
+          res.set('Content-Type', register.contentType);
+          res.end(await register.metrics());
+        });
+
+        app.get('/customers', (req, res) => res.json(customers));
+        app.get('/customers/:id', (req, res) => {
+          const c = customers.find(x => x.id === parseInt(req.params.id));
+          if (!c) return res.status(404).json({ error: 'not found' });
+          res.json(c);
+        });
+        app.post('/customers', (req, res) => {
+          const id = customers.length ? customers[customers.length - 1].id + 1 : 1;
+          const { name, email } = req.body;
+          const c = { id, name, email };
+          customers.push(c);
+          res.status(201).json(c);
+        });
+
+        const PORT = process.env.PORT || 3000;
+        app.listen(PORT, () => console.log(`Customer API listening on ${PORT}`));
+    """),
+    "app/Dockerfile": textwrap.dedent("""\
+        # build stage (if any build step needed later)
+        FROM node:18-alpine AS build
+        WORKDIR /app
+        COPY package*.json ./
+        RUN npm ci --production
+        COPY . .
+
+        # runtime
+        FROM node:18-alpine
+        WORKDIR /app
+        COPY --from=build /app /app
+        ENV PORT=3000
+        EXPOSE 3000
+        CMD ["node", "index.js"]
+    """),
+    "k8s/namespace.yaml": textwrap.dedent("""\
+        apiVersion: v1
+        kind: Namespace
+        metadata:
+          name: piloto-hibrido
+          labels:
+            environment: piloto
+    """),
+    "k8s/configmap.yaml": textwrap.dedent("""\
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: customer-api-config
+          namespace: piloto-hibrido
+        data:
+          APP_ENV: "staging"
+          LOG_LEVEL: "info"
+    """),
+    "k8s/secret.yaml.example": textwrap.dedent("""\
+        apiVersion: v1
+        kind: Secret
+        metadata:
+          name: customer-api-secret
+          namespace: piloto-hibrido
+        type: Opaque
+        stringData:
+          DB_CONNECTION: "postgres://user:pass@host:5432/dbname"
+          API_KEY: "reemplazar-con-valor"
+    """),
+    "k8s/deployment.yaml": textwrap.dedent("""\
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: customer-api
+          namespace: piloto-hibrido
+          labels:
+            app: customer-api
+        spec:
+          replicas: 2
+          selector:
+            matchLabels:
+              app: customer-api
+          template:
+            metadata:
+              labels:
+                app: customer-api
+            spec:
+              containers:
+                - name: customer-api
+                  image: ghcr.io/ORGANIZACION/customer-api:latest
+                  imagePullPolicy: IfNotPresent
+                  ports:
+                    - containerPort: 3000
+                  envFrom:
+                    - configMapRef:
+                        name: customer-api-config
+                    - secretRef:
+                        name: customer-api-secret
+                  readinessProbe:
+                    httpGet:
+                      path: /healthz
+                      port: 3000
+                    initialDelaySeconds: 5
+                    periodSeconds: 10
+                    failureThreshold: 3
+                  livenessProbe:
+                    httpGet:
+                      path: /healthz
+                      port: 3000
+                    initialDelaySeconds: 15
+                    periodSeconds: 20
+                  resources:
+                    requests:
+                      cpu: "100m"
+                      memory: "128Mi"
+                    limits:
+                      cpu: "500m"
+                      memory: "512Mi"
+    """),
+    "k8s/service.yaml": textwrap.dedent("""\
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: customer-api
+          namespace: piloto-hibrido
+        spec:
+          selector:
+            app: customer-api
+          ports:
+            - protocol: TCP
+              port: 80
+              targetPort: 3000
+          type: ClusterIP
+    """),
+    "k8s/ingress.yaml": textwrap.dedent("""\
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          name: customer-api-ingress
+          namespace: piloto-hibrido
+          annotations:
+            kubernetes.io/ingress.class: "nginx"
+            nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+        spec:
+          rules:
+            - host: customer-api.piloto.example.local
+              http:
+                paths:
+                  - path: /
+                    pathType: Prefix
+                    backend:
+                      service:
+                        name: customer-api
+                        port:
+                          number: 80
+    """),
+    "k8s/hpa.yaml": textwrap.dedent("""\
+        apiVersion: autoscaling/v2
+        kind: HorizontalPodAutoscaler
+        metadata:
+          name: customer-api-hpa
+          namespace: piloto-hibrido
+        spec:
+          scaleTargetRef:
+            apiVersion: apps/v1
+            kind: Deployment
+            name: customer-api
+          minReplicas: 2
+          maxReplicas: 6
+          metrics:
+            - type: Resource
+              resource:
+                name: cpu
+                target:
+                  type: Utilization
+                  averageUtilization: 60
+    """),
+    # OpenShift variant
+    "k8s/openshift/route.yaml": textwrap.dedent("""\
+        apiVersion: route.openshift.io/v1
+        kind: Route
+        metadata:
+          name: customer-api
+          namespace: piloto-hibrido
+        spec:
+          to:
+            kind: Service
+            name: customer-api
+          port:
+            targetPort: 80
+          tls:
+            termination: edge
+    """),
+    # ArgoCD application manifest
+    "k8s/argocd/application.yaml": textwrap.dedent("""\
+        apiVersion: argoproj.io/v1alpha1
+        kind: Application
+        metadata:
+          name: customer-api
+          namespace: argocd
+        spec:
+          project: default
+          source:
+            repoURL: 'https://github.com/ORGANIZACION/semana08-piloto-hibrido'
+            targetRevision: HEAD
+            path: k8s
+          destination:
+            server: 'https://kubernetes.default.svc'
+            namespace: piloto-hibrido
+          syncPolicy:
+            automated:
+              prune: true
+              selfHeal: true
+    """),
+    # terraform
+    "terraform/variables.tf": textwrap.dedent("""\
+        variable "kubeconfig_path" {
+          type    = string
+          default = ""
+          description = "Path to kubeconfig file. If empty, provider will use env KUBECONFIG or default location."
+        }
+
+        variable "image" {
+          type    = string
+          default = "ghcr.io/ORGANIZACION/customer-api:latest"
+        }
+    """),
+    "terraform/main.tf": textwrap.dedent("""\
+        terraform {
+          required_providers {
+            kubernetes = {
+              source  = "hashicorp/kubernetes"
+              version = "~> 2.16"
+            }
+          }
+        }
+
+        provider "kubernetes" {
+          config_path = var.kubeconfig_path != "" ? var.kubeconfig_path : null
+        }
+
+        resource "kubernetes_namespace" "piloto" {
+          metadata {
+            name = "piloto-hibrido"
+            labels = {
+              environment = "piloto"
+            }
+          }
+        }
+
+        resource "kubernetes_config_map" "app_cfg" {
+          metadata {
+            name      = "customer-api-config"
+            namespace = kubernetes_namespace.piloto.metadata[0].name
+          }
+          data = {
+            APP_ENV  = "staging"
+            LOG_LEVEL = "info"
+          }
+        }
+
+        resource "kubernetes_secret" "app_secret" {
+          metadata {
+            name      = "customer-api-secret"
+            namespace = kubernetes_namespace.piloto.metadata[0].name
+          }
+          string_data = {
+            API_KEY = "REEMPLAZAR_CON_VALOR_SEGURO"
+          }
+        }
+
+        resource "kubernetes_deployment" "customer_api" {
+          metadata {
+            name      = "customer-api"
+            namespace = kubernetes_namespace.piloto.metadata[0].name
+            labels = {
+              app = "customer-api"
+            }
+          }
+          spec {
+            replicas = 2
+            selector {
+              match_labels = {
+                app = "customer-api"
+              }
+            }
+            template {
+              metadata {
+                labels = {
+                  app = "customer-api"
+                }
+              }
+              spec {
+                container {
+                  name  = "customer-api"
+                  image = var.image
+                  port {
+                    container_port = 3000
+                  }
+                  env_from {
+                    config_map_ref {
+                      name = kubernetes_config_map.app_cfg.metadata[0].name
+                    }
+                    secret_ref {
+                      name = kubernetes_secret.app_secret.metadata[0].name
+                    }
+                  }
+                  readiness_probe {
+                    http_get {
+                      path = "/healthz"
+                      port = 3000
+                    }
+                    initial_delay_seconds = 5
+                    period_seconds = 10
+                  }
+                  liveness_probe {
+                    http_get {
+                      path = "/healthz"
+                      port = 3000
+                    }
+                    initial_delay_seconds = 15
+                    period_seconds = 20
+                  }
+                  resources {
+                    limits = {
+                      cpu    = "500m"
+                      memory = "512Mi"
+                    }
+                    requests = {
+                      cpu    = "100m"
+                      memory = "128Mi"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        resource "kubernetes_service" "customer_api" {
+          metadata {
+            name      = "customer-api"
+            namespace = kubernetes_namespace.piloto.metadata[0].name
+          }
+          spec {
+            selector = {
+              app = "customer-api"
+            }
+            port {
+              port        = 80
+              target_port = 3000
+            }
+            type = "ClusterIP"
+          }
+        }
+    """),
+    "terraform/outputs.tf": textwrap.dedent("""\
+        output "namespace" {
+          value = kubernetes_namespace.piloto.metadata[0].name
+        }
+    """),
+    # GitHub Actions workflow
+    ".github/workflows/ci-cd.yml": textwrap.dedent("""\
+        name: CI/CD - Build, Push & Deploy
+
+        on:
+          push:
+            branches: [ "main" ]
+          pull_request:
+            branches: [ "main" ]
+
+        env:
+          IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/customer-api
+
+        jobs:
+          build-and-push:
+            runs-on: ubuntu-latest
+            outputs:
+              image: ${{ steps.build.outputs.image }}
+            steps:
+              - name: Checkout
+                uses: actions/checkout@v4
+
+              - name: Set up QEMU
+                uses: docker/setup-qemu-action@v2
+
+              - name: Set up Docker Buildx
+                uses: docker/setup-buildx-action@v2
+
+              - name: Login to GitHub Container Registry
+                uses: docker/login-action@v3
+                with:
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GHCR_TOKEN }}
+
+              - name: Build and push image
+                id: build
+                uses: docker/build-push-action@v5
+                with:
+                  context: ./app
+                  push: true
+                  tags: |
+                    ${{ env.IMAGE_NAME }}:${{ github.sha }}
+                    ${{ env.IMAGE_NAME }}:latest
+
+              - name: Set output image
+                run: echo "::set-output name=image::${{ env.IMAGE_NAME }}:${{ github.sha }}"
+
+          deploy:
+            needs: build-and-push
+            runs-on: ubuntu-latest
+            environment: production
+            steps:
+              - name: Checkout
+                uses: actions/checkout@v4
+
+              - name: Setup kubectl
+                uses: azure/setup-kubectl@v3
+                with:
+                  version: 'v1.27.0'
+
+              - name: Configure kubeconfig
+                run: |
+                  echo "${{ secrets.KUBE_CONFIG }}" | base64 --decode > kubeconfig
+                  export KUBECONFIG=$PWD/kubeconfig
+                  kubectl version --client
+              - name: Update k8s Deployment image
+                run: |
+                  IMAGE=${{ env.IMAGE_NAME }}:${{ github.sha }}
+                  kubectl set image deployment/customer-api customer-api=${IMAGE} -n piloto-hibrido --record
+                  kubectl rollout status deployment/customer-api -n piloto-hibrido --timeout=120s
+
+              - name: Verify health
+                run: |
+                  export KUBECONFIG=$PWD/kubeconfig
+                  kubectl get pods -n piloto-hibrido -o wide
+                  kubectl get svc -n piloto-hibrido
+    """),
+    # Scripts
+    "scripts/build_and_push.sh": textwrap.dedent("""\
+        #!/usr/bin/env bash
+        set -euo pipefail
+
+        IMAGE="ghcr.io/ORGANIZACION/customer-api:latest"
+
+        # Build
+        docker build -t ${IMAGE} ./app
+
+        # Login (asume docker login ya realizado en local)
+        docker push ${IMAGE}
+
+        echo "Imagen publicada: ${IMAGE}"
+    """),
+    "scripts/deploy.sh": textwrap.dedent("""\
+        #!/usr/bin/env bash
+        set -euo pipefail
+
+        KUBECONFIG=${KUBECONFIG:-~/.kube/config}
+        export KUBECONFIG
+
+        # Crear namespace y aplicar manifests
+        kubectl apply -f k8s/namespace.yaml
+        kubectl apply -f k8s/configmap.yaml
+        kubectl apply -f k8s/secret.yaml  # Mantener fuera del repo; usar variantes seguras
+        kubectl apply -f k8s/deployment.yaml
+        kubectl apply -f k8s/service.yaml
+        kubectl apply -f k8s/ingress.yaml
+        kubectl apply -f k8s/hpa.yaml
+
+        kubectl rollout status deployment/customer-api -n piloto-hibrido
+        kubectl get pods -n piloto-hibrido
+    """),
+    # GitLab CI variant
+    ".gitlab-ci.yml": textwrap.dedent("""\
+        stages:
+          - build
+          - deploy
+
+        variables:
+          IMAGE: registry.gitlab.com/$CI_PROJECT_PATH/customer-api:$CI_COMMIT_SHORT_SHA
+
+        build:
+          stage: build
+          image: docker:20.10.16
+          services:
+            - docker:20.10.16-dind
+          script:
+            - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+            - docker build -t $IMAGE ./app
+            - docker push $IMAGE
+          only:
+            - main
+
+        deploy:
+          stage: deploy
+          image: bitnami/kubectl:1.27.0
+          script:
+            - echo "$KUBE_CONFIG" | base64 -d > kubeconfig
+            - export KUBECONFIG=$(pwd)/kubeconfig
+            - kubectl set image deployment/customer-api customer-api=$IMAGE -n piloto-hibrido --record
+            - kubectl rollout status deployment/customer-api -n piloto-hibrido --timeout=120s
+          only:
+            - main
+    """),
+    # README
+    "README.md": textwrap.dedent("""\
+        # Piloto Híbrido - Customer API
+
+        ## Objetivo
+        Contenerizar una API simple y desplegarla en Kubernetes como piloto de modernización híbrida.
+
+        ## Requisitos
+        - Docker
+        - kubectl
+        - acceso a cluster Kubernetes (kubeconfig)
+        - terraform (opcional, si se usa terraform)
+        - GitHub Actions o GitLab CI (opcional, para CI/CD)
+
+        ## Pasos rápidos (local)
+        1. Construir y publicar imagen:
+           ```bash
+           ./scripts/build_and_push.sh
+           ```
+        2. Asegurar kubeconfig y desplegar:
+           ```bash
+           export KUBECONFIG=~/.kube/config
+           ./scripts/deploy.sh
+           ```
+        3. Verificar:
+           ```bash
+           kubectl get pods -n piloto-hibrido
+           kubectl get svc -n piloto-hibrido
+           ```
+
+        ## CI/CD
+        - Configurar Secrets en GitHub: `GHCR_TOKEN`, `KUBE_CONFIG` (base64)
+        - Push a `main` activa workflow `.github/workflows/ci-cd.yml`
+
+        ## Notas de seguridad
+        - No guardar secrets en el repo.
+        - Usar SealedSecrets / Vault para producción.
+
+        ## Contacto
+        Equipo de Plataforma / DevOps
+    """),
+    "LICENSE": textwrap.dedent("""\
+        MIT License
+
+        Copyright (c) 2025
+
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED.
+    """)
+}
+
+# create files
+for path, content in files.items():
+    full_path = os.path.join(root, path)
+    os.makedirs(os.path.dirname(full_path), exist_ok=True)
+    with open(full_path, "w", encoding="utf-8") as f:
+        f.write(content)
+
+# make scripts executable
+for script in ["scripts/build_and_push.sh", "scripts/deploy.sh"]:
+    sp = os.path.join(root, script)
+    st = os.stat(sp)
+    os.chmod(sp, st.st_mode | stat.S_IEXEC)
+
+# create zip
+zip_path = "/mnt/data/semana08-piloto-hibrido.zip"
+with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as z:
+    for folder, _, filenames in os.walk(root):
+        for filename in filenames:
+            filepath = os.path.join(folder, filename)
+            arcname = os.path.relpath(filepath, start=root)
+            z.write(filepath, arcname=os.path.join("semana08-piloto-hibrido", arcname))
+
+print("Created:", zip_path)
+zip_path

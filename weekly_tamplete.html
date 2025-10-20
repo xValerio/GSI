@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Semana XX — Gerencia de Sistemas de Información</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="semanas.css">
+</head>
+<body>
+
+  <!-- Header (igual al index) -->
+  <header class="site-header" role="banner">
+    <div class="header-inner container">
+      <div class="branding">
+        <a href="index.html#hero" class="logo-link" aria-label="Ir al inicio del sitio">
+          <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'">
+        </a>
+        <div class="title-wrap">
+          <h1 class="site-title">Gerencia de Sistemas de Información</h1>
+          <p class="subtitle">Estudios de Especialidad</p>
+        </div>
+      </div>
+
+      <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-menu">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+
+      <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
+        <ul class="menu">
+          <li class="menu-item"><a href="index.html#hero">Inicio</a></li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad I <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana01.html">Semana 01</a></li>
+              <li><a href="semana02.html">Semana 02</a></li>
+              <li><a href="semana03.html">Semana 03</a></li>
+              <li><a href="semana04.html">Semana 04</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad II <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana05.html">Semana 05</a></li>
+              <li><a href="semana06.html">Semana 06</a></li>
+              <li><a href="semana07.html">Semana 07</a></li>
+              <li><a href="semana08.html">Semana 08</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad III <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana09.html">Semana 09</a></li>
+              <li><a href="semana10.html">Semana 10</a></li>
+              <li><a href="semana11.html">Semana 11</a></li>
+              <li><a href="semana12.html">Semana 12</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-submenu">
+            <button class="submenu-toggle" aria-expanded="false">Unidad IV <i class="fa fa-caret-down"></i></button>
+            <ul class="submenu" aria-hidden="true">
+              <li><a href="semana13.html">Semana 13</a></li>
+              <li><a href="semana14.html">Semana 14</a></li>
+              <li><a href="semana15.html">Semana 15</a></li>
+              <li><a href="semana16.html">Semana 16</a></li>
+            </ul>
+          </li>
+          <li class="menu-item"><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="semana-main" role="main">
+
+    <!-- Intro -->
+    <section class="semana-intro">
+      <h1>Semana XX: [Título de la semana]</h1>
+      <p>[Descripción breve de la temática de esta semana.]</p>
+    </section>
+
+    <!-- Objetivos -->
+    <section class="semana-objetivos">
+      <h2>🎯 Objetivos de Aprendizaje</h2>
+      <ul>
+        <li>[Objetivo 1]</li>
+        <li>[Objetivo 2]</li>
+        <li>[Objetivo 3]</li>
+      </ul>
+    </section>
+
+    <!-- Contenido -->
+    <section class="semana-contenido">
+      <h2>📘 Contenido</h2>
+
+      <article class="tema">
+        <h3>1. [Subtema]</h3>
+        <p>[Descripción del subtema]</p>
+        <img src="img/semanaXX/imagen1.jpg" alt="[Descripción de la imagen]">
+      </article>
+
+      <article class="tema">
+        <h3>2. [Subtema]</h3>
+        <p>[Descripción del subtema]</p>
+        <img src="img/semanaXX/imagen2.jpg" alt="[Descripción de la imagen]">
+      </article>
+    </section>
+
+    <!-- Materiales -->
+    <section class="semana-materiales">
+      <h2>📚 Materiales de Estudio</h2>
+      <div class="materiales-grid">
+
+        <article class="material-card pdf">
+          <h3>📄 Lectura Principal</h3>
+          <p>[Breve descripción]</p>
+          <a href="docs/semanaXX.pdf" target="_blank" class="btn-material">Abrir PDF</a>
+        </article>
+
+        <article class="material-card excel">
+          <h3>📊 Ejercicio Práctico</h3>
+          <p>[Breve descripción]</p>
+          <a href="docs/semanaXX.xlsx" download class="btn-material">Descargar Excel</a>
+        </article>
+
+        <article class="material-card video">
+          <h3>🎥 Clase en Video</h3>
+          <p>[Breve descripción]</p>
+          <a href="https://www.youtube.com/watch?v=XXXXX" target="_blank" class="btn-material">Ver en YouTube</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Resumen -->
+    <section class="semana-resumen">
+      <h2>📌 Resumen</h2>
+      <p>[Síntesis de los puntos más importantes.]</p>
+    </section>
+
+    <!-- Recursos complementarios -->
+    <section class="semana-recursos">
+      <h2>🔗 Recursos Complementarios</h2>
+      <ul>
+        <li><a href="#" target="_blank">[Recurso 1]</a></li>
+        <li><a href="#" target="_blank">[Recurso 2]</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="contacto" class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-column">
+        <h3>Sobre mí</h3>
+        <p>Mosquera Zevallos Valerio</p>
+        <p>Estudiante de la Universidad Peruana Los Andes</p>
+        <p>ORCID: 0009-0007-2301-5191</p>
+        <p>Correo institucional: 
+          <a href="mailto:r03398d@ms.upla.edu.pe" class="footer-link">r03398d@ms.upla.edu.pe</a>
+        </p>
+        <p>Correo personal: 
+          <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a>
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Derechos</h3>
+        <p>© 2024 Mosquera Zevallos Valerio</p>
+        <p>Todos los derechos reservados</p>
+        <p>Elaboración propia</p>
+      </div>
+
+      <div class="footer-column redes-column">
+      <h3>Redes</h3>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/valerio-mosquera-4b7884329/" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/Vaalerio" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://wa.me/51978417316" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

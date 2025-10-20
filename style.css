@@ -1,0 +1,578 @@
+/* =========================================================
+   VARIABLES
+========================================================= */
+:root {
+  --primary: #004080;
+  --bg: #f3f3f3;
+  --card: #ffffff;
+  --text: #222;
+  --submenu-bg: rgba(0, 51, 102, 0.95);
+  --white: #fff;
+  --hover-light: rgba(255, 255, 255, 0.12);
+}
+
+/* =========================================================
+   RESET Y BASE GENERAL
+========================================================= */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* =========================================================
+   HEADER (sitio + branding + navegación)
+========================================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  background-color: var(--primary);
+  color: var(--white);
+  z-index: 1200;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.3s ease;
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+/* Branding */
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: default;
+  user-select: none;
+}
+
+.logo {
+  display: block;
+  width: auto;
+  height: 2.75rem;
+  border-radius: 0.375rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .logo:hover,
+  .logo:focus {
+    transform: scale(1.05);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    outline: none;
+  }
+}
+
+.site-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  user-select: text;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  user-select: text;
+}
+
+/* Responsive en móviles */
+@media (max-width: 480px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .branding {
+    gap: 0.5rem;
+  }
+  .site-title {
+    font-size: 0.9rem;
+  }
+  .subtitle {
+    font-size: 0.7rem;
+  }
+  .logo {
+    height: 2.25rem;
+  }
+}
+
+/* =========================================================
+   NAVEGACIÓN PRINCIPAL
+========================================================= */
+.main-nav {
+  position: relative;
+  width: 100%;
+}
+
+/* Botón hamburguesa */
+.nav-toggle {
+  background: transparent;
+  border: none;
+  color: var(--white);
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 1.5rem;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+}
+.nav-toggle:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.2);
+  outline-offset: 2px;
+}
+
+/* Menú */
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.menu .menu-item {
+  background: transparent;
+  border-radius: 6px;
+  position: relative;
+}
+.menu a,
+.submenu-toggle {
+  display: block;
+  color: var(--white);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.menu a:hover,
+.submenu-toggle:hover,
+.menu .menu-item a:hover,
+.menu .menu-item button:hover {
+  background-color: var(--hover-light);
+}
+
+/* Submenús */
+.submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+.menu-item.open > .submenu {
+  max-height: 360px;
+}
+.submenu a {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Botón de submenú */
+.submenu-toggle {
+  background: transparent;
+  border: none;
+  font: inherit;
+  color: var(--white);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.2rem;
+}
+
+/* Menú horizontal en pantallas grandes */
+@media (min-width: 768px) {
+  .menu {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+  .menu-item .submenu {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    background-color: var(--submenu-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(5px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    max-height: none;
+    z-index: 999;
+  }
+  .menu-item.open .submenu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .main-nav {
+    width: auto;
+  }
+}
+
+/* =========================================================
+   SECCIÓN HERO
+========================================================= */
+.hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.32)), url("archivos/imagenfondo.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 3.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  max-width: 980px;
+}
+.hero h2 {
+  font-size: 1.6rem;
+  margin: 0 0 .5rem;
+}
+.lead {
+  margin: 0 0 1rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+.btn-primary {
+  background: #1f578f;
+  color: #fff;
+  padding: .6rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* =========================================================
+   MAIN (CONTENIDO PRINCIPAL)
+========================================================= */
+.main-content {
+  max-width: 1200px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+/* ---------- Unidades y tarjetas ---------- */
+.grid-units {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.unit-card {
+  background: var(--card, #fff);
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.25s ease;
+}
+.unit-card:hover,
+.unit-card:focus-within {
+  transform: translateY(-6px);
+}
+.unit-card h3 {
+  margin: 0 0 0.5rem 0;
+}
+.unit-desc {
+  margin: 0 0 1rem 0;
+  color: var(--desc-color, #666);
+}
+
+/* Botón desplegar semanas */
+.show-weeks {
+  background: transparent;
+  border: 1.5px solid var(--btn-border, #ccc);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text-color, #333);
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+.show-weeks:hover,
+.show-weeks:focus {
+  background-color: var(--btn-hover-bg, #f0f0f0);
+  outline: none;
+}
+
+/* Flecha giratoria */
+.arrow {
+  display: inline-block;
+  margin-left: 0.3rem;
+  transition: transform 0.3s ease;
+  font-size: 1.2em;
+}
+.show-weeks[aria-expanded="true"] .arrow {
+  transform: rotate(180deg);
+}
+
+/* Lista de semanas */
+.weeks-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+.weeks-list[aria-hidden="false"],
+.weeks-list:not([hidden]) {
+  max-height: 500px;
+  opacity: 1;
+  pointer-events: auto;
+}
+.week-card {
+  background: var(--week-bg, #fafafa);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-color, #333);
+  box-shadow: inset 0 0 0 1px var(--week-border, #ddd);
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+.week-card:hover,
+.week-card:focus {
+  background-color: #e2e8f0;
+  outline: none;
+}
+
+/* ---------- Competencias ---------- */
+.competences {
+  margin: 2rem 0;
+}
+.comp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .75rem;
+}
+.comp-box {
+  background: #fff;
+  padding: .8rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.comp-box i {
+  font-size: 1.4rem;
+  color: #0063c7;
+  animation: changeColor 5s infinite alternate;
+}
+
+@keyframes changeColor {
+  0% { color: #0063c7; }
+  40% { color: #005c99; }
+  50% { color: #000000; }
+  55% { color: #006a6a; }
+  100% { color: #00a8a8; }
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.site-footer {
+  background: var(--primary);
+  color: #fff;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  text-align: left;
+}
+.footer-column {
+  flex: 1;
+  min-width: 220px;
+}
+.footer-column h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-bottom: 2px solid rgba(255,255,255,0.6);
+  padding-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+.footer-column p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.85);
+}
+
+/* Enlaces */
+.footer-link {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+  outline: none;
+}
+.footer-link:focus-visible {
+  outline: 3px solid #00acee;
+  outline-offset: 3px;
+  text-decoration: none;
+  color: #00acee;
+}
+.footer-link:hover,
+.footer-link:focus {
+  color: #00acee;
+  text-decoration: none;
+}
+
+/* Redes sociales */
+.redes-column .social-icons {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 0.5rem;
+}
+.redes-column .footer-link {
+  font-size: 0;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.95);
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+.redes-column .footer-link i {
+  font-size: 2.4rem;
+  vertical-align: middle;
+  margin: 0;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.redes-column .footer-link:hover i,
+.redes-column .footer-link:focus i {
+  color: #00acee;
+  transform: scale(1.2);
+  outline: none;
+}
+
+/* Responsive footer */
+@media (max-width: 600px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-column {
+    min-width: auto;
+    margin-bottom: 2rem;
+  }
+  .redes-column .social-icons {
+    justify-content: center;
+  }
+  .redes-column .footer-link i {
+    font-size: 3rem;
+    margin: 0 1rem;
+  }
+}
+
+/* =========================================================
+   MEDIA QUERIES
+========================================================= */
+@media (min-width: 600px) {
+  .grid-units {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .comp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .menu {
+    flex-direction: row;
+    align-items: center;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .menu li.has-submenu {
+    position: relative;
+  }
+  .submenu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: var(--submenu-bg);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: .5rem 0;
+    max-height: 0;
+    width: 220px;
+    overflow: hidden;
+    transition: max-height 0.28s ease;
+    z-index: 999;
+  }
+  .menu-item.open > .submenu {
+    max-height: 600px;
+  }
+  .submenu a {
+    color: #fff;
+  }
+}
+
+@media (min-width: 992px) {
+  .grid-units {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .comp-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .hero {
+    padding: 6rem 1rem;
+  }
+  .hero h2 {
+    font-size: 2.2rem;
+  }
+}

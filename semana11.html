@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Semana 11 — Gerencia de Sistemas de Información</title>
+
+    <!-- Tipografía -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="semanas.css">
+  </head>
+  <body>
+    <!-- Header (igual al index) -->
+    <header class="site-header" role="banner">
+      <div class="header-inner container">
+        <div class="branding">
+          <a href="index.html#hero" class="logo-link" aria-label="Ir al inicio del sitio">
+            <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'">
+          </a>
+          <div class="title-wrap">
+            <h1 class="site-title">Gerencia de Sistemas de Información</h1>
+            <p class="subtitle">Estudios de Especialidad</p>
+          </div>
+        </div>
+        <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+        <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
+          <ul class="menu">
+            <li class="menu-item"><a href="index.html#hero">Inicio</a></li>
+            <li class="menu-item has-submenu">
+              <button class="submenu-toggle" aria-expanded="false">Unidad I <i class="fa fa-caret-down"></i></button>
+              <ul class="submenu" aria-hidden="true">
+                <li><a href="semana01.html">Semana 01</a></li>
+                <li><a href="semana02.html">Semana 02</a></li>
+                <li><a href="semana03.html">Semana 03</a></li>
+                <li><a href="semana04.html">Semana 04</a></li>
+              </ul>
+            </li>
+            <li class="menu-item has-submenu">
+              <button class="submenu-toggle" aria-expanded="false">Unidad II <i class="fa fa-caret-down"></i></button>
+              <ul class="submenu" aria-hidden="true">
+                <li><a href="semana05.html">Semana 05</a></li>
+                <li><a href="semana06.html">Semana 06</a></li>
+                <li><a href="semana07.html">Semana 07</a></li>
+                <li><a href="semana08.html">Semana 08</a></li>
+              </ul>
+            </li>
+            <li class="menu-item has-submenu">
+              <button class="submenu-toggle" aria-expanded="true">Unidad III <i class="fa fa-caret-down"></i></button>
+              <ul class="submenu" aria-hidden="false">
+                <li><a href="semana09.html">Semana 09</a></li>
+                <li><a href="semana10.html">Semana 10</a></li>
+                <li><a href="semana11.html" class="active" aria-current="page">Semana 11</a></li>
+                <li><a href="semana12.html">Semana 12</a></li>
+              </ul>
+            </li>
+            <li class="menu-item has-submenu">
+              <button class="submenu-toggle" aria-expanded="false">Unidad IV <i class="fa fa-caret-down"></i></button>
+              <ul class="submenu" aria-hidden="true">
+                <li><a href="semana13.html">Semana 13</a></li>
+                <li><a href="semana14.html">Semana 14</a></li>
+                <li><a href="semana15.html">Semana 15</a></li>
+                <li><a href="semana16.html">Semana 16</a></li>
+              </ul>
+            </li>
+            <li class="menu-item"><a href="index.html#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ==========================
+     SEMANA 11 - DISEÑO Y TRANSICIÓN DEL SERVICIO
+     Diseño del servicio • Transición del servicio (contenido ampliado)
+     ========================== -->
+<main class="semana-main" role="main" aria-labelledby="semana11-title">
+  <!-- Intro -->
+  <section class="semana-intro">
+    <h1 id="semana11-title">Semana 11: Diseño del servicio y Transición del servicio</h1>
+    <p>
+      En esta semana profundizamos en <strong>Diseño del Servicio</strong> (cómo diseñar servicios robustos, seguros y escalables) y en <strong>Transición del Servicio</strong> (planificar y ejecutar despliegues controlados que minimicen el riesgo y garanticen aceptación). Contenido ampliado con plantillas, checklists y un laboratorio práctico.
+    </p>
+    <figure class="intro-figure" style="max-width:900px; margin:1rem auto; display:flex; flex-direction:column; align-items:center; text-align:center;">
+      <img src="archivos/service_transition.jpg"
+           alt="Diseño y transición del servicio: flujos, paquetes de servicio, pruebas y despliegue"
+           loading="lazy"
+           style="width:100%; height:auto; border-radius:6px;">
+      <figcaption style="font-size:0.9rem; color:#555; margin-top:0.5rem;">
+        Figura: Desde el Service Design Package hasta el plan de transición y aceptación.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- Objetivos -->
+  <section class="semana-objetivos">
+    <h2>Objetivos de aprendizaje</h2>
+    <ul>
+      <li>Comprender el ciclo completo de <strong>Service Design</strong>: requisitos, arquitectura, SLP/SLAs, seguridad, capacidad y continuidad.</li>
+      <li>Conocer la estructura del <strong>Service Design Package (SDP)</strong> y cómo documentar requisitos de aceptación.</li>
+      <li>Aprender prácticas de <strong>Service Transition</strong>: planificación de releases, gestión de cambios, pruebas y CAB.</li>
+      <li>Diseñar planes de despliegue (blue/green, canary, rolling) con rollback y validación post-deploy.</li>
+      <li>Preparar artefactos reutilizables: checklist de release, plan de pruebas, runbook y artículos de conocimiento.</li>
+    </ul>
+  </section>
+
+  <!-- Contenido -->
+  <section class="semana-contenido">
+    <h2>Contenido (ampliado)</h2>
+
+    <!-- Tema 1 -->
+    <article class="tema">
+      <h3>1. Principios de Service Design</h3>
+      <p>
+        El diseño de servicios debe garantizar que la entrega soporta los requisitos del negocio en calidad, coste, seguridad y continuidad.
+      </p>
+      <ul>
+        <li><strong>Centricidad en el usuario:</strong> experiencia, niveles de servicio y accesibilidad.</li>
+        <li><strong>Diseño por capacidad:</strong> estimaciones de carga, escalabilidad y pruebas de stress.</li>
+        <li><strong>Seguridad y cumplimiento:</strong> controles desde el diseño (security-by-design, privacy-by-design).</li>
+        <li><strong>Operabilidad:</strong> observabilidad, telemetría y runbooks incorporados desde el diseño.</li>
+        <li><strong>Reutilización y modularidad:</strong> componentes, APIs y contratos claros.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 2 -->
+    <article class="tema">
+      <h3>2. Service Design Package (SDP) — contenido y plantilla</h3>
+      <p>
+        El SDP es el paquete central que recoge todo lo necesario para construir, probar, desplegar y operar un servicio.
+      </p>
+      <h4>Secciones recomendadas del SDP</h4>
+      <ul>
+        <li>Resumen ejecutivo y proposición de valor.</li>
+        <li>Alcance del servicio y requisitos funcionales/no funcionales (SLA, seguridad, rendimiento).</li>
+        <li>Arquitectura lógica y física (diagramas), dependencias y CMDB references.</li>
+        <li>Modelos de entrega (on-prem / cloud / híbrido) y requisitos de capacidad.</li>
+        <li>Requisitos de continuidad, backup y DR.</li>
+        <li>Matriz RACI: roles para diseño, pruebas, despliegue y operación.</li>
+        <li>Plan de transición (high-level) y criterios de aceptación (exit criteria).</li>
+        <li>Plan de pruebas (unit, integración, performance, seguridad) y artefactos de validación.</li>
+        <li>Runbooks, playbooks y procedimientos operativos.</li>
+      </ul>
+      <p><strong>Tip:</strong> mantén el SDP versionado junto al código (repo) y vinculado al pipeline CI/CD.</p>
+    </article>
+
+    <!-- Tema 3 -->
+    <article class="tema">
+      <h3>3. Diseño técnico: arquitectura, configuración y dependencias</h3>
+      <p>
+        Profundiza en elementos técnicos que deben quedar definidos en el diseño.
+      </p>
+      <ul>
+        <li><strong>Topologías de despliegue:</strong> microservicios, monolitos modulados, BFF, edge caches.</li>
+        <li><strong>Red y seguridad:</strong> segmentación, WAF, network policies, TLS y gestión de secretos.</li>
+        <li><strong>Almacenamiento y consistencia:</strong> tipos de almacenamiento, RTO/RPO, políticas de backup.</li>
+        <li><strong>Observabilidad:</strong> métricas, logs y traces requeridos para SLOs y alertas.</li>
+        <li><strong>Configuración como código:</strong> IaC (Terraform), config maps, y gestión de secretos (Vault).</li>
+      </ul>
+    </article>
+
+    <!-- Tema 4 -->
+    <article class="tema">
+      <h3>4. Planificación de la transición: modelos y artefactos</h3>
+      <p>
+        La transición reduce riesgo: planifica, prueba, valida y formaliza la aceptación antes de operar en producción.
+      </p>
+      <ul>
+        <li>Plan de transición completo: actividades, dependencias, ventanas, rollback y recursos.</li>
+        <li>Release Management: tipos de release (major, minor, emergency) y criterios de aprobación.</li>
+        <li>Change Advisory Board (CAB): roles, flujos y excepciones para cambios urgentes.</li>
+        <li>Documentos clave: plan de despliegue, plan de vuelta atrás, checklist de pre/post-deploy.</li>
+        <li>Pruebas de aceptación: UAT, SAST/DAST, performance y pruebas de resiliencia.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 5 -->
+    <article class="tema">
+      <h3>5. Modelos de despliegue y estrategias de mitigación de riesgo</h3>
+      <p>
+        Seleccionar una estrategia de despliegue adecuada reduce impacto y facilita rollback.
+      </p>
+      <ul>
+        <li><strong>Blue/Green:</strong> entornos paralelos y conmutación controlada.</li>
+        <li><strong>Canary:</strong> desplegar a un subconjunto y medir antes de ampliar.</li>
+        <li><strong>Rolling:</strong> actualizaciones por lotes sin downtime completo.</li>
+        <li><strong>Feature flags:</strong> habilitar/deshabilitar funcionalidades sin desplegar código.</li>
+        <li><strong>Immutable infra:</strong> reemplazo de instancias en lugar de cambios in-place.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 6 -->
+    <article class="tema">
+      <h3>6. Gestión del cambio, CAB y automatización</h3>
+      <p>
+        El cambio controlado combina gobierno con velocidad: automatiza donde sea posible y mantén gobernanza ligera para cambios ágiles.
+      </p>
+      <ul>
+        <li>Tipos de cambio y criterios para bypass de CAB (emergencias, hotfix con post-facto review).</li>
+        <li>Integración del pipeline CI/CD con solicitudes de cambio (change requests) y approvals automáticos.</li>
+        <li>Auditoría y trazabilidad: cada despliegue debe poder asociarse a un CR, commit y artefacto build.</li>
+        <li>Métricas de cambio: lead time for changes, change failure rate, mean time to restore.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 7 -->
+    <article class="tema">
+      <h3>7. Pruebas, validación y aceptación operacional</h3>
+      <p>
+        Definir criterios claros de aceptación evita “deploys a ciegas”.
+      </p>
+      <ul>
+        <li>Plan de pruebas con cobertura: unit, integración, contract tests, E2E, performance y seguridad.</li>
+        <li>Pruebas de resiliencia: chaos engineering básico, pruebas de failover y degradación.</li>
+        <li>Criterios de aceptación operativa: métricas mínimas (latencia, error rate, throughput) y checks automatizados.</li>
+        <li>Checklist de Go/No-Go para despliegues en ventanas críticas.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 8 -->
+    <article class="tema">
+      <h3>8. Entrega de operaciones: runbooks, knowledge base y soporte</h3>
+      <p>
+        La documentación operativa hace la diferencia entre recuperaciones rápidas o largas.
+      </p>
+      <ul>
+        <li>Runbooks con pasos claros para incidentes comunes y remediaciones automatizadas.</li>
+        <li>Artículos de conocimiento (KCS): plantillas y ejemplos para el service desk.</li>
+        <li>Capacitación y handover: sesiones, vídeos, y pruebas de conocimiento al personal de operación.</li>
+        <li>Integración CMDB/Service Catalog para actualizar estados y dependencias tras la transición.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 9 -->
+    <article class="tema">
+      <h3>9. KPIs y métricas para diseño y transición</h3>
+      <p>
+        Métricas recomendadas para evaluar la calidad del diseño y la eficacia de la transición.
+      </p>
+      <ul>
+        <li><strong>Antes / diseño:</strong> % requisitos no-funcionales cubiertos, cobertura de pruebas en SDP.</li>
+        <li><strong>Despliegues:</strong> despliegues por semana, % despliegues exitosos, tasa de rollback.</li>
+        <li><strong>Cambios:</strong> lead time for changes, change failure rate, tiempo de aprobación CAB.</li>
+        <li><strong>Operación:</strong> MTTR, % SLA cumplidos post-deploy, incidentes por despliegue.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 10 -->
+    <article class="tema">
+      <h3>10. Herramientas y pipelines recomendados</h3>
+      <p>
+        Herramientas que facilitan el diseño reproducible y la transición automatizada.
+      </p>
+      <ul>
+        <li>Repositorios & CI: GitHub/GitLab + Actions / GitLab CI / Jenkins.</li>
+        <li>CD & Releases: ArgoCD, Spinnaker, Flux, Octopus Deploy.</li>
+        <li>Infra-as-Code: Terraform, Pulumi; configuración: Ansible.</li>
+        <li>Testing y QA: Pact (contract tests), k6 (performance), SonarQube (calidad estática).</li>
+        <li>Gestión de cambios & ITSM: ServiceNow, Jira Service Management (integración de CRs).</li>
+        <li>Feature flags: LaunchDarkly, Unleash.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 11: Checklist / Plantillas rápidas -->
+    <article class="tema">
+      <h3>11. Checklists y plantillas rápidas (útiles para el laboratorio)</h3>
+      <p>Incluye fragmentos que puedes copiar/pegar al crear artefactos.</p>
+      <h4>Checklist pre-despliegue (resumen)</h4>
+      <ul>
+        <li>SDP aprobado y versionado en repo.</li>
+        <li>Backups y snapshot listos para rollback.</li>
+        <li>Pruebas automáticas pasan en pipeline (unit, integration, smoke).</li>
+        <li>CAB / approvals asignados y CR cerrado para la ventana.</li>
+        <li>Runbook y contactos en caso de incidentes listos.</li>
+      </ul>
+      <h4>Plantilla mínima de Plan de Transición</h4>
+      <pre style="white-space:pre-wrap; background:#f8f8f8; padding:0.6rem; border-radius:6px;">
+Título:
+Alcance:
+Ventana de despliegue:
+Equipo y contactos:
+Pasos pre-despliegue:
+Pasos de despliegue:
+Validaciones post-despliegue:
+Rollback (pasos):
+Criterios de aceptación:
+Lecciones aprendidas:
+      </pre>
+    </article>
+
+    <!-- Tema 12: Roadmap práctico para diseño+transición -->
+    <article class="tema">
+      <h3>12. Roadmap práctico (resumen ampliado)</h3>
+      <ol>
+        <li><strong>Diseño detallado (3–6 semanas):</strong> SDP, arquitectura, acuerdos de seguridad y runbooks.</li>
+        <li><strong>Construcción y pruebas (4–8 semanas):</strong> pipelines, pruebas automatizadas, pruebas de performance y seguridad.</li>
+        <li><strong>Transición piloto (4–6 semanas):</strong> despliegue canary o en entorno controlado, validar SLOs y aceptación.</li>
+        <li><strong>Despliegue general y estabilización (2–4 semanas):</strong> roll-out por dominios y operación asistida.</li>
+        <li><strong>Post-transition (continuo):</strong> revisión de lecciones aprendidas y mejoras en el SDP y runbooks.</li>
+      </ol>
+    </article>
+
+    <!-- Tema 13: Laboratorio sugerido (entregable mínimo) -->
+    <article class="tema">
+      <h3>13. Laboratorio sugerido — Diseño + Transición (entregables ampliados)</h3>
+      <p><strong>Título:</strong> Diseño y transición del servicio “Portal de Clientes”</p>
+      <p><strong>Contexto:</strong> construir un servicio web para atención de clientes con requisitos de disponibilidad, seguridad y SLA 24/7.</p>
+      <p><strong>Entregables mínimos:</strong></p>
+      <ul>
+        <li><strong>SDP completo:</strong> requisitos, diagramas de arquitectura, dependencias, RACI y criterios de aceptación.</li>
+        <li><strong>Plan de pruebas:</strong> casos de prueba para integración, performance y seguridad (SAST/DAST) y scripts de automatización.</li>
+        <li><strong>Pipeline CI/CD:</strong> YAML de CI y workflows (build, test, deploy canary).</li>
+        <li><strong>Plan de transición:</strong> ventana, checklist pre/post, plan de rollback y runbook de incidentes.</li>
+        <li><strong>KB y handover:</strong> artículos para service desk, runbooks y sesión grabada de transferencia.</li>
+        <li><strong>Informe final:</strong> métricas antes/después, lessons learned y plan de mejora continua.</li>
+      </ul>
+      <p><strong>Entrega práctica:</strong> incluye archivos en un repo: `/sdps/portal-clientes/`, `/pipelines/`, `/tests/`, `/runbooks/` y `/docs/transition/`.</p>
+    </article>
+
+  </section>
+
+  <!-- Materiales -->
+  <section class="semana-materiales">
+    <h2>Materiales de estudio</h2>
+    <div class="materiales-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem;">
+      <article class="material-card pdf">
+        <h3>Lectura: Diseño y transición de servicios — guía práctica</h3>
+        <p>Documento con plantillas de SDP, plan de pruebas y checklist de despliegue.</p>
+        <a href="docs/semana11-guia-diseno-transicion.pdf" target="_blank" class="btn-material">Abrir PDF</a>
+      </article>
+      <article class="material-card lab">
+        <h3>Laboratorio: Implementación del Portal de Clientes</h3>
+        <p>Guía paso a paso para crear SDP, pipelines y ejecutar una transición canary controlada.</p>
+        <a href="docs/semana11-lab-portal.pdf" target="_blank" class="btn-material">Abrir guía del laboratorio</a>
+      </article>
+      <article class="material-card template">
+        <h3>Plantillas: SDP, Plan de Transición, Runbook y Checklist</h3>
+        <p>Archivos editables (.docx / .yml / .xlsx / .md) listos para adaptar e integrar en repositorio.</p>
+        <a href="docs/semana11-plantillas.zip" download class="btn-material">Descargar plantillas</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Resumen -->
+  <section class="semana-resumen">
+    <h2>Resumen</h2>
+    <p>
+      En la Semana 11 profundizamos en <strong>Service Design</strong> (garantizar requisitos no funcionales, seguridad, operabilidad) y en <strong>Service Transition</strong> (planificación, pruebas, CAB, despliegues seguros y aceptación). El material incluye plantillas prácticas (SDP, plan de transición, runbooks) y un laboratorio para aplicar el flujo completo a un servicio real.
+    </p>
+    <p>
+      ¿Quieres que genere ahora los artefactos del laboratorio (SDP en .docx, pipeline CI/CD en YAML, plantilla de plan de transición en .docx/.xlsx y runbook en .md) y te los entregue empaquetados para descargar? Dime cuáles formatos prefieres y los creo inmediatamente.
+    </p>
+  </section>
+
+  <!-- Recursos complementarios -->
+  <section class="semana-recursos">
+    <h2>Recursos complementarios</h2>
+    <ul>
+      <li><a href="docs/semana11-referencias.pdf" target="_blank" rel="noopener">Lecturas recomendadas y referencias (PDF)</a></li>
+      <li><a href="archivos/diseno-transicion-cheat-sheet.txt" target="_blank" rel="noopener">Cheat sheet: SDP, Checklists y KPIs</a></li>
+      <li><a href="archivos/resuelto.txt" target="_blank" rel="noopener">Resuelto</a></li>
+    </ul>
+  </section>
+</main>
+
+    <!-- Footer -->
+    <footer id="contacto" class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <div class="footer-column">
+          <h3>Sobre mí</h3>
+          <p>Mosquera Zevallos Valerio</p>
+          <p>Estudiante de la Universidad Peruana Los Andes</p>
+          <p>ORCID: 0009-0007-2301-5191</p>
+          <p>Correo institucional:
+            <a href="mailto:r03398d@ms.upla.edu.pe" class="footer-link">r03398d@ms.upla.edu.pe</a>
+          </p>
+          <p>Correo personal:
+            <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a>
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Derechos</h3>
+          <p>© 2024 Mosquera Zevallos Valerio</p>
+          <p>Todos los derechos reservados</p>
+          <p>Elaboración propia</p>
+        </div>
+        <div class="footer-column redes-column">
+          <h3>Redes</h3>
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/valerio-mosquera-4b7884329/" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/Vaalerio" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://wa.me/51978417316" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

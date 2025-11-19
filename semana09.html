@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Semana 09 — Gerencia de Sistemas de Información</title>
+
+    <!-- Tipografía -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="semanas.css">
+  </head>
+  <body>
+    <!-- Header (igual al index) -->
+    <header class="site-header" role="banner">
+      <div class="header-inner container">
+        <div class="branding">
+          <a href="index.html#hero" class="logo-link" aria-label="Ir al inicio del sitio">
+            <img src="archivos/logo.png" alt="Logo de la asignatura" class="logo" onerror="this.style.display='none'">
+          </a>
+          <div class="title-wrap">
+            <h1 class="site-title">Gerencia de Sistemas de Información</h1>
+            <p class="subtitle">Estudios de Especialidad</p>
+          </div>
+        </div>
+        <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+        <nav id="main-menu" class="main-nav" role="navigation" aria-label="Menú principal del curso">
+          <ul class="menu">
+            <li class="menu-item"><a href="index.html#hero">Inicio</a></li>
+            <li class="menu-item has-submenu">
+              <button class="submenu-toggle" aria-expanded="false">Unidad I <i class="fa fa-caret-down"></i></button>
+              <ul class="submenu" aria-hidden="true">
+                <li><a href="semana01.html">Semana 01</a></li>
+                <li><a href="semana02.html">Semana 02</a></li>
+                <li><a href="semana03.html">Semana 03</a></li>
+                <li><a href="semana04.html">Semana 04</a></li>
+              </ul>
+            </li>
+            <li class="menu-item has-submenu">
+              <button class="submenu-toggle" aria-expanded="false">Unidad II <i class="fa fa-caret-down"></i></button>
+              <ul class="submenu" aria-hidden="true">
+                <li><a href="semana05.html">Semana 05</a></li>
+                <li><a href="semana06.html">Semana 06</a></li>
+                <li><a href="semana07.html">Semana 07</a></li>
+                <li><a href="semana08.html">Semana 08</a></li>
+              </ul>
+            </li>
+            <li class="menu-item has-submenu">
+              <button class="submenu-toggle" aria-expanded="true">Unidad III <i class="fa fa-caret-down"></i></button>
+              <ul class="submenu" aria-hidden="false">
+                <li><a href="semana09.html" class="active" aria-current="page">Semana 09</a></li>
+                <li><a href="semana10.html">Semana 10</a></li>
+                <li><a href="semana11.html">Semana 11</a></li>
+                <li><a href="semana12.html">Semana 12</a></li>
+              </ul>
+            </li>
+            <li class="menu-item has-submenu">
+              <button class="submenu-toggle" aria-expanded="false">Unidad IV <i class="fa fa-caret-down"></i></button>
+              <ul class="submenu" aria-hidden="true">
+                <li><a href="semana13.html">Semana 13</a></li>
+                <li><a href="semana14.html">Semana 14</a></li>
+                <li><a href="semana15.html">Semana 15</a></li>
+                <li><a href="semana16.html">Semana 16</a></li>
+              </ul>
+            </li>
+            <li class="menu-item"><a href="index.html#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ==========================
+     SEMANA 09 - GOBIERNO DE TI
+     Alineamiento estratégico, creación de valor y gestión de procesos
+     ========================== -->
+<main class="semana-main" role="main" aria-labelledby="semana09-title">
+  <!-- Intro -->
+  <section class="semana-intro">
+    <h1 id="semana09-title">Semana 09: Gobierno de TI</h1>
+    <p>
+      En esta semana nos centraremos en <strong>Gobierno de TI</strong>: cómo alinear la función de TI con los objetivos estratégicos de la empresa, cómo crear y medir valor a través de iniciativas tecnológicas y cómo gestionar procesos clave que aseguren control, transparencia y mejora continua.
+    </p>
+    <figure class="intro-figure" style="max-width:900px; margin:1rem auto; display: flex; flex-direction: column; align-items: center; text-align: center;">
+      <img src="archivos/procesos.png" 
+           alt="Esquema de Gobierno de TI: alineamiento, creación de valor, gestión de procesos" 
+           loading="lazy" 
+           style="width: 80%; height: auto; border-radius: 6px;">
+      <figcaption style="font-size: 0.9rem; color: #555; margin-top: 0.5rem;">
+        Figura: Elementos clave del Gobierno de TI — estrategia, estructuras, procesos y métricas.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- Objetivos -->
+  <section class="semana-objetivos">
+    <h2>Objetivos de aprendizaje</h2>
+    <ul>
+      <li>Comprender el propósito y alcance del <strong>Gobierno de TI</strong> en la organización.</li>
+      <li>Aprender a alinear la estrategia de TI con los objetivos del negocio y priorizar iniciativas.</li>
+      <li>Conocer mecanismos y estructuras (comités, RACI, políticas) para la toma de decisiones y control.</li>
+      <li>Diseñar indicadores y métricas para medir creación de valor (beneficios, ROI, SLA, TCO).</li>
+      <li>Mapear y mejorar procesos clave de TI para asegurar cumplimiento, calidad y continuidad.</li>
+    </ul>
+  </section>
+
+  <!-- Contenido -->
+  <section class="semana-contenido">
+    <h2>Contenido</h2>
+
+    <!-- Tema 1 -->
+    <article class="tema">
+      <h3>1. ¿Qué es el Gobierno de TI?</h3>
+      <p>
+        El <strong>Gobierno de TI</strong> es el conjunto de estructuras, procesos y relaciones que aseguran que la TI de la organización soporta y extiende las estrategias y objetivos de la empresa, entregando valor y gestionando riesgos. Incluye toma de decisiones, rendición de cuentas y mecanismos de control.
+      </p>
+      <ul>
+        <li>Objetivos: Alineamiento, creación de valor, gestión de riesgos, optimización de recursos y cumplimiento.</li>
+        <li>Ámbitos: estrategia, cartera de inversiones, políticas, arquitectura, seguridad y continuidad.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 2 -->
+    <article class="tema">
+      <h3>2. Alineamiento estratégico de TI con los objetivos de la empresa</h3>
+      <p>
+        El alinear TI con el negocio implica traducir la visión y metas corporativas en iniciativas tecnológicas priorizadas por valor y riesgo.
+      </p>
+      <ul>
+        <li><strong>Modelo de valor:</strong> definir casos de uso que generen ingresos, reduzcan costos o mitiguen riesgos.</li>
+        <li><strong>Gestión de cartera (IT Portfolio):</strong> categorizar proyectos (transformación, mantenimiento, compliance) y priorizar según beneficios y capacidad.</li>
+        <li><strong>Demand & Demand Management:</strong> procesos para captar, evaluar y priorizar solicitudes de TI.</li>
+        <li><strong>KPIs de alineamiento:</strong> porcentaje de iniciativas alineadas, % de roadmap entregado, tiempo-to-value.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 3 -->
+    <article class="tema">
+      <h3>3. Creación de valor y medición</h3>
+      <p>
+        Medir creación de valor requiere métricas financieras y no financieras que demuestren impacto real en el negocio.
+      </p>
+      <ul>
+        <li><strong>Métricas financieras:</strong> ROI, NPV, Payback, TCO, reducción de costos operativos.</li>
+        <li><strong>Métricas operativas:</strong> SLA compliance, disponibilidad, mean time to repair (MTTR).</li>
+        <li><strong>Métricas de usuario/negocio:</strong> satisfacción del usuario, aumento de ventas, conversión, tiempo de proceso.</li>
+        <li>Implementar un <strong>benefits realization plan</strong> para hacer seguimiento de los beneficios esperados post-implementación.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 4 -->
+    <article class="tema">
+      <h3>4. Gestión de procesos en Gobierno de TI</h3>
+      <p>
+        Procesos bien definidos permiten control, repetibilidad y mejora continua. Algunas áreas críticas:
+      </p>
+      <ul>
+        <li>Gestión de la cartera de proyectos (Portfolio Management).</li>
+        <li>Gestión de cambios y releases.</li>
+        <li>Gestión de incidentes, problemas y continuidad (ITSM).</li>
+        <li>Gestión de proveedores y contratos (SLA/OLA).</li>
+        <li>Gestión de riesgos y cumplimiento.</li>
+      </ul>
+      <p>Un ciclo típico de procesos: <em>definir → ejecutar → medir → mejorar</em> (Planificar, Hacer, Verificar, Actuar).</p>
+    </article>
+
+    <!-- Tema 5 -->
+    <article class="tema">
+      <h3>5. Estructuras y roles</h3>
+      <p>
+        Estructurar la gobernanza implica definir comités, roles y responsabilidades claras:
+      </p>
+      <ul>
+        <li><strong>Comité de Dirección de TI / Steering Committee:</strong> decide prioridades y aprueba inversiones.</li>
+        <li><strong>Oficina de Gestión de Proyectos (PMO):</strong> coordina portafolio y reportes.</li>
+        <li><strong>Chief Information Officer (CIO) / Chief Digital Officer (CDO):</strong> vínculo estratégico con la dirección.</li>
+        <li><strong>RACI:</strong> matriz de responsabilidades para procesos y entregables.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 6 -->
+    <article class="tema">
+      <h3>6. Marcos y buenas prácticas</h3>
+      <p>
+        Existen marcos y estándares que facilitan la implementación del gobierno:
+      </p>
+      <ul>
+        <li><strong>COBIT:</strong> marco de gobierno y control orientado a la alineación y control de TI.</li>
+        <li><strong>ITIL:</strong> buenas prácticas para ITSM (incident, change, problem, service catalog).</li>
+        <li><strong>ISO/IEC 38500:</strong> directrices para la gobernanza corporativa de TI.</li>
+        <li>Adoptar políticas internas, policy-as-code y dashboards ejecutivos para visibilidad.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 7 -->
+    <article class="tema">
+      <h3>7. Roadmap de implementación (resumen)</h3>
+      <ol>
+        <li><strong>Diagnóstico & patrocinio (2–4 semanas):</strong> evaluar madurez de gobierno y asegurar sponsor ejecutivo.</li>
+        <li><strong>Diseño de gobierno (4–6 semanas):</strong> definir comités, procesos, KPIs y RACI.</li>
+        <li><strong>Piloto y quick wins (6–10 semanas):</strong> implementar 2–3 procesos críticos (p.ej., demand mgmt, change mgmt) y dashboards.</li>
+        <li><strong>Escalamiento y mejora continua (continuo):</strong> ampliar alcance, automatizar reportes y vincular beneficios al presupuesto.</li>
+      </ol>
+    </article>
+
+    <!-- Tema 8: Laboratorio -->
+    <article class="tema">
+      <h3>8. Laboratorio sugerido (entregable mínimo)</h3>
+      <p><strong>Título:</strong> Implementación inicial de Gobierno de TI — Charter, RACI, Portafolio y Dashboard de valor</p>
+      <p><strong>Entregables mínimos:</strong></p>
+      <ul>
+        <li>Documento: <em>Charter de Gobierno de TI</em> (objetivos, alcance, patrocinio y estructura de comités).</li>
+        <li>Matriz RACI para procesos clave (gestión de cartera, cambios, incidentes).</li>
+        <li>Plan de priorización del portafolio con criterios (valor, riesgo, capacidad).</li>
+        <li>Dashboard ejecutivo (plantilla Excel / Power BI) con KPIs de valor y rendimiento.</li>
+        <li>Checklist de control y plan de benefits realization.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 9 -->
+    <article class="tema">
+      <h3>9. Beneficios esperados</h3>
+      <ul>
+        <li>Decisiones de inversión en TI más alineadas y transparentes.</li>
+        <li>Mayor probabilidad de entrega de beneficios (time-to-value reducido).</li>
+        <li>Mejor gestión de riesgos y cumplimiento regulatorio.</li>
+        <li>Optimización de costos y mayor retorno de las inversiones TI.</li>
+      </ul>
+    </article>
+
+    <!-- Tema 10 -->
+    <article class="tema">
+      <h3>10. Herramientas y plantillas recomendadas</h3>
+      <table class="resumen-table" style="width:100%; border-collapse:collapse; margin-top:0.5rem;">
+        <thead>
+          <tr>
+            <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Área</th>
+            <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Herramientas / Plantillas</th>
+            <th style="text-align:left; border-bottom:1px solid var(--border); padding:0.5rem;">Uso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Gobierno / Marco</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Plantilla Charter, RACI, políticas internas</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Definir estructura y responsabilidades</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Portfolio / Prioritización</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Matriz valor/riesgo, scoring en Excel / Power BI</td>
+            <td style="padding:0.5rem; border-bottom:1px solid #eee;">Priorizar iniciativas</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem;">Medición</td>
+            <td style="padding:0.5rem;">Templates KPI, dashboard ejecutivo</td>
+            <td style="padding:0.5rem;">Monitoreo de creación de valor y SLAs</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+  </section>
+
+  <!-- Materiales -->
+  <section class="semana-materiales">
+    <h2>Materiales de estudio</h2>
+    <div class="materiales-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem;">
+      <article class="material-card pdf">
+        <h3>Lectura: Guía práctica de Gobierno de TI</h3>
+        <p>Documento con definiciones, estructura de gobierno, ejemplos de KPI y checklist de implementación.</p>
+        <a href="docs/semana09-guia-gobierno.pdf" target="_blank" class="btn-material">Abrir PDF</a>
+      </article>
+      <article class="material-card lab">
+        <h3>Laboratorio: Implementación inicial del Charter y RACI</h3>
+        <p>Guía paso a paso para crear el charter, definir comités y construir la matriz RACI.</p>
+        <a href="docs/semana09-lab-charter.pdf" target="_blank" class="btn-material">Abrir guía del laboratorio</a>
+      </article>
+      <article class="material-card template">
+        <h3>Plantillas: Charter, RACI y Dashboard KPI</h3>
+        <p>Archivos editables (.docx / .xlsx / .pbix) para adaptar a tu organización.</p>
+        <a href="docs/semana09-plantillas.zip" download class="btn-material">Descargar plantillas</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Resumen -->
+  <section class="semana-resumen">
+    <h2>Resumen</h2>
+    <p>
+      En la Semana 09 abordamos los principios y prácticas del <strong>Gobierno de TI</strong>: cómo alinearlo con la estrategia, cómo medir y demostrar creación de valor y cómo diseñar procesos y estructuras que permitan control y mejora continua. El enfoque práctico es entregar un charter, una matriz RACI y un tablero de KPIs que muestren impacto al negocio.
+    </p>
+    <p>
+      ¿Quieres que genere ahora el <em>Charter de Gobierno</em>, la matriz RACI y el dashboard KPI listos para descargar y usar en tu repositorio? Puedo generarlos en formatos editables (.docx, .xlsx, Power BI / Excel).
+    </p>
+  </section>
+
+  <!-- Recursos complementarios -->
+  <section class="semana-recursos">
+    <h2>Recursos complementarios</h2>
+    <ul>
+      <li><a href="docs/semana09-referencias.pdf" target="_blank" rel="noopener">Lecturas recomendadas y referencias (PDF)</a></li>
+      <li><a href="archivos/gobierno-ti-cheat-sheet.txt" target="_blank" rel="noopener">Cheat sheet: KPIs y métricas clave</a></li>
+      <li><a href="archivos/resuelto.txt" target="_blank" rel="noopener">Resuelto</a></li>
+    </ul>
+  </section>
+</main>
+
+    <!-- Footer -->
+    <footer id="contacto" class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <div class="footer-column">
+          <h3>Sobre mí</h3>
+          <p>Mosquera Zevallos Valerio</p>
+          <p>Estudiante de la Universidad Peruana Los Andes</p>
+          <p>ORCID: 0009-0007-2301-5191</p>
+          <p>Correo institucional:
+            <a href="mailto:r03398d@ms.upla.edu.pe" class="footer-link">r03398d@ms.upla.edu.pe</a>
+          </p>
+          <p>Correo personal:
+            <a href="mailto:mosqueravalerio10@gmail.com" class="footer-link">mosqueravalerio10@gmail.com</a>
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Derechos</h3>
+          <p>© 2024 Mosquera Zevallos Valerio</p>
+          <p>Todos los derechos reservados</p>
+          <p>Elaboración propia</p>
+        </div>
+        <div class="footer-column redes-column">
+          <h3>Redes</h3>
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/valerio-mosquera-4b7884329/" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/Vaalerio" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://wa.me/51978417316" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
